@@ -7,25 +7,25 @@ const counterUpContent = [
     icon: "194",
     startCount: "0",
     endCount: "300",
-    meta: "Focal Adjustment",
+    meta: "Min investment amt",
   },
   {
     icon: "195",
     startCount: "0",
     endCount: "108",
-    meta: "Field of View",
+    meta: "IRR",
   },
   {
     icon: "196",
     startCount: "0",
     endCount: "237",
-    meta: "Weight",
+    meta: "Rental income amount",
   },
   {
     icon: "197",
     startCount: "0",
     endCount: "32",
-    meta: "HD Lens Diameter",
+    meta: "Default % ",
   },
 ];
 

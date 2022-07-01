@@ -79,7 +79,7 @@ const AppIndex = (props) => {
               >
                 <div className="title-style-six">
                   <h2>
-                    The <span>Product</span> we work with.
+                    What is <span>Vefes</span>?
                   </h2>
                 </div>
                 {/* /.title-style-six */}
@@ -92,8 +92,7 @@ const AppIndex = (props) => {
                 data-aos-duration="1200"
               >
                 <p className="sub-text pt-30 pb-30">
-                  Commonly used in the graphic, print &amp; publishing industris
-                  for previewing visual mockups.
+                Democratising ownership of renewable assets 
                 </p>
               </div>
               {/* End .col */}
@@ -146,7 +145,7 @@ const AppIndex = (props) => {
           <div className="title-style-five text-center mb-60 md-mb-30">
             <h6>GET STARTED IN MINUTES</h6>
             <h2>
-              <span>3 simple &amp; easy step to launch.</span>
+              <span>5 simple &amp; easy step to launch.</span>
             </h2>
           </div>
           {/* End title */}

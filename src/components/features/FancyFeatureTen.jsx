@@ -4,25 +4,41 @@ import { Link } from "react-router-dom";
 const FeaturesContent = [
   {
     bgColor: "#FFEBDB",
-    icon: "68",
-    title: "Secure & Trusted",
-    desc: `Elit esse cillum dolore eu fugiat nulla pariatur`,
+    icon: "caution",
+    title: "Low risk, High returns",
+    desc: ` As offtake on the asset is assured by (___)PPA`,
     dataDealy: "0",
   },
   {
     bgColor: "#E0F8F8",
-    icon: "67",
-    title: "Easy Customizable",
-    desc: `quis nostrud exerct ullamo ea nisi ut aliqui com dolor`,
+    icon: "booking",
+    title: "Digitally managed",
+    desc: `From paperwork, to payment collection, on a single digital interface.`,
     dataDealy: "100",
   },
   {
     bgColor: "#F7EDFF",
-    icon: "70",
-    title: "Fast Support",
-    desc: `Duis aute irure dolor  reprehen derit in volu velit.`,
+    icon: "money-bag",
+    title: "Save tax",
+    desc: `Offset depreciation against other taxable income.`,
     dataDealy: "200",
   },
+
+  {
+    bgColor: "#FFEBDB",
+    icon: "dollar",
+    title: "Liquidity",
+    desc: `In terms of secondary sale marketplace`,
+    dataDealy: "0",
+  },
+  {
+    bgColor: "#E0F8F8",
+    icon: "carbon-footprint",
+    title: "Reducing Carbon Footprint",
+    desc: `From paperwork, to payment collection, on a single digital interface.`,
+    dataDealy: "100",
+  },
+
 ];
 
 const FancyFeatureTen = () => {
@@ -41,7 +57,7 @@ const FancyFeatureTen = () => {
               className="icon d-flex align-items-center justify-content-center"
               style={{ background: val.bgColor }}
             >
-              <img src={`images/icon/${val.icon}.svg`} alt="icon" />
+              <img src={`images/icon/${val.icon}.png`} alt="icon" />
             </div>
             <h3>{val.title}</h3>
             <p>{val.desc}</p>

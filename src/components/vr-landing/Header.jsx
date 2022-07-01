@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import MegaMenuLanding from "../header/mega-menu/MegaMenuLanding";
 import HeaderPopupForm from "../form/HeaderPopupForm";
-const logo = "images/logo/deski_06.svg";
+const logo = "images/logo/vefesblacklogo.png";
 
 const HeaderLanding = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -68,46 +68,45 @@ const HeaderLanding = () => {
                     className="navbar-nav  main-side-nav font-gordita"
                     items={[
                       "home",
-                      "product",
-                      "feature",
-                      "product-details",
-                      "testimonial",
+                      "about us",
+                      "why invest",
+                      "faq's",
+                      // "testimonial",
                     ]}
                     currentClassName="active"
                     offset={-500}
                   >
-                    <li className="nav-item dropdown position-static">
+                    <li className="nav-item">
                       <a
-                        className="nav-link dropdown-toggle"
+                        className="nav-link"
                         href="#home"
-                        data-toggle="dropdown"
-                      >
+                        >
                         Home
                       </a>
-                      <div className="dropdown-menu">
+                      {/* <div className="dropdown-menu">
                         <MegaMenuLanding />
-                      </div>
+                      </div> */}
                     </li>
                     <li className="nav-item">
                       <a href="#product" className="nav-link">
-                        Product
+                        About
                       </a>
                     </li>
                     <li className="nav-item">
                       <a href="#feature" className="nav-link">
-                        Features
+                        Why Invest
                       </a>
                     </li>
                     <li className="nav-item">
                       <a href="#product-details" className="nav-link">
-                        Product Details
+                        FAQ's
                       </a>
                     </li>
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                       <a href="#testimonial" className="nav-link">
                         Testimonials
                       </a>
-                    </li>
+                    </li> */}
                   </Scrollspy>
                 </div>
               </div>
@@ -115,7 +114,7 @@ const HeaderLanding = () => {
           </nav>
           <div className="right-widget">
             <button className="demo-button" onClick={toggleModalOne}>
-              <span>Contact Us</span>
+              <span>Get In Touch</span>
               <img src="images/icon/user.svg" alt="icon" />
             </button>
           </div>

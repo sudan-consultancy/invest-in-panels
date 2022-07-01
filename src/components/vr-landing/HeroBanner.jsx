@@ -5,14 +5,15 @@ const HeroBanner = () => {
     <div className="row">
       <div className="col-lg-6">
         <h1 className="hero-heading" data-aos="fade-right">
-          Let’s explore the virtual world.
+          {/* Own explore the virtual world. */}
+          Own solar panels,Earn rental income.
         </h1>
         <p
           className="hero-sub-heading"
           data-aos="fade-right"
           data-aos-delay="100"
         >
-          Deski delivered blazing performance, striking word solution lorem.
+         The future of solar is here - get high rental income with minimum risks.
         </p>
         <div
           className="d-lg-flex align-items-center justify-content-between pr-xl-5"
@@ -20,12 +21,12 @@ const HeroBanner = () => {
           data-aos-delay="200"
         >
           <div className="info">
-            Virtual Reality Glass{" "}
+          New panels coming soon{" "}
             <span className="d-block">
-              20% <span>SALE ON</span>
+               <span> Notify me!!</span>
             </span>
           </div>
-          <div className="price">$49.</div>
+          <div className="price">100.</div>
         </div>
         <a
           href="#"
@@ -33,7 +34,7 @@ const HeroBanner = () => {
           data-aos="fade-right"
           data-aos-delay="300"
         >
-          Explore more & Shop
+          Buy it now
         </a>
       </div>
     </div>
