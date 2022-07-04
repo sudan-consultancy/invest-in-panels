@@ -26,7 +26,7 @@ const HeroBanner = () => {
                <span> Notify me!!</span>
             </span>
           </div>
-          <div className="price">100.</div>
+          <div className="price"></div>
         </div>
         <a
           href="#"

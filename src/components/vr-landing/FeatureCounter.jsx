@@ -6,27 +6,24 @@ const counterUpContent = [
   {
     icon: "194",
     startCount: "0",
-    endCount: "300",
+    endCount: "30",
+    type: "K",
     meta: "Min investment amt",
   },
   {
     icon: "195",
     startCount: "0",
-    endCount: "108",
+    endCount: "10",
+    type: "%",
     meta: "IRR",
   },
   {
     icon: "196",
     startCount: "0",
-    endCount: "237",
+    endCount: "3.85",
+    type: "/unit",
     meta: "Rental income amount",
-  },
-  {
-    icon: "197",
-    startCount: "0",
-    endCount: "32",
-    meta: "Default % ",
-  },
+  }
 ];
 
 const FeatureCounter = () => {
@@ -66,7 +63,7 @@ const FeatureCounter = () => {
                   )}
                 </CountUp>{" "}
               </span>{" "}
-              m
+              {val.type}
             </h2>
             <p>{val.meta}</p>
           </div>

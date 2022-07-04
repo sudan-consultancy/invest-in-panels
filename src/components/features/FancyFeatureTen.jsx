@@ -6,14 +6,14 @@ const FeaturesContent = [
     bgColor: "#FFEBDB",
     icon: "caution",
     title: "Low risk, High returns",
-    desc: ` As offtake on the asset is assured by (___)PPA`,
+    desc: ` As offtake on the asset is assured by high grade PPA`,
     dataDealy: "0",
   },
   {
     bgColor: "#E0F8F8",
     icon: "booking",
     title: "Digitally managed",
-    desc: `From paperwork, to payment collection, on a single digital interface.`,
+    desc: `From paperwork, to payment collection.`,
     dataDealy: "100",
   },
   {
@@ -34,8 +34,8 @@ const FeaturesContent = [
   {
     bgColor: "#E0F8F8",
     icon: "carbon-footprint",
-    title: "Reducing Carbon Footprint",
-    desc: `From paperwork, to payment collection, on a single digital interface.`,
+    title: "Carbon footprint",
+    desc: `Generate green energy, reduce carbon emission`,
     dataDealy: "100",
   },
 

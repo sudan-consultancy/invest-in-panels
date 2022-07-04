@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CopyRightThree from "../components/footer/CopyRightThree";
-import FooterSeven from "../components/footer/FooterSeven";
+import FooterFive from "../components/footer/FooterFive";
 import FeatureCounter from "../components/vr-landing/FeatureCounter";
 import HeaderLanding from "../components/vr-landing/Header";
 import FancyFeatureTen from "../components/features/FancyFeatureTen";
@@ -143,7 +143,7 @@ const AppIndex = (props) => {
 
         <div className="container">
           <div className="title-style-five text-center mb-60 md-mb-30">
-            <h6>GET STARTED IN MINUTES</h6>
+            <h6>GET STARTED IN NO TIME</h6>
             <h2>
               <span>5 simple &amp; easy step to launch.</span>
             </h2>
@@ -195,21 +195,26 @@ const AppIndex = (props) => {
       {/* =====================================================
             Footer Style Seven
         ===================================================== */}
-      <footer className="theme-footer-seven mt-120 md-mt-100">
-        <div className="lg-container">
-          <div className="container inner-btn-black">
-            <FooterSeven />
-          </div>
-
+     <footer className="theme-footer-five mt-130 md-mt-100">
+        <div className="inner-container">
           <div className="container">
-            <div className="bottom-footer">
-              <CopyRightThree />
-            </div>
+            <FooterFive />
           </div>
         </div>
-        {/* /.lg-container */}
+        {/* /.inner-container */}
+        <p className="copyright">
+          {" "}
+          Copyright @{new Date().getFullYear()}{" "}
+          <a
+            href="#"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Vefes
+          </a>{" "}
+          AI.
+        </p>
       </footer>
-      {/* /.theme-footer-seven */}
     </div>
   );
 };

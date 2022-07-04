@@ -21,7 +21,7 @@ const FooterFive = () => {
       <div className="col-lg-4">
         <div className="logo">
           <a href="index.html">
-            <img src="images/logo/deski_06.svg" alt="brand" />
+            <img src="images/logo/vefesblacklogo.png" alt="brand" />
           </a>
         </div>
       </div>
@@ -44,8 +44,8 @@ const FooterFive = () => {
       <div className="col-lg-4">
         <div className="title">We’r always happy to help.</div>
         <div className="text-center">
-          <a href="mailto:ib-themes21@gmail.com" className="email">
-            ask@jdeski.com
+          <a href="mailto:support@vefes.ai" className="email">
+            support@vefes.ai
           </a>
         </div>
       </div>
