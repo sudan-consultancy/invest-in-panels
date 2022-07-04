@@ -95,7 +95,7 @@ import BlogDetails from "../views/inner-pages/blog-pages/BlogDetails";
 import NotFound from "../views/NotFound";
 
 // Route Specific
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import ScrollTopBehaviour from "../components/ScrollTopBehaviour";
 import FormSurveyLanding from "../views/all-home-pages/FormSurveyLanding";
 import VrLanding from "../views/all-home-pages/VrLanding";
