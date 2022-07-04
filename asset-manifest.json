@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/invest-in-panels/static/css/main.8219f307.css",
-    "main.js": "/invest-in-panels/static/js/main.76e77805.js",
+    "main.js": "/invest-in-panels/static/js/main.2a772cc5.js",
     "static/js/27.21988821.chunk.js": "/invest-in-panels/static/js/27.21988821.chunk.js",
     "static/media/bg3.svg": "/invest-in-panels/static/media/bg3.0bddb0cac80792b820fe.svg",
     "static/media/bg2.svg": "/invest-in-panels/static/media/bg2.19a08be2ba68333b7fdb.svg",
@@ -140,6 +140,6 @@
   },
   "entrypoints": [
     "static/css/main.8219f307.css",
-    "static/js/main.76e77805.js"
+    "static/js/main.2a772cc5.js"
   ]
 }
