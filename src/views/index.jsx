@@ -68,7 +68,7 @@ const AppIndex = (props) => {
         {/* <!-- /.container --> */}
       </div>
 
-      <div className="fancy-feature-ten pt-100 md-pt-70" id="features">
+      <div className="fancy-feature-ten pt-100 md-pt-70" id="about">
         <div className="bg-wrapper">
           <div className="container">
             <div className="row justify-content-between align-items-center">
@@ -141,7 +141,7 @@ const AppIndex = (props) => {
           className="shapes shape-six"
         />
 
-        <div className="container">
+        <div className="container" id="why-invest">
           <div className="title-style-five text-center mb-60 md-mb-30">
             <h6>GET STARTED IN NO TIME</h6>
             <h2>
@@ -165,7 +165,7 @@ const AppIndex = (props) => {
           alt="shape"
           className="shapes shape-two"
         />
-        <div className="container">
+        <div className="container" id="faq's">
           <div className="title-style-five text-center mb-80 md-mb-60">
             <h6>FAQ</h6>
             <h2>

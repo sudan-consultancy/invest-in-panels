@@ -68,8 +68,8 @@ const HeaderLanding = () => {
                     className="navbar-nav  main-side-nav font-gordita"
                     items={[
                       "home",
-                      "about us",
-                      "why invest",
+                      "about",
+                      "why-invest",
                       "faq's",
                       // "testimonial",
                     ]}
@@ -88,17 +88,17 @@ const HeaderLanding = () => {
                       </div> */}
                     </li>
                     <li className="nav-item">
-                      <a href="#product" className="nav-link">
+                      <a href="#about" className="nav-link">
                         About
                       </a>
                     </li>
                     <li className="nav-item">
-                      <a href="#feature" className="nav-link">
+                      <a href="#why-invest" className="nav-link">
                         Why Invest
                       </a>
                     </li>
                     <li className="nav-item">
-                      <a href="#product-details" className="nav-link">
+                      <a href="#faq's" className="nav-link">
                         FAQ's
                       </a>
                     </li>
@@ -126,7 +126,7 @@ const HeaderLanding = () => {
       <div className={click ? "mobile-menu  menu-open" : "mobile-menu"}>
         <div className="logo order-md-1">
           <Link to="/event-organizer">
-            <img src="images/logo/deski_06.svg" alt="brand" />
+            <img src="images/logo/vefesblacklogo.png" alt="brand" />
           </Link>
           <div className="fix-icon text-dark" onClick={handleClick}>
             <img src="images/icon/close.svg" alt="icon" />
@@ -139,10 +139,10 @@ const HeaderLanding = () => {
           id="theme-menu-list"
           items={[
             "home",
-            "product",
-            "feature",
-            "product-details",
-            "testimonial",
+            "about",
+            "why-invest",
+            "faq's",
+            // "testimonial",
           ]}
           currentClassName="active"
           offset={-200}
@@ -153,29 +153,29 @@ const HeaderLanding = () => {
             </a>
           </li>
           <li className="nav-item">
-            <a href="#product" className="nav-link" onClick={handleClick}>
-              Product
+            <a href="#about" className="nav-link" onClick={handleClick}>
+              About
             </a>
           </li>
           <li className="nav-item">
-            <a href="#feature" className="nav-link" onClick={handleClick}>
-              Features
+            <a href="#why-invest" className="nav-link" onClick={handleClick}>
+            Why Invest
             </a>
           </li>
           <li className="nav-item">
             <a
-              href="#product-details"
+              href="#faq's"
               className="nav-link"
               onClick={handleClick}
             >
-              Product Details
+              FAQ's
             </a>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <a href="#testimonial" className="nav-link" onClick={handleClick}>
               Testimonials
             </a>
-          </li>
+          </li> */}
         </Scrollspy>
       </div>
       {/* Mobile Menu End */}
