@@ -15,38 +15,29 @@ const AboutTabs = () => {
         <div className="tab-content mt-20">
           <TabPanel>
             <p className="font-rubik">
-              Lorem ipsum dolor sit amet, consecteur adipiscng elit sed do
-              eiusmod tempor non sunt
+              Being a climate enthusiast we were always intrigued by solar energy. Although while pushing this idea ahead with our Power Plant under Project Livania, in our journey we realised that common people wanted to participate in green energy but they could not due to the high cost factor required for setting up a Power Plant. That is when we came up with an innovative concept of fractional ownership of Power Plant by giving the people a chance to own individual solar panels. Under this ownership of solar panels the participants receive an annual  guaranteed rental income at a lucrative rate of return.
+
+
             </p>
             <p className="font-rubik">
-              aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore nulla
-              pariaturExcepteur sint occaecat cu proident, sunter in culpa qui
-              officia deserunt mollit .
+              Genesis of Vefes AI = Vefes.AI comes from the house of Vefes, India’s budding renewable energy solutions provider. Founded by and led by Kaustubh Vagal, a first-generation entrepreneur, Vefes.AI has a vast buzzing team of professionals working with one motto i.e. to offer path-breaking participation opportunities in green energy on a single digital platform for Friends of Earth (FoE) with various risk appetites.
+
             </p>
           </TabPanel>
           <TabPanel>
             <p className="font-rubik">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry
+              Democratising the right to go Renewable.
+
             </p>
-            <p className="font-rubik">
-              Contrary to popular belief, Lorem Ipsum is not simply random text.
-              It has roots in a piece of classical Latin literature from 45 BC,
-              making it over 2000 years old. Richard McClintock, a Latin
-              professor.
-            </p>
+           
           </TabPanel>
           <TabPanel>
             <p className="font-rubik">
-              There are many variations of passages of Lorem Ipsum available,
-              but the majority,
+              Vefes envisions a future where going renewable is as simple as downloading an app.
+Fuelling the above vision through our digital technology empowered Solar Power Park.
+
             </p>
-            <p className="font-rubik">
-              Many desktop publishing packages and web page editors now use
-              Lorem Ipsum as their default model text, and a search for 'lorem
-              ipsum' will uncover many web sites still in their infancy.
-            </p>
+         
           </TabPanel>
         </div>
         {/* End TabContent */}

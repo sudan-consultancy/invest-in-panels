@@ -3,26 +3,26 @@ import React from "react";
 const featuresContent = [
   {
     icon: "144",
-    title: "Contracts",
-    desc: "Simplify the process to create proposals.",
+    title: "Environment",
+    desc: "Your contribution to save the environment.",
     delayAnimation: "",
   },
   {
     icon: "145",
-    title: "Proposal",
-    desc: "Create interactive, error-free quotes.",
+    title: "ROI",
+    desc: "Better returns as compared to existing bank rates.",
     delayAnimation: "100",
   },
   {
     icon: "146",
-    title: "eSignature",
-    desc: "Create interactive, error-free quotes.",
+    title: "PPA",
+    desc: "Backed by high grade Power-Purchase Agreements (PPAs).",
     delayAnimation: "200",
   },
   {
     icon: "147",
-    title: "Collect Doc",
-    desc: "Create interactive, error-free quotes.",
+    title: "Clients",
+    desc: "10-15 PPAs with major establishments assuring purchase of every unit generated.",
     delayAnimation: "300",
   },
 ];

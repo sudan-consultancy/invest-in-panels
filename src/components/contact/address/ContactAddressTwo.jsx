@@ -3,15 +3,15 @@ import React from "react";
 const socialContent = [
   {
     icon: "fa-facebook",
-    link: "https://www.facebook.com/",
+    link: "https://www.facebook.com/Vefes-106846398429283",
   },
   {
-    icon: "fa-twitter",
-    link: "https://twitter.com/",
+    icon: "fa-instagram",
+    link: "https://www.instagram.com/vefes.ai/",
   },
   {
     icon: "fa-linkedin",
-    link: "https://www.linkedin.com/",
+    link: "https://www.linkedin.com/company/vefes-engineering/",
   },
 ];
 
@@ -25,7 +25,7 @@ const ContactAddressTwo = () => {
           </div>
           <div className="title">Location</div>
           <p className="font-rubik">
-            Melbourne, R. Market <br /> 1201 VIC
+            Kailash Business Park, <br /> Vikroli.
           </p>
         </div>
         {/* /.address-info */}
@@ -39,8 +39,8 @@ const ContactAddressTwo = () => {
           </div>
           <div className="title">Contact</div>
           <p className="font-rubik">
-            bawejkor@duwvude.gov <br />
-            (779) 564-1593
+            support@vefes.ai <br />
+            9987413040
           </p>
         </div>{" "}
         {/* /.address-info */}

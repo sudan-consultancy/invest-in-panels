@@ -1,17 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const socialContent = [
   {
     icon: "fa-facebook",
-    link: "https://www.facebook.com/",
+    link: "https://www.facebook.com/Vefes-106846398429283",
   },
   {
-    icon: "fa-twitter",
-    link: "https://twitter.com/",
+    icon: "fa-instagram",
+    link: "https://www.instagram.com/vefes.ai/",
   },
   {
     icon: "fa-linkedin",
-    link: "https://www.linkedin.com/",
+    link: "https://www.linkedin.com/company/vefes-engineering/",
   },
 ];
 
@@ -20,9 +21,9 @@ const FooterFive = () => {
     <div className="row justify-content-center align-items-center">
       <div className="col-lg-4">
         <div className="logo">
-          <a href="index.html">
+          <Link to = "/">
             <img src="images/logo/vefesblacklogo.png" alt="brand" />
-          </a>
+          </Link>
         </div>
       </div>
       {/* End .col */}

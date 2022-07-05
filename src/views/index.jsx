@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import CopyRightThree from "../components/footer/CopyRightThree";
 import FooterFive from "../components/footer/FooterFive";
 import FeatureCounter from "../components/vr-landing/FeatureCounter";
 import HeaderLanding from "../components/vr-landing/Header";
@@ -8,6 +7,9 @@ import FancyFeatureTen from "../components/features/FancyFeatureTen";
 import HeroBanner from "../components/vr-landing/HeroBanner";
 import FaqFour from "../components/faq/FaqFour";
 import FeatureNine from "../components/features/FeatureNine";
+import FancyTextBlock21 from "../components/fancy-text-block/FancyTextBlock21";
+import CounterTwo from "../components/counter/CounterTwo";
+import FancyFeatureTewentySeven from "../components/features/FancyFeatureTewentySeven";
 
 const AppIndex = (props) => {
   return (
@@ -24,14 +26,14 @@ const AppIndex = (props) => {
         <div className="container">
           <HeroBanner />
           <div className="screen-holder">
-            <img src="images/shape/241.svg" alt="" className="img-meta" />
-            <img
+            <img src="images/banner.png" alt="" className="img-meta" />
+            {/* <img
               src="images/assets/ils-03.png"
               alt="illustration"
               className="shapes vr-image"
               data-aos="fade-up"
-            />
-            <img
+            /> */}
+            {/* <img
               src="images/shape/242.svg"
               alt="illustration"
               className="shapes shape-one"
@@ -50,7 +52,7 @@ const AppIndex = (props) => {
               className="shapes shape-three"
               width="75"
               data-aos="fade-down"
-            />
+            /> */}
           </div>
           {/* <!-- /.screen-holder --> */}
         </div>
@@ -109,6 +111,45 @@ const AppIndex = (props) => {
         {/* /.bg-wrapper */}
       </div>
 
+        <div className="fancy-short-banner-six mt-150 md-mt-80">
+        <img
+          src="images/shape/143.svg"
+          alt="shape"
+          className="shapes shape-one"
+        />
+        <div className="container">
+          <div className="row">
+            <div
+              className="col-xl-9 col-lg-11 m-auto"
+              data-aos="fade-up"
+              data-aos-duration="1200"
+            >
+              <div className="title-style-six text-center">
+                <h2>
+                  Why Invest?
+                </h2>
+              </div>
+              {/* /.title-style-six */}
+            </div>
+          </div>
+          <p data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100">
+            Our asset class with a minimum cost of Rs. 30,000 is accessible to everyone. Compared to other options such as Bank Deposits, Corporate bonds, Real Estate, etc. our asset class offers lower risk fixed tariffs with a more frequent periodic nature of guaranteed returns.
+         
+          </p>
+           
+        </div>
+        {/* /.container */}
+        
+      </div>
+
+       <div
+        className="fancy-feature-twentySeven lg-container mb-170"
+        id="product"
+      >
+        <div className="container">
+          <FancyFeatureTewentySeven />
+        </div>
+</div>
       <div className="fancy-feature-nine">
         <img
           src="images/shape/107.svg"
@@ -154,7 +195,21 @@ const AppIndex = (props) => {
         </div>
       </div>
 
-      <div className="faq-section-four">
+       <div className="fancy-text-block-twentyOne pt-170 md-pt-100" id="about">
+        <div className="container">
+          <FancyTextBlock21 />
+        </div>
+      </div>
+        <div className="counter-style-two pt-150 md-pt-60">
+        <div className="border-bottom">
+          <div className="container">
+            <CounterTwo />
+          </div>
+        </div>
+      </div>
+
+
+      <div className="faq-section-four mt-170">
         <img
           src="images/shape/120.svg"
           alt="shape"
@@ -184,7 +239,7 @@ const AppIndex = (props) => {
             data-aos-duration="1200"
           >
             <h3 className="font-rubik pb-30">Don’t find your answer?</h3>
-            <Link className="theme-btn-five" to="/contact-eo">
+            <Link className="theme-btn-five" to="/contact">
               Contact us
             </Link>
           </div>

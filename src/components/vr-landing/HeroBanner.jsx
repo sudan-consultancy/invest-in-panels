@@ -21,20 +21,20 @@ const HeroBanner = () => {
           data-aos-delay="200"
         >
           <div className="info">
-          New panels coming soon{" "}
-            <span className="d-block">
+          Panels available{" "}
+            {/* <span className="d-block">
                <span> Notify me!!</span>
-            </span>
+            </span> */}
           </div>
-          <div className="price"></div>
+          <div className="price">1897</div>
         </div>
         <a
-          href="#"
+          href="/contact"
           className="explore-btn mt-5 md-mt-40"
           data-aos="fade-right"
           data-aos-delay="300"
         >
-          Buy it now
+          Contact now
         </a>
       </div>
     </div>

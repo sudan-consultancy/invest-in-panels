@@ -5,23 +5,23 @@ import VisibilitySensor from "react-visibility-sensor";
 const counterUpContent = [
   {
     startCount: "0",
-    endCount: "3",
-    endPointText: "k",
-    meta: "Job done successfully",
+    endCount: "25",
+    endPointText: "MW",
+    meta: "Plant Capacity",
     animationDelay: "0",
   },
   {
     startCount: "0",
-    endCount: "20",
-    endPointText: "million",
-    meta: "3,280 avg rating",
+    endCount: "25",
+    endPointText: "years",
+    meta: "Lifespan",
     animationDelay: "100",
   },
   {
     startCount: "0",
-    endCount: "3000",
-    endPointText: "+",
-    meta: "Using Deski",
+    endCount: "2600",
+    endPointText: "T/M",
+    meta: "Carbon Offset",
     animationDelay: "200",
   },
 ];

@@ -3,41 +3,35 @@ import { Link } from "react-router-dom";
 
 const TeamContent = [
   {
-    designation: "Developer",
-    name: "George Cortez",
+    designation: "Founder and CEO",
+    name: "Kaustubh Vagal",
     img: "img_66",
     animationDelay: "200",
   },
   {
-    designation: "Co-Founder",
-    name: "Juan Barber",
+    designation: "Co-Founder and COO",
+    name: "Rajesh Vagal",
     img: "img_67",
     animationDelay: "250",
   },
   {
-    designation: "Marc McCormick",
-    name: "Marketing Crew ",
+    designation: "Finance",
+    name: "Pravin Reddy",
     img: "img_68",
     animationDelay: "300",
   },
   {
-    designation: "Customer management",
-    name: "Maud Ellis",
+    designation: "VP, Technology",
+    name: "Prabjyot Sudan",
     img: "img_69",
     animationDelay: "50",
   },
   {
-    designation: "Senior Designer",
-    name: "Jhon Du",
+    designation: "Operations",
+    name: "Advaitaa Shinde",
     img: "img_70",
     animationDelay: "100",
-  },
-  {
-    designation: "Co-Founder",
-    name: "Juan Barber",
-    img: "img_71",
-    animationDelay: "150",
-  },
+  }
 ];
 
 const TeamFive = () => {

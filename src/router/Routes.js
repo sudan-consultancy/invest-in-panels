@@ -95,10 +95,12 @@ import BlogDetails from "../views/inner-pages/blog-pages/BlogDetails";
 import NotFound from "../views/NotFound";
 
 // Route Specific
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ScrollTopBehaviour from "../components/ScrollTopBehaviour";
 import FormSurveyLanding from "../views/all-home-pages/FormSurveyLanding";
 import VrLanding from "../views/all-home-pages/VrLanding";
+import ContactIndex from "../views/contact";
+import AboutIndex from "../views/about";
 
 const Routes = () => {
   return (
@@ -107,7 +109,10 @@ const Routes = () => {
         <ScrollTopBehaviour />
         <Switch>
           <Route exact path="/" component={AppIndex} />
+          <Route exact path="/about" component={AboutIndex} />
+          <Route exact path="/contact" component={ContactIndex} />
           <Route exact path="/index" component={PreviewMain} />
+
           <Route path="/event-organizer" component={EventOrganizer} />
           <Route path="/doc-landing" component={DocLanding} />
           <Route path="/doc-signature" component={DocSignatureLanding} />

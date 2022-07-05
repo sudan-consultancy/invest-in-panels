@@ -12,7 +12,7 @@ const FancyTextBlock21 = () => {
           data-aos-duration="1200"
         >
           <div className="img-meta">
-            <img src="images/media/img_72.png" alt="media" className="m-auto" />
+            <img src="images/media/img_77.jpg" alt="media" className="m-auto" />
             <img
               src="images/shape/138.svg"
               alt="shape"
@@ -29,31 +29,23 @@ const FancyTextBlock21 = () => {
           data-aos-delay="100"
         >
           <div className="text-wrapper md-pt-50">
-            <a className="fancybox" onClick={() => setOpen(true)}>
-              <img src="images/icon/71.svg" alt="icon" className="icon" />
-            </a>
+            
 
-            <div className="client-info">
-              Over <span>150,000+ client</span>
-            </div>
+            
             <p>
-              We created over <span>27,000+</span> stunning and quality products
-              over last 5 years with satisfaction.
+             Livania Solar Park
             </p>
-            <div className="name">Carl Henderson</div>
+            <span>
+              Nation’s first AI empowered solar power plant located in Solapur, Maharashtra. At an altitude of 497m Livania Solar Park enjoys one of the highest irradiance in the country, which means high productivity in terms of power generation.
+
+            </span>
           </div>
           {/* /.text-wrapper */}
         </div>
         {/* End .col */}
       </div>
 
-      <ModalVideo
-        channel="youtube"
-        autoplay
-        isOpen={isOpen}
-        videoId="FDaF8_5dzzk"
-        onClose={() => setOpen(false)}
-      />
+      
     </>
   );
 };

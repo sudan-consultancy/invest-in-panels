@@ -5,6 +5,7 @@ import Modal from "react-modal";
 import MegaMenuLanding from "../header/mega-menu/MegaMenuLanding";
 import HeaderPopupForm from "../form/HeaderPopupForm";
 const logo = "images/logo/vefesblacklogo.png";
+// import logo from "images/logo/vefesblacklogo.png";
 
 const HeaderLanding = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,8 +41,8 @@ const HeaderLanding = () => {
       >
         <div className="d-flex align-items-center justify-content-center">
           <div className="logo">
-            <Link to="/event-organizer">
-              <img src={logo} alt="brand" />
+            <Link to="/">
+              <img src={process.env.PUBLIC_URL + logo} alt="brand" />
             </Link>
           </div>
           {/* End logo */}
@@ -64,7 +65,31 @@ const HeaderLanding = () => {
                 id="navbarSupportedContent"
               >
                 <div className="d-lg-flex justify-content-between align-items-center">
-                  <Scrollspy
+                  <div className="navbar-nav  main-side-nav font-gordita">
+  <li className="nav-item">
+                      <a
+                        className="nav-link"
+                        href="/"
+                        >
+                        Home
+                      </a>
+                      {/* <div className="dropdown-menu">
+                        <MegaMenuLanding />
+                      </div> */}
+                    </li>
+                    <li className="nav-item">
+                      <a href="/about" className="nav-link">
+                        About
+                      </a>
+                    </li>
+                    
+                    <li className="nav-item">
+                      <a href="/contact" className="nav-link">
+                        Contact Us
+                      </a>
+                    </li>
+                  </div>
+                  {/* <Scrollspy
                     className="navbar-nav  main-side-nav font-gordita"
                     items={[
                       "home",
@@ -75,46 +100,21 @@ const HeaderLanding = () => {
                     ]}
                     currentClassName="active"
                     offset={-500}
-                  >
-                    <li className="nav-item">
-                      <a
-                        className="nav-link"
-                        href="#home"
-                        >
-                        Home
-                      </a>
-                      {/* <div className="dropdown-menu">
-                        <MegaMenuLanding />
-                      </div> */}
-                    </li>
-                    <li className="nav-item">
-                      <a href="#about" className="nav-link">
-                        About
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a href="#why-invest" className="nav-link">
-                        Why Invest
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a href="#faq's" className="nav-link">
-                        FAQ's
-                      </a>
-                    </li>
+                  > */}
+                  
                     {/* <li className="nav-item">
                       <a href="#testimonial" className="nav-link">
                         Testimonials
                       </a>
                     </li> */}
-                  </Scrollspy>
+                  {/* </Scrollspy> */}
                 </div>
               </div>
             </div>
           </nav>
           <div className="right-widget">
             <button className="demo-button" onClick={toggleModalOne}>
-              <span>Get In Touch</span>
+              <span>Login/Register</span>
               <img src="images/icon/user.svg" alt="icon" />
             </button>
           </div>

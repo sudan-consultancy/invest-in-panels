@@ -36,6 +36,7 @@ const App = () => {
           content="Deski is a creative saas and software React template designed for saas and software Agency websites."
         />
         <meta name="description" content="Portfolio & Agency React Template" />
+        {/* <base href="/"></base> */}
       </Helmet>
       {/* End Seo Helmt */}
 
