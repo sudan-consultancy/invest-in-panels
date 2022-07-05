@@ -105,7 +105,7 @@ import AboutIndex from "../views/about";
 const Routes = () => {
   return (
     <>
-      <Router>
+      <Router basename="/">
         <ScrollTopBehaviour />
         <Switch>
           <Route exact path="/" component={AppIndex} />
