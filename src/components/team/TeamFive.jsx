@@ -5,31 +5,31 @@ const TeamContent = [
   {
     designation: "Founder and CEO",
     name: "Kaustubh Vagal",
-    img: "img_66",
+    img: "KaustubhVagal",
     animationDelay: "200",
   },
   {
     designation: "Co-Founder and COO",
     name: "Rajesh Vagal",
-    img: "img_67",
+    img: "RAJESHVAGAL",
     animationDelay: "250",
   },
   {
     designation: "Finance",
     name: "Pravin Reddy",
-    img: "img_68",
+    img: "PravinReddy",
     animationDelay: "300",
   },
   {
     designation: "VP, Technology",
     name: "Prabjyot Sudan",
-    img: "img_69",
+    img: "prabjyotSudhan",
     animationDelay: "50",
   },
   {
     designation: "Operations",
     name: "Advaitaa Shinde",
-    img: "img_70",
+    img: "FullSizeRender",
     animationDelay: "100",
   }
 ];
@@ -47,7 +47,7 @@ const TeamFive = () => {
         >
           <Link to="/team-details-v1" className="team-member">
             <div className="img-holder">
-              <img src={`images/media/${item.img}.png`} alt="team" />
+              <img src={`images/media/${item.img}.jpg`} alt="team" />
             </div>
             <h6 className="name">{item.name}</h6>
             <div className="position">{item.designation}</div>

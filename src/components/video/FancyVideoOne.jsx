@@ -12,7 +12,7 @@ const FancyVideoOne = () => {
         videoId="qnwTVQlxs4g"
         onClose={() => setOpen(false)}
       />
-      <img src="images/media/img_65.png" alt="media" className="main-img" />
+      <img src="images/media/VEFES TEAM.jpg" alt="media" className="main-img" />
       <div
         className="fancybox video-button d-flex align-items-center"
         onClick={() => setOpen(true)}

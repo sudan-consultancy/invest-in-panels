@@ -10,6 +10,8 @@ import FeatureNine from "../components/features/FeatureNine";
 import FancyTextBlock21 from "../components/fancy-text-block/FancyTextBlock21";
 import CounterTwo from "../components/counter/CounterTwo";
 import FancyFeatureTewentySeven from "../components/features/FancyFeatureTewentySeven";
+import TableOne from "../components/table/TableOne";
+
 
 const AppIndex = (props) => {
   return (
@@ -141,6 +143,12 @@ const AppIndex = (props) => {
         {/* /.container */}
         
       </div>
+
+{/* /.table */}
+<div className="container">
+<TableOne></TableOne>
+</div>
+
 
        <div
         className="fancy-feature-twentySeven lg-container mb-170"
