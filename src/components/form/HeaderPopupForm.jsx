@@ -7,6 +7,7 @@ const HeaderPopupForm = () => {
   // for validation
   const validationSchema = Yup.object().shape({
     name: Yup.string().required(" Name is required"),
+    phonenumber: Yup.string().required(" Phone Number is required"),
     email: Yup.string()
       .required("Email is required")
       .email("Entered value does not match email format"),
@@ -61,11 +62,27 @@ const HeaderPopupForm = () => {
               )}
             </div>
           </div>
-          {/* End .col */}
 
           <div className="col-12">
+            <div className="input-group-meta form-group mb-20">
+              <label>Phone Number*</label>
+              <input
+                placeholder="Phone Number"
+                name="phonenumber"
+                type="text"
+                {...register("phonenumber")}
+                className={` ${errors.phonenumber ? "is-invalid" : ""}`}
+              />
+              {errors.email && (
+                <div className="invalid-feedback">{errors.phonenumber?.message}</div>
+              )}
+            </div>
+          </div>
+          {/* End .col */}
+
+          {/* <div className="col-12">
             <div className="input-group-meta form-group mb-30">
-              <label>Message*</label>
+              <label>Phone Number*</label>
               <textarea
                 placeholder="Your message"
                 name="sendMessage"
@@ -79,11 +96,14 @@ const HeaderPopupForm = () => {
                 </div>
               )}
             </div>
-          </div>
+          </div> */}
           {/* End .col */}
 
           <div className="col-12">
-            <button className="theme-btn-seven w-100">Send Message</button>
+            <button className="theme-btn-seven w-100">Register</button>
+          </div>
+          <div className="col-12">
+            <p>Already have an Account ?<a href="login.js">Login</a></p>
           </div>
           {/* End .col */}
         </div>
