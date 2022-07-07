@@ -124,7 +124,7 @@ const TableOne = () => {
         step="0"
         type="range"
         min="1"
-        max="100"
+        max="1900"
         style={{ width: "100%" }}
         onChange={calculation}
       />
