@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
@@ -6,13 +6,18 @@ import * as Yup from "yup";
 const HeaderPopupForm = (props) => {
   // for validation
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required(" Name is required"),
-    phonenumber: Yup.string().required(" Phone Number is required"),
+    name: Yup.string().nullable(),
+    phone_number: Yup.string().required(" Phone Number is required"),
     email: Yup.string()
       .required("Email is required")
       .email("Entered value does not match email format"),
-    sendMessage: Yup.string().required("Please,leave us a message."),
+    password: Yup.string().required("Password is required"),
   });
+
+  const [passwordShown, setPasswordShown] = useState(false);
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(passwordShown ? false : true);
+  };
 
   const formOptions = { resolver: yupResolver(validationSchema) };
   // get functions to build form with useForm() hook
@@ -21,8 +26,8 @@ const HeaderPopupForm = (props) => {
 
   function onSubmit(data, e) {
     // display form data on success
-    console.log("Message submited: " + JSON.stringify(data));
-    e.target.reset();
+    console.log("Message submited: ", data);
+    // e.target.reset();
   }
 
   return (
@@ -54,6 +59,7 @@ const HeaderPopupForm = (props) => {
                 placeholder="Email Address"
                 name="email"
                 type="text"
+                required
                 {...register("email")}
                 className={` ${errors.email ? "is-invalid" : ""}`}
               />
@@ -68,41 +74,41 @@ const HeaderPopupForm = (props) => {
               <label>Phone Number*</label>
               <input
                 placeholder="Phone Number"
-                name="phonenumber"
-                type="text"
-                {...register("phonenumber")}
-                className={` ${errors.phonenumber ? "is-invalid" : ""}`}
+                name="phone_number"
+                type="number"
+                required
+                {...register("phone_number")}
+                className={` ${errors.phone_number ? "is-invalid" : ""}`}
               />
               {errors.email && (
                 <div className="invalid-feedback">
-                  {errors.phonenumber?.message}
+                  {errors.phone_number?.message}
                 </div>
               )}
             </div>
           </div>
-          {/* End .col */}
-
-          {/* <div className="col-12">
-            <div className="input-group-meta form-group mb-30">
-              <label>Phone Number*</label>
-              <textarea
-                placeholder="Your message"
-                name="sendMessage"
-                type="text"
-                {...register("message")}
-                className={`${errors.sendMessage ? "is-invalid" : ""}`}
-              ></textarea>
-              {errors.sendMessage && (
+          <div className="col-12">
+            <div className="input-group-meta form-group mb-20">
+              <label>Password</label>
+              <input
+                placeholder="Password"
+                name="password"
+                type={passwordShown ? "text" : "password"}
+                required
+                {...register("password")}
+                className={` ${errors.password ? "is-invalid" : ""}`}
+              />
+              {errors.email && (
                 <div className="invalid-feedback">
-                  {errors.sendMessage?.message}
+                  {errors.password?.message}
                 </div>
               )}
             </div>
-          </div> */}
-          {/* End .col */}
-
+          </div>
           <div className="col-12">
-            <button className="theme-btn-seven w-100">Register</button>
+            <button className="theme-btn-seven w-100" type="submit">
+              Register
+            </button>
           </div>
           <div className="col-12">
             <p>
