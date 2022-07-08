@@ -19,7 +19,6 @@ import MobileAppLanding from "../views/all-home-pages/MobileAppLanding";
 import WebsiteBuilderLanding from "../views/all-home-pages/WebsiteBuilderLanding";
 import ComingSoon from "../views/all-home-pages/ComingSoon";
 import LoginForm from "../components/contact/form/LoginForm";
-import DashboardCard from "../components/form/DashboardCard";
 
 // All INNER PAGES ROUTES START FROM BELLOW
 
