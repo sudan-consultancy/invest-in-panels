@@ -67,7 +67,7 @@ const HeaderLanding = () => {
               >
                 <div className="d-lg-flex justify-content-between align-items-center">
                   <div className="navbar-nav  main-side-nav font-gordita">
-  <li className="nav-item">
+                   <li className="nav-item">
                       <a
                         className="nav-link"
                         href="/"
