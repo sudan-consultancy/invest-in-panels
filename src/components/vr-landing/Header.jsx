@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import MegaMenuLanding from "../header/mega-menu/MegaMenuLanding";
 import HeaderPopupForm from "../form/HeaderPopupForm";
+import LoginPopupForm from "../form/LoginPopupForm";
 const logo = "images/logo/vefesblacklogo.png";
 // import logo from "images/logo/vefesblacklogo.png";
 
@@ -215,8 +216,8 @@ const HeaderLanding = () => {
             {/* /.left-side */}
 
             <div className="right-side">
-              <h2 className="form-title">Contact us</h2>
-              <HeaderPopupForm />
+              <h2 className="form-title">Login</h2>
+              <LoginPopupForm/>
             </div>
             {/*  /.right-side */}
           </main>
