@@ -8,7 +8,7 @@ const TableOne = () => {
             <thead>
                 <tr>
                 <th scope="col">Investment Category</th>
-                <th scope="col">Average IRR</th>
+                <th scope="col">Avg IRR</th>
                 <th scope="col">Risk Level</th>
                 <th scope="col">Potential Risk</th>
                 </tr>

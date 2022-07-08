@@ -22,7 +22,7 @@ const featuresContent = [
   {
     icon: "147",
     title: "Clients",
-    desc: "10-15 PPAs with major establishments assuring purchase of every unit generated.",
+    desc: "PPAs with major organizations ensures purchase of units.",
     delayAnimation: "300",
   },
 ];

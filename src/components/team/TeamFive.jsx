@@ -43,11 +43,12 @@ const TeamFive = () => {
           data-aos="fade-up"
           data-aos-duration="1200"
           data-aos-delay={item.animationDelay}
+         
           key={i}
         >
           <Link to="/team-details-v1" className="team-member">
             <div className="img-holder">
-              <img src={`images/media/${item.img}.jpg`} alt="team" />
+              <img style = {{maxHeight: "452px", objectFit: "cover"}} src={`images/media/${item.img}.jpg`} alt="team" />
             </div>
             <h6 className="name">{item.name}</h6>
             <div className="position">{item.designation}</div>

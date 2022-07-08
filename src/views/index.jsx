@@ -135,7 +135,7 @@ const AppIndex = (props) => {
             </div>
           </div>
           <p data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100">
-            Our asset class with a minimum cost of Rs. 30,000 is accessible to everyone. Compared to other options such as Bank Deposits, Corporate bonds, Real Estate, etc. our asset class offers lower risk fixed tariffs with a more frequent periodic nature of guaranteed returns.
+            Our asset class with a minimum cost of Rs. 30,000 is accessible to everyone. Our asset class offers lower risk fixed tariffs with a more frequent periodic nature of guaranteed returns.
          
           </p>
            

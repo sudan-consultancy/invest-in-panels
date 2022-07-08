@@ -13,7 +13,7 @@ const HeroBanner = () => {
           data-aos="fade-right"
           data-aos-delay="100"
         >
-         The future of solar is here - get high rental income with minimum risks.
+         The future of solar is here - get high rental income and tax benefits with minimum risks.
         </p>
         <div
           className="d-lg-flex align-items-center justify-content-between pr-xl-5"
@@ -21,12 +21,12 @@ const HeroBanner = () => {
           data-aos-delay="200"
         >
           <div className="info">
-          Panels available{" "}
+          {/* Panels available{" "} */}
             {/* <span className="d-block">
                <span> Notify me!!</span>
             </span> */}
           </div>
-          <div className="price">1897</div>
+          {/* <div className="price">1897</div> */}
         </div>
         <a
           href="/contact"

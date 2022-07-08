@@ -18,8 +18,8 @@ const FeatureContent = [
   },
   {
     icon: "Building-cuate",
-    meta: "",
-    subTitle: `We sets up ancillary infrastructure required for sale of power`,
+    meta: "Infrastructure is setup",
+    subTitle: `We setup infrastructure required for sale of power`,
   },
   {
     icon: "Wallet-pana",
