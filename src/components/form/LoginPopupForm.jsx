@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 
-const LoginPopupForm = () => {
+const LoginPopupForm = (props) => {
 
      // for password show hide
   const [passwordShown, setPasswordShown] = useState(false);
@@ -77,7 +77,7 @@ const LoginPopupForm = () => {
             <button className="theme-btn-seven w-100">Login</button>
           </div>
           <div className="col-12">
-            <p>Don't have an Account ?<a>Register</a></p>
+            <p>Don't have an Account? &nbsp;<a onClick={props.toggleLogin}>Register</a></p>
           </div>
           {/* End .col */}
         </div>

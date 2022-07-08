@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 
-const HeaderPopupForm = () => {
+const HeaderPopupForm = (props) => {
   // for validation
   const validationSchema = Yup.object().shape({
     name: Yup.string().required(" Name is required"),
@@ -74,7 +74,9 @@ const HeaderPopupForm = () => {
                 className={` ${errors.phonenumber ? "is-invalid" : ""}`}
               />
               {errors.email && (
-                <div className="invalid-feedback">{errors.phonenumber?.message}</div>
+                <div className="invalid-feedback">
+                  {errors.phonenumber?.message}
+                </div>
               )}
             </div>
           </div>
@@ -103,7 +105,10 @@ const HeaderPopupForm = () => {
             <button className="theme-btn-seven w-100">Register</button>
           </div>
           <div className="col-12">
-            <p>Already have an Account ?<a href="login.js">Login</a></p>
+            <p>
+              Already have an Account?&nbsp;
+              <a onClick={props.toggleLogin}>Login</a>
+            </p>
           </div>
           {/* End .col */}
         </div>
