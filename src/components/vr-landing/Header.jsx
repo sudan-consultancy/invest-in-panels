@@ -14,9 +14,15 @@ const HeaderLanding = () => {
   const handleClick = () => setClick(!click);
   const [navbar, setNavbar] = useState(false);
 
+  const [isLogin, setIsLogin] = useState(true);
+
   function toggleModalOne() {
     setIsOpen(!isOpen);
   }
+
+  const toggleLogin = () => {
+    setIsLogin(!isLogin);
+  };
 
   const changeBackground = () => {
     if (window.scrollY >= 90) {
@@ -67,11 +73,8 @@ const HeaderLanding = () => {
               >
                 <div className="d-lg-flex justify-content-between align-items-center">
                   <div className="navbar-nav  main-side-nav font-gordita">
-                   <li className="nav-item">
-                      <a
-                        className="nav-link"
-                        href="/"
-                        >
+                    <li className="nav-item">
+                      <a className="nav-link" href="/">
                         Home
                       </a>
                       {/* <div className="dropdown-menu">
@@ -83,7 +86,7 @@ const HeaderLanding = () => {
                         About
                       </a>
                     </li>
-                    
+
                     <li className="nav-item">
                       <a href="/contact" className="nav-link">
                         Contact Us
@@ -102,8 +105,8 @@ const HeaderLanding = () => {
                     currentClassName="active"
                     offset={-500}
                   > */}
-                  
-                    {/* <li className="nav-item">
+
+                  {/* <li className="nav-item">
                       <a href="#testimonial" className="nav-link">
                         Testimonials
                       </a>
@@ -160,15 +163,11 @@ const HeaderLanding = () => {
           </li>
           <li className="nav-item">
             <a href="#why-invest" className="nav-link" onClick={handleClick}>
-            Why Invest
+              Why Invest
             </a>
           </li>
           <li className="nav-item">
-            <a
-              href="#faq's"
-              className="nav-link"
-              onClick={handleClick}
-            >
+            <a href="#faq's" className="nav-link" onClick={handleClick}>
               FAQ's
             </a>
           </li>
@@ -216,8 +215,12 @@ const HeaderLanding = () => {
             {/* /.left-side */}
 
             <div className="right-side">
-              <h2 className="form-title">Login</h2>
-              <LoginPopupForm/>
+              <h2 className="form-title">{isLogin ? "Login" : "Register"}</h2>
+              {isLogin ? (
+                <LoginPopupForm toggleLogin={toggleLogin} />
+              ) : (
+                <HeaderPopupForm toggleLogin={toggleLogin} />
+              )}
             </div>
             {/*  /.right-side */}
           </main>

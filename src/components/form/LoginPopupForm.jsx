@@ -3,9 +3,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 
-const LoginPopupForm = () => {
-
-     // for password show hide
+const LoginPopupForm = (props) => {
+  // for password show hide
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
@@ -16,11 +15,9 @@ const LoginPopupForm = () => {
     password: Yup.string()
       .min(6, "Password must be at least 6 characters")
       .required("Password is required"),
-    phonenumber: Yup.string().required(" Phone Number is required"),
     email: Yup.string()
       .required("Email is required")
       .email("Entered value does not match email format"),
-    sendMessage: Yup.string().required("Please,leave us a message."),
   });
 
   const formOptions = { resolver: yupResolver(validationSchema) };
@@ -30,8 +27,8 @@ const LoginPopupForm = () => {
 
   function onSubmit(data, e) {
     // display form data on success
-    console.log("Message submited: " + JSON.stringify(data));
-    e.target.reset();
+    console.log("Message submited: ", data);
+    // e.target.reset();
   }
 
   return (
@@ -67,7 +64,8 @@ const LoginPopupForm = () => {
               />
               {errors.password && (
                 <div className="invalid-feedback">
-                  {errors.password?.message}</div>
+                  {errors.password?.message}
+                </div>
               )}
             </div>
           </div>
@@ -77,7 +75,10 @@ const LoginPopupForm = () => {
             <button className="theme-btn-seven w-100">Login</button>
           </div>
           <div className="col-12">
-            <p>Don't have an Account ?<a>Register</a></p>
+            <p>
+              Don't have an Account? &nbsp;
+              <a onClick={props.toggleLogin}>Register</a>
+            </p>
           </div>
           {/* End .col */}
         </div>
