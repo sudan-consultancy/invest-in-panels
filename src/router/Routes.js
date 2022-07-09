@@ -162,12 +162,11 @@ const Routes = () => {
           <Route path="/pricing-pm" component={PricingProjectManagement} /> */}
           {/* Feature Dropdown Routes */}
           {/* <Route path="/login" component={Login} />
-          <Route path="/SignUp" component={SignUp} />
+          <Route path="/SignUp" component={SignUp} /> */}
           <Route path="/terms-conditions" component={TermsConditions} />
           <Route path="/privacy-policy" component={PrivacyPolicy} />
           <Route path="/management-agreement" component={ManagementContract} />
-
-          <Route path="/solution-management" component={SolutionMangement} />
+          {/* <Route path="/solution-management" component={SolutionMangement} />
           <Route
             path="/product-customer-support"
             component={ProductCustomerSupport}
@@ -177,7 +176,7 @@ const Routes = () => {
             component={FeaturesCustomerSupport}
           /> */}
           {/* Service inner pages */}
-          <Route path="/service-v1" component={ServiceV1} />/
+          {/* <Route path="/service-v1" component={ServiceV1} /> */}
           {/* inner pages Docs   */}
           {/* <Route path="/doc-full-width" component={DocFullWidth} />
           <Route path="/doc-full-width-banner" component={DocFullWidthBanner} />

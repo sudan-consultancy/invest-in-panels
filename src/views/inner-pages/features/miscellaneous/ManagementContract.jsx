@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import Header from "../../../../components/header/Header";
 import Footer from "../../../../components/footer/Footer";
 import CopyRight from "../../../../components/footer/CopyRight";
+import HeaderLanding from "../../../../components/vr-landing/Header";
 
 const ManagementContract = () => {
   return (
@@ -12,7 +13,7 @@ const ManagementContract = () => {
       </Helmet>
       {/* End Page SEO Content */}
 
-      <Header />
+      <HeaderLanding />
       {/* End Header */}
 
       {/* =====================================================

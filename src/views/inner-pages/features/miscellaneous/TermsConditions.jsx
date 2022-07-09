@@ -1,9 +1,10 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import Header from "../../../../components/header/Header";
+// import Header from "../../../../components/header/Header";
 import Footer from "../../../../components/footer/Footer";
 import CopyRight from "../../../../components/footer/CopyRight";
 import ScrollspyNav from "react-scrollspy-nav";
+import HeaderLanding from "../../../../components/vr-landing/Header";
 
 const TermsConditions = () => {
   return (
@@ -15,7 +16,7 @@ const TermsConditions = () => {
       </Helmet>
       {/* End Page SEO Content */}
 
-      <Header />
+      <HeaderLanding />
       {/* End Header */}
 
       {/* =====================================================
