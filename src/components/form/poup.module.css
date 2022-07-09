@@ -1,0 +1,73 @@
+.main_form {
+  position: absolute;
+  background-color: rgb(236, 234, 234);
+  width: 80%;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 1rem;
+  border: 0.1rem solid black;
+  margin-top: 5%;
+  margin-left: 10%;
+}
+.active {
+  background-color: rgb(221, 221, 221);
+}
+.cont {
+  margin-bottom: 1rem;
+}
+.cont button {
+  margin-top: 4rem;
+}
+.cont label {
+  margin: 0.3rem;
+  padding: 0.5rem;
+  width: 100%;
+  background-color: rgb(221, 221, 221);
+  border-radius: 1rem;
+}
+.upload {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  font-size: 1.5rem;
+  height: 100px;
+  margin: 0.3rem;
+  padding: 0.5rem;
+  width: 100%;
+  margin-bottom: 3rem;
+  border: 0.2rem dotted darkgray;
+}
+
+.active h4 {
+  color: rgb(119, 91, 242);
+}
+.tabs_opt {
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 1rem;
+}
+.contact_form button {
+  margin-top: 1rem;
+}
+
+.tabcontent {
+  padding: 1rem;
+  margin: auto;
+  margin-top: -1rem;
+  max-width: 70%;
+  height: 100%;
+}
+.contact_form {
+  margin: auto;
+  padding-top: 3rem;
+}
+.mainparent {
+  width: 100%;
+  background-color: red;
+  height: 100%;
+}
+.item_card {
+  height: 100%;
+}

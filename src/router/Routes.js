@@ -18,6 +18,7 @@ import AppointmentScheduling from "../views/all-home-pages/AppointmentScheduling
 import MobileAppLanding from "../views/all-home-pages/MobileAppLanding";
 import WebsiteBuilderLanding from "../views/all-home-pages/WebsiteBuilderLanding";
 import ComingSoon from "../views/all-home-pages/ComingSoon";
+import LoginForm from "../components/contact/form/LoginForm";
 
 // All INNER PAGES ROUTES START FROM BELLOW
 
@@ -34,7 +35,7 @@ import TeamDetailsV1 from "../views/inner-pages/pages/team/TeamDetailsV1";
 import TeamDetailsV2 from "../views/inner-pages/pages/team/TeamDetailsV2";
 import Faq from "../views/inner-pages/pages/Faq";
 import FaqDetails from "../views/inner-pages/pages/FaqDetails";
-
+import PopupKyc from "../components/form/PopupKyc";
 // Contact us inner pages
 import ContactCustomerSupport from "../views/inner-pages/pages/contact/ContactCustomerSupport";
 import ContactEventOrganizer from "../views/inner-pages/pages/contact/ContactEventOrganizer";
@@ -204,7 +205,7 @@ const Routes = () => {
           <Route path="/blog-v6" component={BlogV6} />
           <Route path="/blog-details" component={BlogDetails} />
           <Route path="/404" component={NotFound} />
-
+          <Route path="/kyc" component={PopupKyc}/>
           {/* NotFound Route */}
           <Route component={NotFound} />
         </Switch>
