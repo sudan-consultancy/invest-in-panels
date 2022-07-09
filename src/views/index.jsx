@@ -143,7 +143,7 @@ const AppIndex = (props) => {
       {/* /.table */}
       <div className="container">
         <TableTwo></TableTwo>
-        <TableOne></TableOne>
+        
       </div>
 
       <div
@@ -196,6 +196,25 @@ const AppIndex = (props) => {
           {/* End title */}
 
           <FeatureNine />
+        </div>
+      </div>
+
+      <div
+        className="pricing-section-nine lg-container pt-150 md-pt-110"
+        id="pricing"
+      >
+        <div className="container">
+          <div
+            className="title-style-eleven text-center mb-40 md-mb-20"
+            data-aos="fade-up"
+          >
+            <div className="upper-title">ROI Calculator</div>
+            <h2>Check the returns on your purchase of panels</h2>
+          </div>
+
+          <div className="row justify-content-center">
+            <TableOne></TableOne>
+          </div>
         </div>
       </div>
 
