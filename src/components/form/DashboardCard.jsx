@@ -20,7 +20,6 @@ const DashboardCard = (props) => {
     api
       .get("auth")
       .then((res) => {
-        console.log(res.data?.data);
         setkyc(res.data?.data?.hasCompletedProfile);
       })
       .catch((err) => {});
@@ -31,7 +30,7 @@ const DashboardCard = (props) => {
     <HeaderLanding onDashboard />
     <div className="container" style={{ paddingTop: "10em" }}>
       <div className="container py-3 rounded" style={Container}>
-        <div className="row align-items-center">
+        <div className="row align-items-center">``
           <img
             src="..."
             alt="panel image comes here"
