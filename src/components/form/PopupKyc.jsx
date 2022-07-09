@@ -46,7 +46,7 @@ const PopupKyc = (props) => {
   }
 
   return (
-    <>
+    <div className={`${poupstyle.allbody}`}>
       <div className={`row ${poupstyle.parentform}`}>
         <div className={`col-3 ${poupstyle.tabs}`}>
           <div
@@ -203,7 +203,7 @@ const PopupKyc = (props) => {
           
         )}
       </div>
-    </>
+    </div>
   );
 };
 
