@@ -10,8 +10,7 @@ import FeatureNine from "../components/features/FeatureNine";
 import FancyTextBlock21 from "../components/fancy-text-block/FancyTextBlock21";
 import CounterTwo from "../components/counter/CounterTwo";
 import FancyFeatureTewentySeven from "../components/features/FancyFeatureTewentySeven";
-import TableOne from "../components/table/TableOne";
-
+import { TableOne, TableTwo } from "../components/table/TableOne";
 
 const AppIndex = (props) => {
   return (
@@ -96,7 +95,7 @@ const AppIndex = (props) => {
                 data-aos-duration="1200"
               >
                 <p className="sub-text pt-30 pb-30">
-                Democratising ownership of renewable assets 
+                  Democratising ownership of renewable assets
                 </p>
               </div>
               {/* End .col */}
@@ -113,7 +112,7 @@ const AppIndex = (props) => {
         {/* /.bg-wrapper */}
       </div>
 
-        <div className="fancy-short-banner-six mt-150 md-mt-80">
+      <div className="fancy-short-banner-six mt-150 md-mt-80">
         <img
           src="images/shape/143.svg"
           alt="shape"
@@ -127,37 +126,34 @@ const AppIndex = (props) => {
               data-aos-duration="1200"
             >
               <div className="title-style-six text-center">
-                <h2>
-                  Why Invest?
-                </h2>
+                <h2>Why Invest?</h2>
               </div>
               {/* /.title-style-six */}
             </div>
           </div>
           <p data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100">
-            Our asset class with a minimum cost of Rs. 30,000 is accessible to everyone. Our asset class offers lower risk fixed tariffs with a more frequent periodic nature of guaranteed returns.
-         
+            Our asset class with a minimum cost of Rs. 30,000 is accessible to
+            everyone. Our asset class offers lower risk fixed tariffs with a
+            more frequent periodic nature of guaranteed returns.
           </p>
-           
         </div>
         {/* /.container */}
-        
       </div>
 
-{/* /.table */}
-<div className="container">
-<TableOne></TableOne>
-</div>
+      {/* /.table */}
+      <div className="container">
+        <TableTwo></TableTwo>
+        <TableOne></TableOne>
+      </div>
 
-
-       <div
+      <div
         className="fancy-feature-twentySeven lg-container mb-170"
         id="product"
       >
         <div className="container">
           <FancyFeatureTewentySeven />
         </div>
-</div>
+      </div>
       <div className="fancy-feature-nine">
         <img
           src="images/shape/107.svg"
@@ -203,19 +199,18 @@ const AppIndex = (props) => {
         </div>
       </div>
 
-       <div className="fancy-text-block-twentyOne pt-170 md-pt-100" id="about">
+      <div className="fancy-text-block-twentyOne pt-170 md-pt-100" id="about">
         <div className="container">
           <FancyTextBlock21 />
         </div>
       </div>
-        <div className="counter-style-two pt-150 md-pt-60">
+      <div className="counter-style-two pt-150 md-pt-60">
         <div className="border-bottom">
           <div className="container">
             <CounterTwo />
           </div>
         </div>
       </div>
-
 
       <div className="faq-section-four mt-170">
         <img
@@ -258,7 +253,7 @@ const AppIndex = (props) => {
       {/* =====================================================
             Footer Style Seven
         ===================================================== */}
-     <footer className="theme-footer-five mt-130 md-mt-100">
+      <footer className="theme-footer-five mt-130 md-mt-100">
         <div className="inner-container">
           <div className="container">
             <FooterFive />
@@ -268,11 +263,7 @@ const AppIndex = (props) => {
         <p className="copyright">
           {" "}
           Copyright @{new Date().getFullYear()}{" "}
-          <a
-            href="#"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="#" target="_blank" rel="noreferrer">
             Vefes
           </a>{" "}
           AI.
