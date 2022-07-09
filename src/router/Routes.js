@@ -206,10 +206,8 @@ const Routes = () => {
           <Route path="/blog-v6" component={BlogV6} />
           <Route path="/blog-details" component={BlogDetails} />
           <Route path="/404" component={NotFound} />
-          <Route path="/popupkyc" component={PopupKyc}/>
           <Route path="/dashboard" component={DashboardCard}/>
-
-          <Route path = "/logintest" component={LoginForm}></Route>
+          <Route path="/kyc" component={PopupKyc}/>
           {/* NotFound Route */}
           <Route component={NotFound} />
         </Switch>

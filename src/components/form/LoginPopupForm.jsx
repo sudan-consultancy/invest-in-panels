@@ -2,25 +2,26 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import { api } from "../../api";
+import Cookie from "js-cookie";
+import { useHistory } from "react-router-dom";
 
-const LoginPopupForm = () => {
-
-     // for password show hide
+const LoginPopupForm = (props) => {
+  // for password show hide
+  const history = useHistory();
   const [passwordShown, setPasswordShown] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   };
 
   // for validation
   const validationSchema = Yup.object().shape({
-    password: Yup.string()
-      .min(6, "Password must be at least 6 characters")
-      .required("Password is required"),
-    phonenumber: Yup.string().required(" Phone Number is required"),
+    password: Yup.string().required("Password is required"),
     email: Yup.string()
       .required("Email is required")
       .email("Entered value does not match email format"),
-    sendMessage: Yup.string().required("Please,leave us a message."),
   });
 
   const formOptions = { resolver: yupResolver(validationSchema) };
@@ -30,14 +31,26 @@ const LoginPopupForm = () => {
 
   function onSubmit(data, e) {
     // display form data on success
-    console.log("Message submited: " + JSON.stringify(data));
-    e.target.reset();
+    // console.log("Message submited: ", data);
+    setLoading(true);
+    api
+      .post("auth/login", data)
+      .then((res) => {
+        setLoading(false);
+        Cookie.set("vf_user", JSON.stringify(res.data.data));
+        history.push("/kyc");
+      })
+      .catch((err) => {
+        setLoading(false);
+        setError(err?.response?.data?.error || "Error logging in");
+      });
+    // e.target.reset();
   }
 
   return (
     <>
       <form id="contact-form" onSubmit={handleSubmit(onSubmit)}>
-        <div className="messages"></div>
+        <div className="messages text-danger text-capitalize">{error}</div>
         <div className="row controls">
           <div className="col-12">
             <div className="input-group-meta form-group mb-20">
@@ -67,17 +80,23 @@ const LoginPopupForm = () => {
               />
               {errors.password && (
                 <div className="invalid-feedback">
-                  {errors.password?.message}</div>
+                  {errors.password?.message}
+                </div>
               )}
             </div>
           </div>
           {/* End .col */}
 
           <div className="col-12">
-            <button className="theme-btn-seven w-100">Login</button>
+            <button className="theme-btn-seven w-100" disabled={loading}>
+              Login
+            </button>
           </div>
           <div className="col-12">
-            <p>Don't have an Account ?<a>Register</a></p>
+            <p>
+              Don't have an Account? &nbsp;
+              <a onClick={props.toggleLogin}>Register</a>
+            </p>
           </div>
           {/* End .col */}
         </div>

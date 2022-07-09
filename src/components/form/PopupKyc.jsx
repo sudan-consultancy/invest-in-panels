@@ -1,31 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import poupstyle from "./poup.module.css";
+import Cookie from "js-cookie";
+
 const PopupKyc = (props) => {
   // for password show hide
-  const [passwordShown, setPasswordShown] = useState(false);
+  // const [passwordShown, setPasswordShown] = useState(false);
 
-  const togglePasswordVisiblity = () => {
-    setPasswordShown(passwordShown ? false : true);
-  };
+  // const togglePasswordVisiblity = () => {
+  //   setPasswordShown(passwordShown ? false : true);
+  // };
   const [tab, setTab] = useState("profile");
+  const [user, setUser] = useState({});
   // for validation
   const validationSchema = Yup.object().shape({
     email: Yup.string()
       .required("Email is required")
       .email("Entered value does not match email format"),
     password: Yup.string().required("Password is required"),
+    phone_number: Yup.string().required(" Phone Number is required"),
   });
+
+  useEffect(() => {
+    try {
+      let user = JSON.parse(Cookie.get("vf_user"));
+      setUser(user);
+    } catch {}
+  }, [user?.id]);
 
   const formOptions = { resolver: yupResolver(validationSchema) };
   // get functions to build form with useForm() hook
   const { register, handleSubmit, formState } = useForm(formOptions);
   const { errors } = formState;
-  const hiddenFileInput = React.useRef(null);
+  // const hiddenFileInput = React.useRef(null);
+
   function changeTab(to) {
-    console.log(to);
     setTab(to);
   }
   function onSubmit(data, e) {
@@ -36,32 +47,32 @@ const PopupKyc = (props) => {
 
   return (
     <>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className={`user-data-form ${poupstyle.main_form}`}
-      >
-        <div className="row">
-          <div className={`col-3 ${poupstyle.tabs}`}>
-            <div
-              className={`row ${poupstyle.tabs_opt} ${
-                tab === "profile" ? poupstyle.active : ""
-              }`}
-              onClick={() => {
-                changeTab("profile");
-              }}
-            >
-              <h4>Profile</h4>
-            </div>
-            <div
-              className={`row ${poupstyle.tabs_opt} ${
-                tab === "kyc" ? poupstyle.active : ""
-              }`}
-              onClick={() => changeTab("kyc")}
-            >
-              <h4>KYC</h4>
-            </div>
+      <div className="row">
+        <div className={`col-3 ${poupstyle.tabs}`}>
+          <div
+            className={`row ${poupstyle.tabs_opt} ${
+              tab === "profile" ? poupstyle.active : ""
+            }`}
+            onClick={() => {
+              changeTab("profile");
+            }}
+          >
+            <h4>Profile</h4>
           </div>
-          {tab == "kyc" && (
+          <div
+            className={`row ${poupstyle.tabs_opt} ${
+              tab === "kyc" ? poupstyle.active : ""
+            }`}
+            onClick={() => changeTab("kyc")}
+          >
+            <h4>KYC</h4>
+          </div>
+        </div>
+        {tab === "kyc" && (
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className={`user-data-form ${poupstyle.main_form}`}
+          >
             <div
               className={`col-9 justufy-content-center text-center ${
                 poupstyle.tabcontent
@@ -74,22 +85,31 @@ const PopupKyc = (props) => {
               </div>
               <div className={`row ${poupstyle.cont}`}>
                 <div className="col-12" style={{ textAlign: "center" }}>
-                  Hello {props.username}, as per regulatory requirements we need
-                  to verify your PAN and Aadhaar Cards.
+                  Hello {user?.name}, as per regulatory requirements we need to
+                  verify your PAN and Aadhaar Cards.
                 </div>
               </div>
-              <div className={`row ${poupstyle.cont}`}>
-                <div className="col-4">
-                  <label>PAN upload</label>
-                  <div className={`${poupstyle.upload}`}>upload</div>
+              <div className={`row flex-wrap ${poupstyle.cont}`}>
+                <div className="col-12 col-md-6 col-lg-4">
+                  Upload PAN front
+                  <label for="pan" className={`w-100 ${poupstyle.upload}`}>
+                    Upload
+                  </label>
+                  <input id="pan" type="file" className="d-none" />
                 </div>
-                <div className="col-4">
-                  <label>Aadhar front upload</label>
-                  <div className={`${poupstyle.upload}`}>upload </div>
+                <div className="col-12 col-md-6 col-lg-4">
+                  Upload Aadhaar front
+                  <label for="ad_front" className={`w-100 ${poupstyle.upload}`}>
+                    Upload
+                  </label>
+                  <input id="ad_front" type="file" className="d-none" />
                 </div>
-                <div className="col-4">
-                  <label>Aadhar back upload</label>
-                  <div className={`${poupstyle.upload}`}>upload </div>
+                <div className="col-12 col-md-6 col-lg-4">
+                  Upload Aadhaar back
+                  <label for="ad_back" className={`w-100 ${poupstyle.upload}`}>
+                    Upload
+                  </label>
+                  <input id="ad_back" type="file" className="d-none" />
                 </div>
               </div>
               <div className={`row ${poupstyle.cont}`}>
@@ -98,36 +118,37 @@ const PopupKyc = (props) => {
                 </div>
               </div>
             </div>
-          )}
-          {tab == "profile" && (
+          </form>
+        )}
+        {tab === "profile" && (
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className={`user-data-form ${poupstyle.main_form}`}
+          >
             <div
               id="kyc"
-              className={`col-9 justufy-content-center text-center ${
+              className={`col-9 justify-content-center text-center ${
                 poupstyle.tabcontent
               } ${poupstyle.contact_form} ${
                 setTab === "profile" ? " active_tab" : ""
               }`}
             >
               <div className="row">
-                <div className="col-6">
+                <div className="col-12">
                   <div className="input-group-meta mb-25">
                     <input
-                      placeholder="First namee"
-                      name="fname"
+                      placeholder="Name"
+                      name="name"
                       type="text"
-                      value={props.fname}
-                      className={` ${errors.email ? "is-invalid" : ""}`}
+                      value={user?.name}
+                      required
+                      {...register("name")}
                     />
-                  </div>
-                </div>
-                <div className="col-6">
-                  <div className="input-group-meta mb-25">
-                    <input
-                      placeholder="Last Name"
-                      name="lname"
-                      type="text"
-                      value={props.fname}
-                    />
+                    {errors.name && (
+                      <div className="invalid-feedback">
+                        {errors.name?.message}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -137,10 +158,16 @@ const PopupKyc = (props) => {
                     <input
                       placeholder="Enter Your Email"
                       name="email"
-                      type="text"
-                      value={props.fname}
-
+                      type="email"
+                      value={user?.email}
+                      required
+                      {...register("email")}
                     />
+                    {errors.email && (
+                      <div className="invalid-feedback">
+                        {errors.email?.message}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -148,22 +175,30 @@ const PopupKyc = (props) => {
                 <div className="col-12">
                   <div className="input-group-meta mb-25">
                     <input
-                      placeholder="Mobile No."
-                      name="mobile no"
-                      type="text"
+                      placeholder="Phone number"
+                      name="phone_number"
+                      type="number"
+                      required
+                      value={user?.phone_number}
+                      {...register("phone_number")}
                     />
+                    {errors.phone_number && (
+                      <div className="invalid-feedback">
+                        {errors.phone_number?.message}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
               <div className="row">
                 <div className="col-12">
-                  <button className="theme-btn-one mt-50 mb-50">Login</button>
+                  <button className="theme-btn-one mt-50 mb-50">Save</button>
                 </div>
               </div>
             </div>
-          )}
-        </div>
-      </form>
+          </form>
+        )}
+      </div>
     </>
   );
 };

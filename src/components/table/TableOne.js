@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const TableOne = () => {
+  const [init, setInit] = useState(27000);
   const [yearOne, setYearOne] = useState({
     rinc: 0,
     dr: 0,
@@ -26,10 +27,15 @@ const TableOne = () => {
     crov: 0,
   });
 
+  useEffect(() => {
+    calculation({ target: { value: 1 } });
+  }, []);
+
   const calculation = (e) => {
     let count = e.target.value;
     const panelCost = 27000;
     const yearOne = count * panelCost;
+    setInit(yearOne);
     const rentPerUnit = 3.8;
     const unitsPerPanel = 810;
     const depreciationRate = 0.4;
@@ -84,7 +90,7 @@ const TableOne = () => {
             <th scope="row">Corporate FDs</th>
             <td>7.2%</td>
             <td>Low</td>
-            <td rowspan="2">Corporate Default</td>
+            <td rowSpan="2">Corporate Default</td>
           </tr>
           <tr>
             <th scope="row">Non-convertible Debentures</th>
@@ -120,7 +126,7 @@ const TableOne = () => {
       </table>
       <br />
       <input
-        defaultValue="0"
+        defaultValue="1"
         step="0"
         type="range"
         min="1"
@@ -131,7 +137,7 @@ const TableOne = () => {
 
       <table className="table table-bordered">
         <thead>
-          <th></th>
+          <th>Intial Investment: {init}</th>
           <th>Year 1</th>
           <th>Year 2</th>
           <th>Year 3</th>
