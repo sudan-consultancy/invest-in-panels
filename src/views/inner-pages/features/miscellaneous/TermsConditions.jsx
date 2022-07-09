@@ -32,7 +32,7 @@ const TermsConditions = () => {
                   <div id="opt1">
                     <h2 className="font-gilroy-bold">
                       TERMS OF SERVICE AGREEMENT
-                    </h2>
+                    </h2><br/><br/>
                     <p>
                       This Terms of Service Agreement (the "Agreement") governs
                       your use of this website, vefes.ai (the "Website"), Vefes

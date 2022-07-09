@@ -58,6 +58,7 @@ import PricingProjectManagement from "../views/inner-pages/pages/pricing/Pricing
 import Login from "../views/inner-pages/features/miscellaneous/Login";
 import SignUp from "../views/inner-pages/features/miscellaneous/SignUp";
 import TermsConditions from "../views/inner-pages/features/miscellaneous/TermsConditions";
+import PrivacyPolicy from "../views/inner-pages/features/miscellaneous/PrivacyPolicy";
 import SolutionMangement from "../views/inner-pages/features/SolutionMangement";
 import ProductCustomerSupport from "../views/inner-pages/features/ProductCustomerSupport";
 import FeaturesCustomerSupport from "../views/inner-pages/features/FeaturesCustomerSupport";
@@ -103,7 +104,7 @@ import FormSurveyLanding from "../views/all-home-pages/FormSurveyLanding";
 import VrLanding from "../views/all-home-pages/VrLanding";
 import ContactIndex from "../views/contact";
 import AboutIndex from "../views/about";
-
+import ManagementContract from "../views/inner-pages/features/miscellaneous/ManagementContract";
 const Routes = () => {
   return (
     <>
@@ -165,6 +166,9 @@ const Routes = () => {
           <Route path="/login" component={Login} />
           <Route path="/SignUp" component={SignUp} />
           <Route path="/terms-conditions" component={TermsConditions} />
+          <Route path="/privacy-policy" component={PrivacyPolicy} />
+          <Route path="/management-agreement" component={ManagementContract} />
+
           <Route path="/solution-management" component={SolutionMangement} />
           <Route
             path="/product-customer-support"
