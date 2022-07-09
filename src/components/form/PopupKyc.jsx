@@ -4,6 +4,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import poupstyle from "./poup.module.css";
 import Cookie from "js-cookie";
+import { useHistory } from "react-router-dom";
+import { api } from "../../api";
+import HeaderLanding from "../vr-landing/Header";
 
 const PopupKyc = (props) => {
   // for password show hide
@@ -12,6 +15,7 @@ const PopupKyc = (props) => {
   // const togglePasswordVisiblity = () => {
   //   setPasswordShown(passwordShown ? false : true);
   // };
+  const history = useHistory();
   const [tab, setTab] = useState("profile");
   const [user, setUser] = useState({});
   // for validation
@@ -31,6 +35,7 @@ const PopupKyc = (props) => {
   }, [user?.id]);
 
   const formOptions = { resolver: yupResolver(validationSchema) };
+
   // get functions to build form with useForm() hook
   const { register, handleSubmit, formState } = useForm(formOptions);
   const { errors } = formState;
@@ -45,12 +50,20 @@ const PopupKyc = (props) => {
     e.target.reset();
   }
 
+  function onKYC(e) {
+    e.preventDefault();
+  }
+
   return (
     <>
-      <div className="row">
-        <div className={`col-3 ${poupstyle.tabs}`}>
+      <HeaderLanding />
+      <div
+        className="row"
+        style={{ paddingTop: "10rem", gap: "1em", overfloy: "hidden" }}
+      >
+        <div className={`col-12 col-md-3`}>
           <div
-            className={`row ${poupstyle.tabs_opt} ${
+            className={`row pl-5 ${poupstyle.tabs_opt} ${
               tab === "profile" ? poupstyle.active : ""
             }`}
             onClick={() => {
@@ -60,7 +73,7 @@ const PopupKyc = (props) => {
             <h4>Profile</h4>
           </div>
           <div
-            className={`row ${poupstyle.tabs_opt} ${
+            className={`row pl-5 ${poupstyle.tabs_opt} ${
               tab === "kyc" ? poupstyle.active : ""
             }`}
             onClick={() => changeTab("kyc")}
@@ -68,136 +81,152 @@ const PopupKyc = (props) => {
             <h4>KYC</h4>
           </div>
         </div>
-        {tab === "kyc" && (
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className={`user-data-form ${poupstyle.main_form}`}
+        <form
+          onSubmit={onKYC}
+          className={`user-data-form col-12 col-md-8 ${poupstyle.main_form} ${
+            tab === "kyc" ? "" : "d-none"
+          }`}
+        >
+          <div
+            className={`col-9 justufy-content-center text-center ${
+              poupstyle.tabcontent
+            } ${setTab === "kyc" ? " active_tab" : ""}`}
           >
-            <div
-              className={`col-9 justufy-content-center text-center ${
-                poupstyle.tabcontent
-              } ${setTab === "kyc" ? " active_tab" : ""}`}
-            >
-              <div className={`row ${poupstyle.cont}`}>
-                <div className="col-12" style={{ textAlign: "center" }}>
-                  KYC
-                </div>
+            <div className={`row ${poupstyle.cont}`}>
+              <div className="col-12" style={{ textAlign: "center" }}>
+                KYC
               </div>
-              <div className={`row ${poupstyle.cont}`}>
-                <div className="col-12" style={{ textAlign: "center" }}>
-                  Hello {user?.name}, as per regulatory requirements we need to
-                  verify your PAN and Aadhaar Cards.
-                </div>
+            </div>
+            <div className={`row ${poupstyle.cont}`}>
+              <div className="col-12" style={{ textAlign: "center" }}>
+                Hello {user?.name}, as per regulatory requirements we need to
+                verify your PAN and Aadhaar Cards.
               </div>
-              <div className={`row flex-wrap ${poupstyle.cont}`}>
-                <div className="col-12 col-md-6 col-lg-4">
-                  Upload PAN front
-                  <label for="pan" className={`w-100 ${poupstyle.upload}`}>
-                    Upload
-                  </label>
-                  <input id="pan" type="file" className="d-none" />
-                </div>
-                <div className="col-12 col-md-6 col-lg-4">
-                  Upload Aadhaar front
-                  <label for="ad_front" className={`w-100 ${poupstyle.upload}`}>
-                    Upload
-                  </label>
-                  <input id="ad_front" type="file" className="d-none" />
-                </div>
-                <div className="col-12 col-md-6 col-lg-4">
-                  Upload Aadhaar back
-                  <label for="ad_back" className={`w-100 ${poupstyle.upload}`}>
-                    Upload
-                  </label>
-                  <input id="ad_back" type="file" className="d-none" />
-                </div>
+            </div>
+            <div className={`row flex-wrap ${poupstyle.cont}`}>
+              <div className="col-12 col-md-6 col-lg-4">
+                Upload PAN front
+                <label
+                  htmlFor="pan"
+                  name="pan_card"
+                  className={`w-100 ${poupstyle.upload}`}
+                >
+                  Upload
+                </label>
+                <input id="pan" type="file" className="d-none" />
               </div>
-              <div className={`row ${poupstyle.cont}`}>
-                <div className="col-12">
-                  <button className="theme-btn-one mt-50 mb-50">Upload</button>
+              <div className="col-12 col-md-6 col-lg-4">
+                Upload Aadhaar front
+                <label
+                  htmlFor="ad_front"
+                  name="aadhar_card_front"
+                  className={`w-100 ${poupstyle.upload}`}
+                >
+                  Upload
+                </label>
+                <input id="ad_front" type="file" className="d-none" />
+              </div>
+              <div className="col-12 col-md-6 col-lg-4">
+                Upload Aadhaar back
+                <label
+                  htmlFor="ad_back"
+                  name="aadhar_card_back"
+                  className={`w-100 ${poupstyle.upload}`}
+                >
+                  Upload
+                </label>
+                <input id="ad_back" type="file" className="d-none" />
+              </div>
+            </div>
+            <div className={`row ${poupstyle.cont}`}>
+              <div className="col-12">
+                <button className="theme-btn-one mt-50 mb-50" type="submit">
+                  Upload
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className={`user-data-form col-12 col-md-8 ${poupstyle.main_form} ${
+            tab === "profile" ? "" : "d-none"
+          }`}
+        >
+          <div
+            id="kyc"
+            className={`col-9 justify-content-center text-center ${
+              poupstyle.tabcontent
+            } ${poupstyle.contact_form} ${
+              setTab === "profile" ? " active_tab" : ""
+            }`}
+          >
+            <div className="row">
+              <div className="col-12">
+                <div className="input-group-meta mb-25">
+                  <input
+                    placeholder="Name"
+                    name="name"
+                    type="text"
+                    value={user?.name}
+                    required
+                    {...register("name")}
+                  />
+                  {errors.name && (
+                    <div className="invalid-feedback">
+                      {errors.name?.message}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
-          </form>
-        )}
-        {tab === "profile" && (
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className={`user-data-form ${poupstyle.main_form}`}
-          >
-            <div
-              id="kyc"
-              className={`col-9 justify-content-center text-center ${
-                poupstyle.tabcontent
-              } ${poupstyle.contact_form} ${
-                setTab === "profile" ? " active_tab" : ""
-              }`}
-            >
-              <div className="row">
-                <div className="col-12">
-                  <div className="input-group-meta mb-25">
-                    <input
-                      placeholder="Name"
-                      name="name"
-                      type="text"
-                      value={user?.name}
-                      required
-                      {...register("name")}
-                    />
-                    {errors.name && (
-                      <div className="invalid-feedback">
-                        {errors.name?.message}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-12">
-                  <div className="input-group-meta mb-25">
-                    <input
-                      placeholder="Enter Your Email"
-                      name="email"
-                      type="email"
-                      value={user?.email}
-                      required
-                      {...register("email")}
-                    />
-                    {errors.email && (
-                      <div className="invalid-feedback">
-                        {errors.email?.message}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-12">
-                  <div className="input-group-meta mb-25">
-                    <input
-                      placeholder="Phone number"
-                      name="phone_number"
-                      type="number"
-                      required
-                      value={user?.phone_number}
-                      {...register("phone_number")}
-                    />
-                    {errors.phone_number && (
-                      <div className="invalid-feedback">
-                        {errors.phone_number?.message}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-12">
-                  <button className="theme-btn-one mt-50 mb-50">Save</button>
+            <div className="row">
+              <div className="col-12">
+                <div className="input-group-meta mb-25">
+                  <input
+                    placeholder="Enter Your Email"
+                    name="email"
+                    type="email"
+                    value={user?.email}
+                    required
+                    {...register("email")}
+                  />
+                  {errors.email && (
+                    <div className="invalid-feedback">
+                      {errors.email?.message}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
-          </form>
-        )}
+            <div className="row">
+              <div className="col-12">
+                <div className="input-group-meta mb-25">
+                  <input
+                    placeholder="Phone number"
+                    name="phone_number"
+                    type="number"
+                    required
+                    value={user?.phone_number}
+                    {...register("phone_number")}
+                  />
+                  {errors.phone_number && (
+                    <div className="invalid-feedback">
+                      {errors.phone_number?.message}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-12">
+                <button className="theme-btn-one mt-50 mb-50" type="submit">
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
     </>
   );

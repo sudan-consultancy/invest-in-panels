@@ -1,7 +1,7 @@
 import React from "react";
 
 // Main Preview Pages
-import AppIndex from '../views'
+import AppIndex from "../views";
 import PreviewMain from "../views/PreviewMain";
 
 // All HOME PAGE ROUTES
@@ -18,7 +18,6 @@ import AppointmentScheduling from "../views/all-home-pages/AppointmentScheduling
 import MobileAppLanding from "../views/all-home-pages/MobileAppLanding";
 import WebsiteBuilderLanding from "../views/all-home-pages/WebsiteBuilderLanding";
 import ComingSoon from "../views/all-home-pages/ComingSoon";
-import LoginForm from "../components/contact/form/LoginForm";
 import DashboardCard from "../components/form/DashboardCard";
 
 // All INNER PAGES ROUTES START FROM BELLOW
@@ -113,8 +112,8 @@ const Routes = () => {
           <Route exact path="/" component={AppIndex} />
           <Route exact path="/about" component={AboutIndex} />
           <Route exact path="/contact" component={ContactIndex} />
-          <Route exact path="/index" component={PreviewMain} />
-
+          {/* <Route exact path="/index" component={PreviewMain} /> */}
+          {/* 
           <Route path="/event-organizer" component={EventOrganizer} />
           <Route path="/doc-landing" component={DocLanding} />
           <Route path="/doc-signature" component={DocSignatureLanding} />
@@ -135,34 +134,33 @@ const Routes = () => {
           <Route path="/coming-soon" component={ComingSoon} />
 
           {/* Pages Dropdown Routes */}
-          <Route path="/team-1" component={Team1} />
+          {/* <Route path="/team-1" component={Team1} />
           <Route path="/team-2" component={Team2} />
           <Route path="/team-3" component={Team3} />
           <Route path="/team-4" component={Team4} />
           <Route path="/team-5" component={Team5} />
           <Route path="/team-6" component={Team6} />
           <Route path="/team-details-v1" component={TeamDetailsV1} />
-          <Route path="/team-details-v2" component={TeamDetailsV2} />
+          <Route path="/team-details-v2" component={TeamDetailsV2} /> */}
           {/* faq inner pages */}
-          <Route path="/faq" component={Faq} />
-          <Route path="/faq-details" component={FaqDetails} />
+          {/* <Route path="/faq" component={Faq} />
+          <Route path="/faq-details" component={FaqDetails} /> */}
           {/* contact us inner pages */}
-          <Route path="/contact-cs" component={ContactCustomerSupport} />
+          {/* <Route path="/contact-cs" component={ContactCustomerSupport} />
           <Route path="/contact-eo" component={ContactEventOrganizer} />
           <Route path="/contact-pm" component={ContactProjectManagement} />
-          <Route path="/contact-doc" component={ContactDocumentation} />
+          <Route path="/contact-doc" component={ContactDocumentation} /> */}
           {/* about us inner pages */}
-          <Route path="/about-cs" component={AboutCustomerSupport} />
+          {/* <Route path="/about-cs" component={AboutCustomerSupport} />
           <Route path="/about-eo" component={AboutEventOrganizer} />
           <Route path="/about-pm" component={AboutProjectManagement} />
-          <Route path="/about-doc" component={AboutDocumentation} />
+          <Route path="/about-doc" component={AboutDocumentation} /> */}
           {/* pricing inner pages */}
-          <Route path="/pricing-cs" component={PricingCustomerSupport} />
+          {/* <Route path="/pricing-cs" component={PricingCustomerSupport} />
           <Route path="/pricing-eo" component={PricingEventOrganizer} />
-          <Route path="/pricing-pm" component={PricingProjectManagement} />
-
+          <Route path="/pricing-pm" component={PricingProjectManagement} /> */}
           {/* Feature Dropdown Routes */}
-          <Route path="/login" component={Login} />
+          {/* <Route path="/login" component={Login} />
           <Route path="/SignUp" component={SignUp} />
           <Route path="/terms-conditions" component={TermsConditions} />
           <Route path="/solution-management" component={SolutionMangement} />
@@ -173,41 +171,33 @@ const Routes = () => {
           <Route
             path="/features-customer-support"
             component={FeaturesCustomerSupport}
-          />
-
+          /> */}
           {/* Service inner pages */}
-          <Route path="/service-v1" component={ServiceV1} />
-          <Route path="/service-v2" component={ServiceV2} />
-          <Route path="/service-v3" component={ServiceV3} />
-          <Route path="/service-v4" component={ServiceV4} />
-          <Route path="/service-details" component={ServiceDetails} />
-
+          <Route path="/service-v1" component={ServiceV1} />/
           {/* inner pages Docs   */}
-          <Route path="/doc-full-width" component={DocFullWidth} />
+          {/* <Route path="/doc-full-width" component={DocFullWidth} />
           <Route path="/doc-full-width-banner" component={DocFullWidthBanner} />
           <Route path="/doc-box" component={DocBox} />
           <Route path="/doc-box-with-banner" component={DocBoxWithBanner} />
-          <Route path="/changelog" component={Changelog} />
-
+          <Route path="/changelog" component={Changelog} /> */}
           {/* inner Portfolio pages Dropdown   */}
-          <Route path="/classic-style" component={PortfolioV1} />
+          {/* <Route path="/classic-style" component={PortfolioV1} />
           <Route path="/grid-two-col" component={PortfolioV2} />
           <Route path="/grid-three-col" component={PortfolioV3} />
           <Route path="/gallery-slider" component={PortfolioV4} />
           <Route path="/grid-single" component={PortfolioV5} />
-          <Route path="/portfolio-details-v1" component={PortfolioDetailsV1} />
-
+          <Route path="/portfolio-details-v1" component={PortfolioDetailsV1} /> */}
           {/* inner Blog pages Dropdown   */}
-          <Route path="/blog-v1" component={BlogV1} />
+          {/* <Route path="/blog-v1" component={BlogV1} />
           <Route path="/blog-v2" component={BlogV2} />
           <Route path="/blog-v3" component={BlogV3} />
           <Route path="/blog-v4" component={BlogV4} />
           <Route path="/blog-v5" component={BlogV5} />
           <Route path="/blog-v6" component={BlogV6} />
-          <Route path="/blog-details" component={BlogDetails} />
+          <Route path="/blog-details" component={BlogDetails} /> */}
           <Route path="/404" component={NotFound} />
-          <Route path="/dashboard" component={DashboardCard}/>
-          <Route path="/kyc" component={PopupKyc}/>
+          <Route path="/dashboard" component={DashboardCard} />
+          <Route path="/kyc" component={PopupKyc} />
           {/* NotFound Route */}
           <Route component={NotFound} />
         </Switch>

@@ -1,97 +1,137 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { api } from "../../api";
+import Modal from "react-modal";
+import HeaderLanding from "../vr-landing/Header";
 
-import poupstyle from "./poup.module.css";
+const Container = {
+  backgroundColor: "lightgray",
+};
+
 const DashboardCard = (props) => {
   let [count, setCount] = useState(0);
-  let [popupflag,setpopup]=useState(false);
-  let [kyc,setkyc]=useState(true);
+  let [popupflag, setpopup] = useState(false);
+  let [kyc, setkyc] = useState(true);
+
   function popup() {
     setpopup(!popupflag);
-    console.log("popup");
   }
+
+  useEffect(() => {
+    api
+      .get("auth")
+      .then((res) => {
+        console.log(res.data?.data);
+        setkyc(res.data?.data?.hasCompletedProfile);
+      })
+      .catch((err) => {});
+  }, []);
+
   return (
     <>
-    
-      <div className={`${poupstyle.mainparent}`}>
-      
-        <div className={`row`}>
-          <div className={`col-md-12 ${poupstyle.itemcard}`}>
-            <div className={`row`}>
-              <div className={`col-md-2 ${poupstyle.imagecont}`}>
-                <img src="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80" />
-              </div>
-              <div className={`col-md-8 ${poupstyle.productdetail}`}>
-                <h3>Product Detail</h3>
-              </div>
-              <div className={`col-md-2 ${poupstyle.counter}`}>
-                <div className={`${poupstyle.counter}`}>
-                  <div  onClick={()=>{count >0 && setCount(count-1)}} className={`${poupstyle.btn}`}>-</div>
-                  <input   style={{width:'3rem',textAlign:"center"}}
-                     value={count}
-                      type="text" className={`${poupstyle.count}`}> 
-                  </input>
-                  <div  onClick={()=>{setCount(count+1)}} class={`${poupstyle.btn}`}>+</div>
-                </div>
-              </div>
-            </div>
+    <HeaderLanding onDashboard />
+    <div className="container" style={{ paddingTop: "10em" }}>
+      <div className="container py-3 rounded" style={Container}>
+        <div className="row align-items-center">
+          <img
+            src="..."
+            alt="panel image comes here"
+            className="col-12 col-sm-4 col-lg-3"
+            height="300px"
+          />
+          <div className="col-12 col-sm-6">
+            <h4>Panel</h4>
+            <span className="text-muted">Count: {count}</span>
           </div>
-          <div style={{margin:"auto",height:'1rem'}} onChange={()=>setkyc(!kyc)} className={`col-md-2 ${poupstyle.checkbox}`}>
-            <input type="checkbox"/><label style={{margin:"1rem"}}>KYC</label>
-
-          </div>
-          <div onClick={popup} className={`col-md-2 offset-10 ${poupstyle.buybut}`}>
-            <button>Buy</button>
-
+          <div className="d-flex align-items-center col-12 col-sm-4 col-lg-2">
+            <button
+              onClick={() => {
+                count > 0 && setCount(count - 1);
+              }}
+              className="btn btn-danger border border-2 border-danger"
+            >
+              &minus;
+            </button>
+            <input
+              className="form-control"
+              type="number"
+              value={count}
+              min="0"
+              required
+              onChange={(e) => setCount(e.target.value)}
+            />
+            <button
+              onClick={() => {
+                setCount(count + 1);
+              }}
+              className="btn btn-success border border-2 border-success"
+            >
+              +
+            </button>
           </div>
         </div>
-        {(kyc) && <div style={{color:'red'}}>KYC is not done</div>}
-        {(popupflag && !kyc) && <div className={`${poupstyle.overlay}`}>
-         <div className={`${poupstyle.popup_buy}`}>
-        <div className="row">
-          <div className="col-12" style={{color:'black'}}>
-            <table>
-            <tr>
+      </div>
+      <div className="d-flex align-items-center float-right mt-3">
+        <span className="text-danger mr-3">
+          Please complete your KYC first.{" "}
+          <a href="/kyc" className="text-info">
+            Complete here
+          </a>
+        </span>
+        <button className="theme-btn-one" disabled={!kyc} onClick={popup}>
+          Buy
+        </button>
+      </div>
+      <Modal
+        isOpen={popupflag}
+        onRequestClose={popup}
+        contentLabel="Bank details"
+        className="custom-modal modal-contact-popup-one"
+        overlayClassName="custom-overlay"
+        closeTimeoutMS={500}
+      >
+        <main className="main-body box_inner modal-content clearfix">
+          <button className="close" onClick={popup}>
+            <img src="images/icon/close.svg" alt="close" />
+          </button>
+          <table className="table table-responsive mt-5">
+            <tbody>
+              <tr>
                 <th>Count:</th>
                 <td>{count}</td>
-              </tr><tr>
+              </tr>
+              <tr>
                 <th>Cost:</th>
-                <td>{count*100}</td>
-              </tr><tr>
+                <td>{count * 27000}</td>
+              </tr>
+              <tr>
                 <th colSpan={2}>Bank Details:</th>
               </tr>
               <tr>
-                <th>ACCOUNT NAME:</th>
+                <th>Account name:</th>
                 <td>Alex Bob</td>
               </tr>
               <tr>
-                <th>MOBILE NO:</th>
+                <th>Mobile number:</th>
                 <td>987654321</td>
               </tr>
               <tr>
-                <th>IFSC CODE:</th>
+                <th>IFSC code:</th>
                 <td>456543456789</td>
               </tr>
               <tr>
-                <th>TYPE OF ACCOUNT:</th>
+                <th>Type of account:</th>
                 <td>Saving</td>
               </tr>
               <tr>
-                <th>MICR CODE OF BANK:</th>
+                <th>MICR code of bank:</th>
                 <td>5433456644</td>
               </tr>
-            </table>
-            
-            </div>
-          <div  onClick={popup} className={`col-md-5 offset-6 ${poupstyle.okaybut}`}>
-            <button>Okay</button>
-
-          </div>
-       
-        </div>
-      </div></div>}
-      </div>
-    
-   </>
+            </tbody>
+          </table>
+        </main>
+      </Modal>
+    </div>
+    </>
   );
 };
 
