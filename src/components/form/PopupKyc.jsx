@@ -47,7 +47,7 @@ const PopupKyc = (props) => {
 
   return (
     <>
-      <div className="row">
+      <div className={`row ${poupstyle.parentform}`}>
         <div className={`col-3 ${poupstyle.tabs}`}>
           <div
             className={`row ${poupstyle.tabs_opt} ${
@@ -69,15 +69,16 @@ const PopupKyc = (props) => {
           </div>
         </div>
         {tab === "kyc" && (
+          <div
+          className={`col-9 justufy-content-center text-center ${
+            poupstyle.tabcontent 
+          } ${setTab === "kyc" ? " active_tab" : ""}`}
+        >
           <form
             onSubmit={handleSubmit(onSubmit)}
             className={`user-data-form ${poupstyle.main_form}`}
           >
-            <div
-              className={`col-9 justufy-content-center text-center ${
-                poupstyle.tabcontent
-              } ${setTab === "kyc" ? " active_tab" : ""}`}
-            >
+            
               <div className={`row ${poupstyle.cont}`}>
                 <div className="col-12" style={{ textAlign: "center" }}>
                   KYC
@@ -92,21 +93,21 @@ const PopupKyc = (props) => {
               <div className={`row flex-wrap ${poupstyle.cont}`}>
                 <div className="col-12 col-md-6 col-lg-4">
                   Upload PAN front
-                  <label for="pan" className={`w-100 ${poupstyle.upload}`}>
+                  <label for="pan" className={`w-100 h-300 ${poupstyle.upload}`}>
                     Upload
                   </label>
-                  <input id="pan" type="file" className="d-none" />
+                  <input id="pan" type="file" className={"d-none"} />
                 </div>
                 <div className="col-12 col-md-6 col-lg-4">
                   Upload Aadhaar front
-                  <label for="ad_front" className={`w-100 ${poupstyle.upload}`}>
+                  <label for="ad_front" className={`w-100  h-300 ${poupstyle.upload}`}>
                     Upload
                   </label>
                   <input id="ad_front" type="file" className="d-none" />
                 </div>
                 <div className="col-12 col-md-6 col-lg-4">
                   Upload Aadhaar back
-                  <label for="ad_back" className={`w-100 ${poupstyle.upload}`}>
+                  <label for="ad_back" className={`w-100   h-300 ${poupstyle.upload}`}>
                     Upload
                   </label>
                   <input id="ad_back" type="file" className="d-none" />
@@ -117,22 +118,24 @@ const PopupKyc = (props) => {
                   <button className="theme-btn-one mt-50 mb-50">Upload</button>
                 </div>
               </div>
+              </form>
             </div>
-          </form>
+          
         )}
         {tab === "profile" && (
+           <div
+           id="kyc"
+           className={`col-9 justify-content-center text-center ${
+             poupstyle.tabcontent
+           } ${poupstyle.contact_form} ${
+             setTab === "profile" ? " active_tab" : ""
+           }`}
+         >
           <form
             onSubmit={handleSubmit(onSubmit)}
             className={`user-data-form ${poupstyle.main_form}`}
           >
-            <div
-              id="kyc"
-              className={`col-9 justify-content-center text-center ${
-                poupstyle.tabcontent
-              } ${poupstyle.contact_form} ${
-                setTab === "profile" ? " active_tab" : ""
-              }`}
-            >
+           
               <div className="row">
                 <div className="col-12">
                   <div className="input-group-meta mb-25">
@@ -195,8 +198,9 @@ const PopupKyc = (props) => {
                   <button className="theme-btn-one mt-50 mb-50">Save</button>
                 </div>
               </div>
+              </form>
             </div>
-          </form>
+          
         )}
       </div>
     </>

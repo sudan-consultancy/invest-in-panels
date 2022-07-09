@@ -1,13 +1,12 @@
 .main_form {
-  position: absolute;
   background-color: rgb(236, 234, 234);
-  width: 80%;
+  width: 95%;
   padding: 2rem;
+  height: 30rem;
   text-align: center;
   border-radius: 1rem;
   border: 0.1rem solid black;
-  margin-top: 5%;
-  margin-left: 10%;
+  margin:auto;
 }
 .active {
   background-color: rgb(221, 221, 221);
@@ -16,7 +15,7 @@
   margin-bottom: 1rem;
 }
 .cont button {
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 .cont label {
   margin: 0.3rem;
@@ -32,37 +31,47 @@
   align-items: center;
   align-content: center;
   font-size: 1.5rem;
-  height: 100px;
-  margin: 0.3rem;
-  padding: 0.5rem;
   width: 100%;
-  margin-bottom: 3rem;
+  height: 8rem;
   border: 0.2rem dotted darkgray;
 }
 
 .active h4 {
   color: rgb(119, 91, 242);
 }
+
 .tabs_opt {
+  
   padding: 1rem;
   margin: 1rem;
   border-radius: 1rem;
 }
-.contact_form button {
-  margin-top: 1rem;
-}
 
+.parentform{
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  height: 100%;
+  position: relative;
+  background-color: rgb(241, 241, 241);
+  padding:1rem;
+  margin-left: 5rem;
+  border: 0.1rem solid black;
+  border-radius: 2rem;
+  margin:auto;
+ margin-left: 20rem;
+
+}
 .tabcontent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
   padding: 1rem;
   margin: auto;
-  margin-top: -1rem;
-  max-width: 70%;
   height: 100%;
 }
-.contact_form {
-  margin: auto;
-  padding-top: 3rem;
-}
+
 .mainparent {
   width: 100%;
   background-color: red;
