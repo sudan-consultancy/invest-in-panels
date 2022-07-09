@@ -1,0 +1,16 @@
+.all li{
+    display: list-item;
+    list-style-position: inside;
+    
+}
+.all ol{
+    list-style-type: decimal;
+}
+.all ul{
+    list-style-type: lower-alpha;
+    margin-left: 3rem;
+}
+.all u{
+    font-size:1.5rem;
+    color:black;
+}
