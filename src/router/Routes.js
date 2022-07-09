@@ -104,6 +104,7 @@ import VrLanding from "../views/all-home-pages/VrLanding";
 import ContactIndex from "../views/contact";
 import AboutIndex from "../views/about";
 import ManagementContract from "../views/inner-pages/features/miscellaneous/ManagementContract";
+import { Logout } from "../logout";
 const Routes = () => {
   return (
     <>
@@ -201,6 +202,7 @@ const Routes = () => {
           <Route path="/404" component={NotFound} />
           <Route path="/dashboard" component={DashboardCard} />
           <Route path="/kyc" component={PopupKyc} />
+          <Route path="/logout" component={Logout} />
           {/* NotFound Route */}
           <Route component={NotFound} />
         </Switch>
