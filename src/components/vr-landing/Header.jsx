@@ -1,18 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Scrollspy from "react-scrollspy";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Modal from "react-modal";
 import MegaMenuLanding from "../header/mega-menu/MegaMenuLanding";
 import HeaderPopupForm from "../form/HeaderPopupForm";
 import LoginPopupForm from "../form/LoginPopupForm";
+import Cookie from "js-cookie";
 const logo = "images/logo/vefesblacklogo.png";
 // import logo from "images/logo/vefesblacklogo.png";
 
-const HeaderLanding = () => {
+const HeaderLanding = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   const [navbar, setNavbar] = useState(false);
+  const [user, setUser] = useState({});
+
+  const history = useHistory();
 
   const [isLogin, setIsLogin] = useState(true);
 
@@ -30,6 +34,17 @@ const HeaderLanding = () => {
     } else {
       setNavbar(false);
     }
+  };
+
+  useEffect(() => {
+    try {
+      let user = JSON.parse(Cookie.get("vf_user"));
+      setUser(user);
+    } catch {}
+  }, [user?.id]);
+
+  const onLogout = () => {
+    history.push("/logout");
   };
 
   window.addEventListener("scroll", changeBackground);
@@ -92,6 +107,20 @@ const HeaderLanding = () => {
                         Contact Us
                       </a>
                     </li>
+                    {user?.id && props.onDashboard && (
+                      <li className="nav-item">
+                        <a className="nav-link" href="/kyc">
+                          KYC
+                        </a>
+                      </li>
+                    )}
+                    {user?.id && !props.onDashboard && (
+                      <li className="nav-item">
+                        <a className="nav-link" href="/dashboard">
+                          Dashboard
+                        </a>
+                      </li>
+                    )}
                   </div>
                   {/* <Scrollspy
                     className="navbar-nav  main-side-nav font-gordita"
@@ -117,10 +146,17 @@ const HeaderLanding = () => {
             </div>
           </nav>
           <div className="right-widget">
-            <button className="demo-button" onClick={toggleModalOne}>
-              <span>Login/Register</span>
-              <img src="images/icon/user.svg" alt="icon" />
-            </button>
+            {user?.id ? (
+              <button className="demo-button" onClick={onLogout}>
+                <span>Logout</span>
+                <img src="images/icon/user.svg" alt="icon" />
+              </button>
+            ) : (
+              <button className="demo-button" onClick={toggleModalOne}>
+                <span>Login/Register</span>
+                <img src="images/icon/user.svg" alt="icon" />
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -152,6 +188,16 @@ const HeaderLanding = () => {
           offset={-200}
         >
           <li className="nav-item">
+            {user?.id && props.onDashboard && (
+              <a className="nav-link" href="/kyc">
+              KYC
+            </a>
+            )}
+            {user?.id && !props.onDashboard && (
+              <a className="nav-link" href="/dashboard">
+                Dashboard
+              </a>
+            )}
             <a className="nav-link " href="#home" onClick={handleClick}>
               Home
             </a>
