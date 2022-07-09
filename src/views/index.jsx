@@ -126,7 +126,7 @@ const AppIndex = (props) => {
               data-aos-duration="1200"
             >
               <div className="title-style-six text-center">
-                <h2>Why Invest?</h2>
+                <h2>Why Purchase?</h2>
               </div>
               {/* /.title-style-six */}
             </div>

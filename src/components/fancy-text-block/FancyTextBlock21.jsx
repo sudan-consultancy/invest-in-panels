@@ -36,7 +36,7 @@ const FancyTextBlock21 = () => {
              Livania Solar Park
             </p>
             <span>
-              Nation’s first AI empowered solar power plant located in Solapur, Maharashtra. At an altitude of 497m Livania Solar Park enjoys one of the highest irradiance in the country, which means high productivity in terms of power generation.
+              Nation’s first AI empowered solar power plant located in Solapur, Maharashtra. At an altitude of 497m Livania Solar Park enjoys one of the highest irradiance in the country, which means highest returns against a single panel in terms of power generation.
 
             </span>
           </div>

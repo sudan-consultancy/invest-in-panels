@@ -8,7 +8,9 @@ const counterUpContent = [
     startCount: "0",
     endCount: "30",
     type: "K",
+    
     meta: "Min investment amt",
+  
   },
   {
     icon: "195",
@@ -21,6 +23,7 @@ const counterUpContent = [
     icon: "196",
     startCount: "0",
     endCount: "3.85",
+    decimals: 2,
     type: "/unit",
     meta: "Rental income amount",
   }
@@ -49,6 +52,7 @@ const FeatureCounter = () => {
                   end={val.endCount}
                   duration={1}
                   redraw={true}
+                  decimals = {val.decimals ? val.decimals : null}
                 >
                   {({ countUpRef }) => (
                     <VisibilitySensor

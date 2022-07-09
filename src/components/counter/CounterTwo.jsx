@@ -4,23 +4,25 @@ import VisibilitySensor from "react-visibility-sensor";
 
 const counterUpContent = [
   {
-    startCount: "0",
-    endCount: "25",
-    endPointText: "MW",
-    meta: "Plant Capacity",
+    startCount: "0.2",
+    endCount: "41.2",
+    decimals:1,
+    decimal: '.',
+    endPointText: "M Units",
+    meta: "Electricity generated per year",
     animationDelay: "0",
   },
   {
     startCount: "0",
-    endCount: "25",
-    endPointText: "years",
-    meta: "Lifespan",
+    endCount: "47297",
+    endPointText: "",
+    meta: "Total Number of Panels",
     animationDelay: "100",
   },
   {
     startCount: "0",
     endCount: "2600",
-    endPointText: "T/M",
+    endPointText: "M/T",
     meta: "Carbon Offset",
     animationDelay: "200",
   },
@@ -46,6 +48,7 @@ const CounterTwo = () => {
                   start={focus ? val.startCount : null}
                   end={val.endCount}
                   duration={1}
+                  decimals = {val.decimals ? val.decimals : null}
                   redraw={true}
                 >
                   {({ countUpRef }) => (
