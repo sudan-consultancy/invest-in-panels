@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import poupstyle from "./poup.module.css";
 import Cookie from "js-cookie";
+import { useHistory } from "react-router-dom"
 
 const PopupKyc = (props) => {
   // for password show hide
@@ -12,6 +13,7 @@ const PopupKyc = (props) => {
   // const togglePasswordVisiblity = () => {
   //   setPasswordShown(passwordShown ? false : true);
   // };
+  const history = useHistory();
   const [tab, setTab] = useState("profile");
   const [user, setUser] = useState({});
   // for validation
@@ -45,6 +47,10 @@ const PopupKyc = (props) => {
     e.target.reset();
   }
 
+  const goToDashboard = () => {
+    history.push('/dashboard')
+  }
+
   return (
     <>
       <div className="row">
@@ -66,6 +72,12 @@ const PopupKyc = (props) => {
             onClick={() => changeTab("kyc")}
           >
             <h4>KYC</h4>
+          </div>
+          <div
+            className={`row ${poupstyle.tabs_opt}`}
+            onClick={goToDashboard}
+          >
+            <h4>Dashboard</h4>
           </div>
         </div>
         {tab === "kyc" && (
