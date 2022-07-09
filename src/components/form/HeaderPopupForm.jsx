@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import { api } from "../../api";
 
 const HeaderPopupForm = (props) => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   // for validation
   const validationSchema = Yup.object().shape({
     name: Yup.string().nullable(),
@@ -14,10 +18,10 @@ const HeaderPopupForm = (props) => {
     password: Yup.string().required("Password is required"),
   });
 
-  const [passwordShown, setPasswordShown] = useState(false);
-  const togglePasswordVisiblity = () => {
-    setPasswordShown(passwordShown ? false : true);
-  };
+  // const [passwordShown, setPasswordShown] = useState(false);
+  // const togglePasswordVisiblity = () => {
+  //   setPasswordShown(passwordShown ? false : true);
+  // };
 
   const formOptions = { resolver: yupResolver(validationSchema) };
   // get functions to build form with useForm() hook
@@ -26,14 +30,25 @@ const HeaderPopupForm = (props) => {
 
   function onSubmit(data, e) {
     // display form data on success
-    console.log("Message submited: ", data);
+    // console.log("Message submited: ", data);
+    setLoading(true);
+    api
+      .post("auth/register", data)
+      .then((res) => {
+        setLoading(false);
+        props.toggleLogin();
+      })
+      .catch((err) => {
+        setLoading(false);
+        setError(err?.response?.data?.error || "error creating user");
+      });
     // e.target.reset();
   }
 
   return (
     <>
       <form id="contact-form" onSubmit={handleSubmit(onSubmit)}>
-        <div className="messages"></div>
+        <div className="messages text-danger text-capitalize">{error}</div>
         <div className="row controls">
           <div className="col-12">
             <div className="input-group-meta form-group mb-20">
@@ -59,7 +74,6 @@ const HeaderPopupForm = (props) => {
                 placeholder="Email Address"
                 name="email"
                 type="text"
-                required
                 {...register("email")}
                 className={` ${errors.email ? "is-invalid" : ""}`}
               />
@@ -76,7 +90,6 @@ const HeaderPopupForm = (props) => {
                 placeholder="Phone Number"
                 name="phone_number"
                 type="number"
-                required
                 {...register("phone_number")}
                 className={` ${errors.phone_number ? "is-invalid" : ""}`}
               />
@@ -93,8 +106,7 @@ const HeaderPopupForm = (props) => {
               <input
                 placeholder="Password"
                 name="password"
-                type={passwordShown ? "text" : "password"}
-                required
+                type="password"
                 {...register("password")}
                 className={` ${errors.password ? "is-invalid" : ""}`}
               />
@@ -106,7 +118,11 @@ const HeaderPopupForm = (props) => {
             </div>
           </div>
           <div className="col-12">
-            <button className="theme-btn-seven w-100" type="submit">
+            <button
+              className="theme-btn-seven w-100"
+              type="submit"
+              disabled={loading}
+            >
               Register
             </button>
           </div>
