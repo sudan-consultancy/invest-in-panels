@@ -24,16 +24,11 @@ const TermsConditions = () => {
 
       <div className="terms_and_policy">
         <div className="container">
-          <ScrollspyNav
-            scrollTargetIds={["opt1", "opt2", "opt3", "opt4", "opt5", "opt6"]}
-            activeNavClass="active"
-            offset={170}
-            scrollDuration="300"
-          >
-            <div className="row p-0">
-              <div  className="col-lg-12 p-0">
+          
+            <div className="row">
+              <div  className="col-lg-12 ">
                 {/* Tab panes */}
-                <div style={{textAlign:"justify",padding:"0"}} className="tab-content">
+                <div className="tab-content">
                   <div id="opt1">
                     <h2 className="font-gilroy-bold">
                       TERMS OF SERVICE AGREEMENT
@@ -331,7 +326,7 @@ const TermsConditions = () => {
                 {/*  /.tab-content */}
               </div>
             </div>
-          </ScrollspyNav>
+          
         </div>
       </div>
 
