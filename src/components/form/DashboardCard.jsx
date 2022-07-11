@@ -30,7 +30,7 @@ const DashboardCard = (props) => {
       <HeaderLanding onDashboard />
       <div className="container" style={{ Container, paddingTop: "10em" }}>
         <div className={`row`}>
-          <div className="card" style={{ width: "25rem", height: "30rem" }}>
+          <div className="card" style={{ overflow:'hidden', width: "25rem", height: "30rem" }}>
             <img
               style={{ height: "50%" }}
               className="card-img-top"
@@ -69,7 +69,7 @@ const DashboardCard = (props) => {
                 </button>
               </div>
             </div>
-            <div class="card-footer row">
+            <div class=" row card-footer ">
               {!kyc && (
                 <div className="d-flex col-8 align-items-center mt-1">
                   <span className="text-danger mr-3">
