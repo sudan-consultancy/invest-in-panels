@@ -34,14 +34,12 @@ const DashboardCard = (props) => {
             <img
               style={{ height: "50%" }}
               className="card-img-top"
-              alt="Card image cap"
+              alt="Solar panels"
+              src="https://images.unsplash.com/photo-1625301840055-7c1b7198cfc0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80`"
             />
             <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
+              <h5 className="card-title">Panels</h5>
+              <p className="card-text">Unit price: INR 27,000</p>
               <div className="d-flex col-6 float-right card-text">
                 <button
                   onClick={() => {
@@ -69,7 +67,7 @@ const DashboardCard = (props) => {
                 </button>
               </div>
             </div>
-            <div class=" row card-footer ">
+            <div class="row card-footer">
               {!kyc && (
                 <div className="d-flex col-8 align-items-center mt-1">
                   <span className="text-danger mr-3">
