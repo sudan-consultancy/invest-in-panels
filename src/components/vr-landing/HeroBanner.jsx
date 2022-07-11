@@ -1,5 +1,5 @@
 import React from "react";
-import "./button.css";
+
 
 const HeroBanner = () => {
   return (
@@ -38,12 +38,9 @@ const HeroBanner = () => {
           Contact now
         </a>
 
-        <div class="btns">
-                <div class="searchbox-wrap">
-                  <button>New project coming soon!<span>Notify Me</span> </button>
-                </div>
-              </div>
+       
       </div>
+      
     </div>
   );
 };
