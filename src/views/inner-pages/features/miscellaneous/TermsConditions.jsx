@@ -1,17 +1,15 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 // import Header from "../../../../components/header/Header";
-import Footer from "../../../../components/footer/Footer";
-import CopyRight from "../../../../components/footer/CopyRight";
-import ScrollspyNav from "react-scrollspy-nav";
 import HeaderLanding from "../../../../components/vr-landing/Header";
+import FooterFive from "../../../../components/footer/FooterFive"
 
 const TermsConditions = () => {
   return (
     <div className="doc-container main-page-wrapper">
       <Helmet>
         <title>
-          Terms & Conditions || Deski-Saas & Software React Template
+          Terms & Conditions || Vefes AI
         </title>
       </Helmet>
       {/* End Page SEO Content */}
@@ -331,21 +329,21 @@ const TermsConditions = () => {
         </div>
       </div>
 
-      <footer className="theme-footer-one pt-130 md-pt-70">
-        <div className="top-footer">
+     <footer className="theme-footer-five mt-130 md-mt-100">
+        <div className="inner-container">
           <div className="container">
-            <Footer />
+            <FooterFive />
           </div>
-          {/* /.container */}
         </div>
-        {/* /.top-footer */}
-
-        <div className="container">
-          <div className="bottom-footer-content">
-            <CopyRight />
-          </div>
-          {/*  /.bottom-footer */}
-        </div>
+        {/* /.inner-container */}
+        <p className="copyright">
+          {" "}
+          Copyright @{new Date().getFullYear()}{" "}
+          <a href="#" target="_blank" rel="noreferrer">
+            Vefes
+          </a>{" "}
+          AI.
+        </p>
       </footer>
       {/* /.theme-footer-one */}
     </div>
