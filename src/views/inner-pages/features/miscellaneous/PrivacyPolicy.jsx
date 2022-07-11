@@ -1,8 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import Header from "../../../../components/header/Header";
-import Footer from "../../../../components/footer/Footer";
-import CopyRight from "../../../../components/footer/CopyRight";
+import FooterFive from "../../../../components/footer/FooterFive";
 import HeaderLanding from "../../../../components/vr-landing/Header";
 
 const PrivacyPolicy = () => {
@@ -10,7 +8,7 @@ const PrivacyPolicy = () => {
     <div className="doc-container main-page-wrapper">
       <Helmet>
         <title>
-         Privacy Policy
+         Privacy Policy || Vefes AI
         </title>
       </Helmet>
       {/* End Page SEO Content */}
@@ -204,21 +202,21 @@ const PrivacyPolicy = () => {
         </div>
       </div>
 
-      <footer className="theme-footer-one pt-130 md-pt-70">
-        <div className="top-footer">
+     <footer className="theme-footer-five mt-130 md-mt-100">
+        <div className="inner-container">
           <div className="container">
-            <Footer />
+            <FooterFive />
           </div>
-          {/* /.container */}
         </div>
-        {/* /.top-footer */}
-
-        <div className="container">
-          <div className="bottom-footer-content">
-            <CopyRight />
-          </div>
-          {/*  /.bottom-footer */}
-        </div>
+        {/* /.inner-container */}
+        <p className="copyright">
+          {" "}
+          Copyright @{new Date().getFullYear()}{" "}
+          <a href="#" target="_blank" rel="noreferrer">
+            Vefes
+          </a>{" "}
+          AI.
+        </p>
       </footer>
       {/* /.theme-footer-one */}
     </div>
