@@ -1,4 +1,7 @@
 {
+  "engines" : { 
+    "node" : "14.16.0" 
+  },
   "name": "deski",
   "version": "1.1.9",
   "homepage": "https://sudan-consultancy.github.io/invest-in-panels",
