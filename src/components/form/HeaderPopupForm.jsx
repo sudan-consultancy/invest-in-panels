@@ -3,6 +3,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { api } from "../../api";
+import { Link } from "react-router-dom";
+import TermsConditions from "../../views/inner-pages/features/miscellaneous/TermsConditions";
+import PrivacyPolicy from "../../views/inner-pages/features/miscellaneous/PrivacyPolicy";
 
 const HeaderPopupForm = (props) => {
   const [loading, setLoading] = useState(false);
@@ -116,6 +119,14 @@ const HeaderPopupForm = (props) => {
                 </div>
               )}
             </div>
+          </div>
+          <div className="col-12">
+            <p style={{fontSize: "12px"}}>By signing up, you agree to the &nbsp;
+            <Link to="/terms-conditions" style={{fontWeight: "bold"}}>Terms & Conditions</Link>&nbsp;and&nbsp;
+            <Link to="/privacy-policy" style={{fontWeight: "bold"}}>Privacy Policy</Link>
+              {/* <a href="/../../views/inner-pages/features/miscellaneous/TermsConditions" style={{fontWeight: "bold"}}>Terms & Conditions</a>&nbsp;and&nbsp;
+              <a href="/../../views/inner-pages/features/miscellaneous/PrivacyPolicy" style={{fontWeight: "bold"}}>Privacy Policy</a> */}
+            </p>
           </div>
           <div className="col-12">
             <button
