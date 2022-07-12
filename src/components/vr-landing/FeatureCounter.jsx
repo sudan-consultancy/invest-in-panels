@@ -34,14 +34,6 @@ const counterUpContent = [
 
     type: "KG",
     meta: "Reduction in carbon emission",
-  },
-   {
-    icon: "199",
-    startCount: "0",
-    endCount: "25",
-
-    type: "years",
-    meta: "Contract term",
   }
 ];
 
