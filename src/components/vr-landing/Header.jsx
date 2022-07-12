@@ -10,7 +10,6 @@ const logo = "images/logo/vefesblacklogo.png";
 // import logo from "images/logo/vefesblacklogo.png";
 
 const HeaderLanding = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   const [navbar, setNavbar] = useState(false);
@@ -19,10 +18,6 @@ const HeaderLanding = (props) => {
   const history = useHistory();
 
   const [isLogin, setIsLogin] = useState(true);
-
-  function toggleModalOne() {
-    setIsOpen(!isOpen);
-  }
 
   const toggleLogin = () => {
     setIsLogin(!isLogin);
@@ -152,7 +147,7 @@ const HeaderLanding = (props) => {
                 <img src="images/icon/user.svg" alt="icon" />
               </button>
             ) : (
-              <button className="demo-button" onClick={toggleModalOne}>
+              <button className="demo-button" onClick={props.toggleModal}>
                 <span>Login/Register</span>
                 <img src="images/icon/user.svg" alt="icon" />
               </button>
@@ -232,8 +227,8 @@ const HeaderLanding = (props) => {
       {/* Mobile Menu End */}
 
       <Modal
-        isOpen={isOpen}
-        onRequestClose={toggleModalOne}
+        isOpen={props.showModal}
+        onRequestClose={props.toggleModal}
         contentLabel="My dialog"
         className="custom-modal  modal-contact-popup-one"
         overlayClassName="custom-overlay"
@@ -241,7 +236,7 @@ const HeaderLanding = (props) => {
       >
         <div className="box_inner ">
           <main className="main-body box_inner modal-content clearfix">
-            <button className="close" onClick={toggleModalOne}>
+            <button className="close" onClick={props.toggleModal}>
               <img src="images/icon/close.svg" alt="close" />
             </button>
             {/* End close icon */}

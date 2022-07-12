@@ -1,7 +1,6 @@
 import React from "react";
 
-
-const HeroBanner = () => {
+const HeroBanner = (props) => {
   return (
     <div className="row">
       <div className="col-lg-6">
@@ -14,25 +13,27 @@ const HeroBanner = () => {
           data-aos="fade-right"
           data-aos-delay="100"
         >
-         The future of solar is here for everyone - own a solar panel without a rooftop to generate green income, reduce carbon emission and avail tax benefit.
+          The future of solar is here for everyone - own a solar panel without a
+          rooftop to generate green income, reduce carbon emission and avail tax
+          benefit.
         </p>
         <div
           className="d-lg-flex align-items-center justify-content-between pr-xl-5"
           data-aos="fade-right"
-          
         >
           <div className="info">
-          {/* Panels available{" "} */}
+            {/* Panels available{" "} */}
             <span className="d-block">
-               
-                <a
-              href="#"
-              className="theme-btn-nine"
-             
-            >
-              Buy Now
-            </a>&nbsp; &nbsp;
-            <span style = {{opacity: "1", textDecoration: "underline"}}>Early bird 10% Discount</span>
+              <button
+                onClick={props.toggleModal}
+                className="d-inline theme-btn-nine"
+              >
+                Buy Now
+              </button>
+              &nbsp; &nbsp;
+              <span style={{ opacity: "1", textDecoration: "underline" }}>
+                Early bird 10% Discount
+              </span>
             </span>
           </div>
           {/* <div className="price">1897</div> */}
@@ -45,10 +46,7 @@ const HeroBanner = () => {
         >
           Contact now
         </a> */}
-
-       
       </div>
-      
     </div>
   );
 };

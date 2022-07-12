@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import FooterFive from "../components/footer/FooterFive";
 import FeatureCounter from "../components/vr-landing/FeatureCounter";
@@ -13,9 +13,15 @@ import FancyFeatureTewentySeven from "../components/features/FancyFeatureTewenty
 import { TableOne, TableTwo } from "../components/table/TableOne";
 
 const AppIndex = (props) => {
+  const [showModal, setShowModal] = useState(false);
+
+  function toggleLoginModal() {
+    setShowModal(!showModal);
+  }
+
   return (
     <div className="main-page-wrapper p0 font-gordita">
-      <HeaderLanding />
+      <HeaderLanding toggleModal={toggleLoginModal} showModal={showModal} />
       {/* End .Header */}
 
       {/* <!-- 
@@ -25,7 +31,7 @@ const AppIndex = (props) => {
 			--> */}
       <div className="hero-banner-fourteen lg-container" id="home">
         <div className="container">
-          <HeroBanner />
+          <HeroBanner toggleModal={toggleLoginModal} />
           <div className="screen-holder">
             <img src="images/banner.png" alt="" className="img-meta" />
             {/* <img
@@ -112,8 +118,6 @@ const AppIndex = (props) => {
         {/* /.bg-wrapper */}
       </div>
 
-     
-     
       <div className="fancy-feature-nine">
         <img
           src="images/shape/107.svg"
@@ -203,7 +207,6 @@ const AppIndex = (props) => {
           className="shapes shape-two"
         />
         <div className="container" id="faq's">
-         
           <div
             className="text-center mt-60 md-mt-50"
             data-aos="fade-up"
