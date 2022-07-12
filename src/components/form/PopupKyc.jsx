@@ -57,7 +57,8 @@ const PopupKyc = (props) => {
   return (
     <>
       <HeaderLanding />
-      <div
+     <div className="">
+     <div
         className="row"
         style={{ paddingTop: "10rem", gap: "1em", overfloy: "hidden" }}
       >
@@ -228,6 +229,7 @@ const PopupKyc = (props) => {
           </div>
         </form>
       </div>
+     </div>
     </>
   );
 };
