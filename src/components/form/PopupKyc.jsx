@@ -54,15 +54,20 @@ const PopupKyc = (props) => {
     e.preventDefault();
   }
 
+  const [file, setFile] = useState();
+  function handleChange(e){
+    console.log(e.target.files);
+        setFile(URL.createObjectURL(e.target.files[0]));
+  }
+
   return (
     <>
       <HeaderLanding />
-     <div className="">
-     <div
+      <div
         className="row"
         style={{ paddingTop: "10rem", gap: "1em", overfloy: "hidden" }}
       >
-        <div className={`col-12 col-md-3`}>
+        <div className={`col-12 col-md-3`} >
           <div
             className={`row pl-5 ${poupstyle.tabs_opt} ${
               tab === "profile" ? poupstyle.active : ""
@@ -114,7 +119,8 @@ const PopupKyc = (props) => {
                 >
                   Upload
                 </label>
-                <input id="pan" type="file" className="d-none" />
+                <input id="pan" type="file" className="d-none" onChange={handleChange} />
+                <img src={file} />
               </div>
               <div className="col-12 col-md-6 col-lg-4">
                 Upload Aadhaar front
@@ -125,7 +131,8 @@ const PopupKyc = (props) => {
                 >
                   Upload
                 </label>
-                <input id="ad_front" type="file" className="d-none" />
+                <input id="ad_front" type="file" className="d-none" onChange={handleChange}/>
+                <img src={file} />
               </div>
               <div className="col-12 col-md-6 col-lg-4">
                 Upload Aadhaar back
@@ -136,7 +143,8 @@ const PopupKyc = (props) => {
                 >
                   Upload
                 </label>
-                <input id="ad_back" type="file" className="d-none" />
+                <input id="ad_back" type="file" className="d-none" onChange={handleChange}/>
+                <img src={file} />
               </div>
             </div>
             <div className={`row ${poupstyle.cont}`}>
@@ -148,6 +156,7 @@ const PopupKyc = (props) => {
             </div>
           </div>
         </form>
+        
         <form
           onSubmit={handleSubmit(onSubmit)}
           className={`user-data-form col-12 col-md-8 ${poupstyle.main_form} ${
@@ -229,7 +238,6 @@ const PopupKyc = (props) => {
           </div>
         </form>
       </div>
-     </div>
     </>
   );
 };

@@ -11,7 +11,6 @@ import FancyTextBlock21 from "../components/fancy-text-block/FancyTextBlock21";
 import CounterTwo from "../components/counter/CounterTwo";
 import FancyFeatureTewentySeven from "../components/features/FancyFeatureTewentySeven";
 import { TableOne, TableTwo } from "../components/table/TableOne";
-import "./button.css";
 
 const AppIndex = (props) => {
   return (
@@ -27,11 +26,6 @@ const AppIndex = (props) => {
       <div className="hero-banner-fourteen lg-container" id="home">
         <div className="container">
           <HeroBanner />
-           <div class="btns">
-                <div class="searchbox-wrap">
-                  <button>4000 panels launching soon!<span>Register Now</span> </button>
-                </div>
-              </div>
           <div className="screen-holder">
             <img src="images/banner.png" alt="" className="img-meta" />
             {/* <img
