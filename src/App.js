@@ -16,7 +16,7 @@ const App = () => {
   return (
     <>
       <Helmet>
-        <title>VEFES - Securitization</title>
+        <title>Solar for everyone || Vefes</title>
         <meta property="og:site_name" content="deski" />
         <meta
           property="og:url"

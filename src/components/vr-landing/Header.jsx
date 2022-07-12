@@ -187,6 +187,25 @@ const HeaderLanding = (props) => {
           currentClassName="active"
           offset={-200}
         >
+           <li className="nav-item">
+                      <a className="nav-link" href="/">
+                        Home
+                      </a>
+                      {/* <div className="dropdown-menu">
+                        <MegaMenuLanding />
+                      </div> */}
+                    </li>
+                    <li className="nav-item">
+                      <a href="/about" className="nav-link">
+                        About
+                      </a>
+                    </li>
+
+                    <li className="nav-item">
+                      <a href="/contact" className="nav-link">
+                        Contact Us
+                      </a>
+                    </li>
           <li className="nav-item">
             {user?.id && props.onDashboard && (
               <a className="nav-link" href="/kyc">
@@ -198,25 +217,11 @@ const HeaderLanding = (props) => {
                 Dashboard
               </a>
             )}
-            <a className="nav-link " href="#home" onClick={handleClick}>
-              Home
-            </a>
+        
           </li>
-          <li className="nav-item">
-            <a href="#about" className="nav-link" onClick={handleClick}>
-              About
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="#why-invest" className="nav-link" onClick={handleClick}>
-              Why Invest
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="#faq's" className="nav-link" onClick={handleClick}>
-              FAQ's
-            </a>
-          </li>
+
+         
+         
           {/* <li className="nav-item">
             <a href="#testimonial" className="nav-link" onClick={handleClick}>
               Testimonials

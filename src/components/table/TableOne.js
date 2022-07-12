@@ -182,9 +182,9 @@ export const TableOne = () => {
           </tr>
           <tr>
             <td>Cumulative recovery of cost</td>
-            <td>{yearOne.crov}</td>
-            <td>{yearTwo.crov}</td>
-            <td>{yearThree.crov}</td>
+            <td>{yearOne.crov}%</td>
+            <td>{yearTwo.crov}%</td>
+            <td>{yearThree.crov}%</td>
           </tr>
         </tbody>
       </table>
