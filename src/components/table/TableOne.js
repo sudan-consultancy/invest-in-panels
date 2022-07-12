@@ -137,7 +137,7 @@ export const TableOne = () => {
         step="0"
         type="range"
         min="1"
-        max="1900"
+        max="100"
         style={{ width: "100%" }}
         onChange={calculation}
       />
