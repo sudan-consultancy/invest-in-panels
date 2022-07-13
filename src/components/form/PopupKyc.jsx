@@ -10,8 +10,6 @@ import HeaderLanding from "../vr-landing/Header";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 
-// TODO: check if KYC already done. show tick or button accordingly
-
 const PopupKyc = (props) => {
   // for password show hide
   // const [passwordShown, setPasswordShown] = useState(false);
@@ -29,6 +27,7 @@ const PopupKyc = (props) => {
   let [adharfront, setadharfront] = useState(null);
   let [adharback, setadharback] = useState(null);
   let [pan, setpan] = useState(null);
+  const [hasCompletedProfile, setHasCompleteProfile] = useState(false);
 
   // for validation
   const validationSchema = Yup.object().shape({
@@ -42,8 +41,10 @@ const PopupKyc = (props) => {
   useEffect(() => {
     try {
       let user = JSON.parse(Cookie.get("vf_user"));
-      user.phone_number = parseInt(user.phone_number);
       setUser(user);
+      if (user?.hasCompletedProfile) {
+        setHasCompleteProfile(true);
+      }
     } catch {}
   }, [user?.id]);
 
@@ -52,7 +53,6 @@ const PopupKyc = (props) => {
   // get functions to build form with useForm() hook
   const { register, handleSubmit, formState } = useForm(formOptions);
   const { errors } = formState;
-  const kycform = new FormData();
 
   // const hiddenFileInput = React.useRef(null);
 
@@ -71,20 +71,6 @@ const PopupKyc = (props) => {
     //   console.log(value);
     // }
   }
-  async function onKYC(e) {
-    e.preventDefault();
-    const form = new FormData();
-    form.append("aadhar_card_front", adharfront);
-    form.append("aadhar_card_back", adharback);
-    form.append("pan_card", pan);
-    for (const value of form.values()) {
-      console.log(value);
-    }
-
-    api.post("auth/upload-docs", form).then((res) => {
-      res.status == 200 && setkycpass(true);
-    });
-  }
 
   const [file, setFile] = useState();
   function handleChange(e) {
@@ -92,7 +78,29 @@ const PopupKyc = (props) => {
     setFile(URL.createObjectURL(e.target.files[0]));
   }
 
-  const onSubmit = (data, e) => {};
+  const [updating, setUpdating] = useState(false);
+  const [uError, setuError] = useState(null);
+  const [uSuccess, setuSuccess] = useState(false);
+
+  const onSubmit = (data, e) => {
+    e.preventDefault();
+    setUpdating(true);
+    api
+      .put("auth", { data })
+      .then((res) => {
+        setUpdating(false);
+        setuSuccess(true);
+        setuError(null);
+        setTimeout(() => {
+          setuSuccess(false);
+        }, 2000);
+      })
+      .catch((err) => {
+        setUpdating(false);
+        setuSuccess(false);
+        setuError(err?.response?.data?.error || "Error updating user");
+      });
+  };
 
   const [kycLoading, setKycLoading] = useState(false);
   const [signUrl, setSignUrl] = useState("");
@@ -126,17 +134,36 @@ const PopupKyc = (props) => {
           ],
           irn: "",
         },
-        { headers: { "X-Auth-Token": "5eafcqIveylEpUNKZdLQywgoLbpOFDz8" } }
+        { headers: { "X-Auth-Token": process.env.REACT_APP_LEEGALITY_API } }
       )
       .then((res) => {
         setKycLoading(false);
         setKycError(null);
+        api.put("auth", {
+          document_id: res.data?.data?.documentId,
+          sign_url: res.data.data?.invitees[0]?.signUrl,
+        });
         setSignUrl(res.data.data?.invitees[0]?.signUrl);
       })
       .catch((err) => {
         setKycLoading(false);
         setKycError(err?.response?.data?.message || "Error");
       });
+  };
+
+  const checkLeegalityStatus = () => {
+    axios
+      .get(
+        `https://sandbox.leegality.com/api/v3.0/sign/request?documentId=${user?.documentId}`,
+        { headers: { "X-Auth-Token": process.env.REACT_APP_LEEGALITY_API } }
+      )
+      .then((res) => {
+        setHasCompleteProfile(!res.data?.data?.requests[0]?.active);
+        api.put("auth", {
+          hasCompletedProfile: true,
+        });
+      })
+      .catch((err) => {});
   };
 
   return (
@@ -233,38 +260,53 @@ const PopupKyc = (props) => {
                         marginRight: "auto!important",
                       }}
                     >
-                      <p>Complete your KYC with Leegality</p>
-                      {signUrl ? (
-                        <>
-                          <br />
-                          <p>
-                            KYC initiated.{" "}
-                            <a
-                              href={signUrl}
-                              target="_blank"
-                              style={{ textDecoration: "underline" }}
-                            >
-                              Click here
-                            </a>{" "} to complete it.
-                          </p>
-                        </>
+                      {hasCompletedProfile ? (
+                        <p className="text-success">
+                          Congrats! KYC already done
+                        </p>
                       ) : (
-                        <button
-                          className="theme-btn-one mb-50"
-                          type="submit"
-                          style={{
-                            backgroundColor: "var(--blue-dark)",
-                            color: "white",
-                            webkitAppearance: " none",
-                            opacity: " 1",
-                          }}
-                          disabled={kycLoading}
-                          onClick={leegalityKyc}
-                        >
-                          {kycLoading ? "Loading..." : "Initiate KYC"}
-                        </button>
+                        <>
+                          <p>Complete your KYC with Leegality</p>
+                          {signUrl ? (
+                            <>
+                              <br />
+                              <p>
+                                KYC initiated.{" "}
+                                <a
+                                  href={signUrl}
+                                  target="_blank"
+                                  style={{ textDecoration: "underline" }}
+                                >
+                                  Click here
+                                </a>{" "}
+                                to complete it.
+                              </p>
+                              <button
+                                onClick={checkLeegalityStatus}
+                                className="theme-btn-one mb-50"
+                              >
+                                Check KYC status
+                              </button>
+                            </>
+                          ) : (
+                            <button
+                              className="theme-btn-one mb-50"
+                              type="submit"
+                              style={{
+                                backgroundColor: "var(--blue-dark)",
+                                color: "white",
+                                webkitAppearance: " none",
+                                opacity: " 1",
+                              }}
+                              disabled={kycLoading}
+                              onClick={leegalityKyc}
+                            >
+                              {kycLoading ? "Loading..." : "Initiate KYC"}
+                            </button>
+                          )}
+                          <p className="text-danger">{kycError}</p>
+                        </>
                       )}
-                      <p className="text-danger">{kycError}</p>
                     </div>
                   </div>
                 </div>
@@ -282,6 +324,10 @@ const PopupKyc = (props) => {
                       setTab === "profile" ? " active_tab" : ""
                     }`}
                   >
+                    {uSuccess && (
+                      <p className="text-success">User updated successfully</p>
+                    )}
+                    {uError !== null && <p className="text-danger">{uError}</p>}
                     <div className="row">
                       <div className="col-12">
                         <div className="input-group-meta mb-25">
@@ -289,8 +335,9 @@ const PopupKyc = (props) => {
                             placeholder="Name"
                             name="name"
                             type="text"
-                            value={user?.name}
+                            defaultValue={user?.name}
                             required
+                            disabled={true}
                             {...register("name")}
                             className={`${errors.name ? "is-invalid" : ""}`}
                             style={{
@@ -318,8 +365,9 @@ const PopupKyc = (props) => {
                             placeholder="Enter Your Email"
                             name="email"
                             type="email"
-                            value={user?.email}
+                            defaultValue={user?.email}
                             required
+                            disabled={true}
                             {...register("email")}
                             className={`${errors.email ? "is-invalid" : ""}`}
                             style={{
@@ -346,9 +394,10 @@ const PopupKyc = (props) => {
                           <input
                             placeholder="Phone number"
                             name="phone_number"
-                            type="number"
+                            type="text"
                             required
-                            value={user?.phone_number}
+                            disabled={true}
+                            defaultValue={user?.phone_number}
                             {...register("phone_number")}
                             className={`${
                               errors.phonenumber ? "is-invalid" : ""
@@ -382,8 +431,9 @@ const PopupKyc = (props) => {
                             webkitAppearance: " none",
                             opacity: " 1",
                           }}
+                          disabled={updating}
                         >
-                          Save
+                          {updating ? "Saving" : "Save"}
                         </button>
                       </div>
                     </div>

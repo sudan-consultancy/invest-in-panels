@@ -30,7 +30,10 @@ const DashboardCard = (props) => {
       <HeaderLanding onDashboard />
       <div className="container" style={{ Container, paddingTop: "10em" }}>
         <div className={`row`}>
-          <div className="card" style={{ overflow:'hidden', width: "25rem", height: "30rem" }}>
+          <div
+            className="card"
+            style={{ overflow: "hidden", width: "25rem", height: "30rem" }}
+          >
             <img
               style={{ height: "50%" }}
               className="card-img-top"
@@ -162,27 +165,19 @@ const DashboardCard = (props) => {
                   <td>{count * 27000}</td>
                 </tr>
                 <tr>
-                  <th colSpan={2}>Bank Details:</th>
+                  <th colSpan={2}>Bank Details</th>
                 </tr>
                 <tr>
                   <th>Account name:</th>
-                  <td>Alex Bob</td>
+                  <td>Vefes AI Pvt. Ltd.</td>
                 </tr>
                 <tr>
-                  <th>Mobile number:</th>
-                  <td>987654321</td>
+                  <th>Account number:</th>
+                  <td>50200052684060</td>
                 </tr>
                 <tr>
                   <th>IFSC code:</th>
-                  <td>456543456789</td>
-                </tr>
-                <tr>
-                  <th>Type of account:</th>
-                  <td>Saving</td>
-                </tr>
-                <tr>
-                  <th>MICR code of bank:</th>
-                  <td>5433456644</td>
+                  <td>HDFC0000998</td>
                 </tr>
               </tbody>
             </table>

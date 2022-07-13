@@ -4,9 +4,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { api } from "../../api";
 import { Link } from "react-router-dom";
-import TermsConditions from "../../views/inner-pages/features/miscellaneous/TermsConditions";
-import PrivacyPolicy from "../../views/inner-pages/features/miscellaneous/PrivacyPolicy";
-import OtpPopup from "../contact/form/OtpPopup";
 import Modal from "react-modal";
 import stylepop from "./otpopup.module.css";
 import Cookie from "js-cookie";
@@ -14,14 +11,14 @@ import { useHistory } from "react-router-dom";
 
 const HeaderPopupForm = (props) => {
   const history = useHistory();
-  const [otperror, setotperror] = useState(false);
+  const [otperror, setotperror] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [otp, setotp] = useState(false);
   const [regerror, setregerror] = useState(false);
   // for validation
   const validationSchema = Yup.object().shape({
-    name: Yup.string().nullable(),
+    name: Yup.string().required("Name is required"),
     phone_number: Yup.string().required(" Phone Number is required"),
     email: Yup.string()
       .required("Email is required")
@@ -42,25 +39,31 @@ const HeaderPopupForm = (props) => {
   const [otpval, setotpval] = useState({});
   const [email, setemail] = useState("");
   const [regpassword, setregpassword] = useState("");
+  const [userId, setUserId] = useState(null);
   function onSubmit(data, e) {
     // display form data on success
     // console.log("Message submited: ", data);
     setLoading(true);
     setemail(data.email);
     setregpassword(data.password);
-    console.log("data", data);
     api
       .post("auth/register", data)
       .then((res) => {
         setLoading(false);
-        console.log(res)
-        if (res.status> 200 || res.status<300){ setregerror(false); setotp(true);}
-        else {setregerror(true)};
+        setError(false);
+        setUserId(res.data?.data?.id);
+        console.log(res);
+        if (res.status > 200 || res.status < 300) {
+          setregerror(false);
+          setotp(true);
+        } else {
+          setregerror(true);
+        }
         // props.toggleLogin();
       })
       .catch((err) => {
         setLoading(false);
-        setError(err?.response?.data?.error || "error creating user");
+        setError(err?.response?.error || "error creating user");
       });
     // e.target.reset();
   }
@@ -69,41 +72,43 @@ const HeaderPopupForm = (props) => {
       .toString()
       .replaceAll(",", "");
     if (sendotp.length == 4) {
-      // api.post('auth/verify-otp',{"otp":parseInt(sendotp)}).then(res=>console.log(res));
-      let items = [true, false];
-      var item = items[Math.floor(Math.random() * items.length)];
-      console.log(item);
-      if (item) {
-        setLoading(true);
-        console.log({ email: email, password: regpassword });
-        api
-          .post("auth/login", { email: email, password: regpassword })
-          .then((res) => {
-            setLoading(false);
-            Cookie.set("vf_user", JSON.stringify(res.data.data));
-            history.push("/kyc");
-          })
-          .catch((err) => {
-            setLoading(false);
-            setError(err?.response?.data?.error || "Error logging in");
-          });
-      }
-      else{}
+      api
+        .post("auth/verify-otp", { id: userId, otp: parseInt(sendotp) })
+        .then((res) => {
+          setotperror(null);
+          api
+            .post("auth/login", { email: email, password: regpassword })
+            .then((res) => {
+              setLoading(false);
+              Cookie.set("vf_user", JSON.stringify(res.data.data));
+              history.push("/kyc");
+            })
+            .catch((err) => {
+              setLoading(false);
+              setError(err?.response?.data?.error || "Error logging in");
+            });
+        })
+        .catch((err) => {
+          setotperror(
+            err?.response?.data?.message || "Error validating otp. Retry"
+          );
+        });
     } else {
-      setotperror(true);
+      setotperror(null);
     }
   }
   function updateOtp(e) {
     setotpval({ ...otpval, [e.target.id]: e.target.value });
     document.getElementById(`${String(parseInt(e.target.id) + 1)}`).value = "";
-
     document.getElementById(`${String(parseInt(e.target.id) + 1)}`).focus();
   }
+
+  const closeOtpModal = () => setotp(null);
   return (
     <>
       <Modal
         isOpen={otp}
-        onRequestClose={otp}
+        onRequestClose={closeOtpModal}
         contentLabel="OTP form"
         className="custom-modal modal-contact-popup-one text-center"
         overlayClassName="custom-overlay"
@@ -114,7 +119,7 @@ const HeaderPopupForm = (props) => {
         <main className={`${stylepop.popup} row text-center`}>
           <div className="col-12 card-body p-2">
             <h5 className="col-12 card-title p-3">
-              Please Verify your email with OTP we have sent you on your
+              Please Verify your phone number with OTP we have sent you on your
               registered email
             </h5>
             <div className={`${stylepop.inputbox}`}>
@@ -147,9 +152,9 @@ const HeaderPopupForm = (props) => {
                 maxLength="1"
               />
             </div>
-            {otperror && (
+            {otperror !== null && (
               <div style={{ color: "red" }} className="col-12">
-                Please fill otp
+                {otperror}
               </div>
             )}
             <a
@@ -173,7 +178,7 @@ const HeaderPopupForm = (props) => {
         <div className="row controls">
           <div className="col-12">
             <div className="input-group-meta form-group mb-20">
-              <label>Name</label>
+              <label>Name*</label>
               <input
                 type="text"
                 placeholder="Your Name"
@@ -246,11 +251,19 @@ const HeaderPopupForm = (props) => {
           <div className="col-12">
             <p style={{ fontSize: "12px" }}>
               By signing up, you agree to the &nbsp;
-              <Link to="/terms-conditions" target="_blank" style={{ fontWeight: "bold" }}>
+              <Link
+                to="/terms-conditions"
+                target="_blank"
+                style={{ fontWeight: "bold" }}
+              >
                 Terms &amp; Conditions
               </Link>
               &nbsp;and&nbsp;
-              <Link to="/privacy-policy" target="_blank" style={{ fontWeight: "bold" }}>
+              <Link
+                to="/privacy-policy"
+                target="_blank"
+                style={{ fontWeight: "bold" }}
+              >
                 Privacy Policy
               </Link>
               {/* <a href="/../../views/inner-pages/features/miscellaneous/TermsConditions" style={{fontWeight: "bold"}}>Terms & Conditions</a>&nbsp;and&nbsp;

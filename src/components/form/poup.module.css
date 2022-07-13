@@ -60,6 +60,10 @@
   border: 0.2rem solid var(--blue-dark);
 }
 
+input:disabled {
+  background-color: #eee !important;
+}
+
 .tabcontent {
   padding: 1rem;
   margin: auto;
