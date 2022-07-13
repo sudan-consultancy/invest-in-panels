@@ -8,7 +8,7 @@ const Container = {
 };
 
 const DashboardCard = (props) => {
-  let [count, setCount] = useState(0);
+  let [count, setCount] = useState(1);
   let [popupflag, setpopup] = useState(false);
   let [kyc, setkyc] = useState(true);
 
@@ -56,7 +56,7 @@ const DashboardCard = (props) => {
                   className="form-control"
                   type="number"
                   value={count}
-                  min="0"
+                  min="1"
                   required
                   onChange={(e) => setCount(e.target.value)}
                 />
