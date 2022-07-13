@@ -139,6 +139,14 @@ const PopupKyc = (props) => {
       .then((res) => {
         setKycLoading(false);
         setKycError(null);
+        let thisuser = user;
+        thisuser = {
+          ...thisuser,
+          document_id: res.data?.data?.documentId,
+          sign_url: res.data.data?.invitees[0]?.signUrl,
+        };
+        setUser(thisuser);
+        Cookie.set("vf_user", JSON.stringify(thisuser));
         api.put("auth", {
           document_id: res.data?.data?.documentId,
           sign_url: res.data.data?.invitees[0]?.signUrl,
@@ -159,9 +167,18 @@ const PopupKyc = (props) => {
       )
       .then((res) => {
         setHasCompleteProfile(!res.data?.data?.requests[0]?.active);
-        api.put("auth", {
-          hasCompletedProfile: true,
-        });
+        let thisuser = user;
+        thisuser = {
+          ...thisuser,
+          hasCompletedProfile: !res.data?.data?.requests[0]?.active,
+        };
+        Cookie.set("vf_user", JSON.stringify(thisuser));
+        setUser(thisuser);
+        if (!res.data?.data?.requests[0]?.active) {
+          api.put("auth", {
+            hasCompletedProfile: true,
+          });
+        }
       })
       .catch((err) => {});
   };
