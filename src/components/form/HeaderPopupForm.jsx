@@ -120,7 +120,7 @@ const HeaderPopupForm = (props) => {
           <div className="col-12 card-body p-2">
             <h5 className="col-12 card-title p-3">
               Please Verify your phone number with OTP we have sent you on your
-              registered email
+              registered number
             </h5>
             <div className={`${stylepop.inputbox}`}>
               <input
