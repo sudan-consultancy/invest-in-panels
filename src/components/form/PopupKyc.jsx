@@ -44,6 +44,8 @@ const PopupKyc = (props) => {
       setUser(user);
       if (user?.hasCompletedProfile) {
         setHasCompleteProfile(true);
+      } else {
+        checkLeegalityStatus();
       }
     } catch {}
   }, [user?.id]);
@@ -162,19 +164,19 @@ const PopupKyc = (props) => {
   const checkLeegalityStatus = () => {
     axios
       .get(
-        `https://sandbox.leegality.com/api/v3.0/sign/request?documentId=${user?.documentId}`,
+        `https://sandbox.leegality.com/api/v3.0/sign/request?documentId=${user?.document_id}`,
         { headers: { "X-Auth-Token": process.env.REACT_APP_LEEGALITY_API } }
       )
       .then((res) => {
-        setHasCompleteProfile(!res.data?.data?.requests[0]?.active);
+        setHasCompleteProfile(res.data?.data?.requests[0]?.signed);
         let thisuser = user;
         thisuser = {
           ...thisuser,
-          hasCompletedProfile: !res.data?.data?.requests[0]?.active,
+          hasCompletedProfile: res.data?.data?.requests[0]?.signed,
         };
         Cookie.set("vf_user", JSON.stringify(thisuser));
         setUser(thisuser);
-        if (!res.data?.data?.requests[0]?.active) {
+        if (res.data?.data?.requests[0]?.signed) {
           api.put("auth", {
             hasCompletedProfile: true,
           });
