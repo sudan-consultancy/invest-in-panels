@@ -246,11 +246,11 @@ const HeaderPopupForm = (props) => {
           <div className="col-12">
             <p style={{ fontSize: "12px" }}>
               By signing up, you agree to the &nbsp;
-              <Link to="/terms-conditions" style={{ fontWeight: "bold" }}>
-                Terms & Conditions
+              <Link to="/terms-conditions" target="_blank" style={{ fontWeight: "bold" }}>
+                Terms &amp; Conditions
               </Link>
               &nbsp;and&nbsp;
-              <Link to="/privacy-policy" style={{ fontWeight: "bold" }}>
+              <Link to="/privacy-policy" target="_blank" style={{ fontWeight: "bold" }}>
                 Privacy Policy
               </Link>
               {/* <a href="/../../views/inner-pages/features/miscellaneous/TermsConditions" style={{fontWeight: "bold"}}>Terms & Conditions</a>&nbsp;and&nbsp;
