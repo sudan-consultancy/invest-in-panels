@@ -137,7 +137,7 @@ export const TableOne = () => {
         step="0"
         type="range"
         min="1"
-        max="1900"
+        max="100"
         style={{ width: "100%" }}
         onChange={calculation}
       />
@@ -182,9 +182,9 @@ export const TableOne = () => {
           </tr>
           <tr>
             <td>Cumulative recovery of cost</td>
-            <td>{yearOne.crov}</td>
-            <td>{yearTwo.crov}</td>
-            <td>{yearThree.crov}</td>
+            <td>{yearOne.crov}%</td>
+            <td>{yearTwo.crov}%</td>
+            <td>{yearThree.crov}%</td>
           </tr>
         </tbody>
       </table>

@@ -6,10 +6,10 @@ const counterUpContent = [
   {
     icon: "194",
     startCount: "0",
-    endCount: "30",
+    endCount: "27",
     type: "K",
     
-    meta: "Min investment amt",
+    meta: "Cost of Panel",
   
   },
   {
@@ -17,15 +17,23 @@ const counterUpContent = [
     startCount: "0",
     endCount: "10",
     type: "%",
-    meta: "IRR",
+    meta: "Estimated IRR (excluding tax benefits)",
   },
   {
     icon: "196",
     startCount: "0",
     endCount: "3.85",
-    decimals: 2,
     type: "/unit",
-    meta: "Rental income amount",
+        decimals: 2,
+    meta: "Net income per green unit generated",
+  },
+  {
+    icon: "197",
+    startCount: "0",
+    endCount: "14900",
+
+    type: "KG",
+    meta: "Reduction in carbon emission",
   }
 ];
 

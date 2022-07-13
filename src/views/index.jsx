@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import FooterFive from "../components/footer/FooterFive";
 import FeatureCounter from "../components/vr-landing/FeatureCounter";
@@ -11,12 +11,17 @@ import FancyTextBlock21 from "../components/fancy-text-block/FancyTextBlock21";
 import CounterTwo from "../components/counter/CounterTwo";
 import FancyFeatureTewentySeven from "../components/features/FancyFeatureTewentySeven";
 import { TableOne, TableTwo } from "../components/table/TableOne";
-import "./button.css";
 
 const AppIndex = (props) => {
+  const [showModal, setShowModal] = useState(false);
+
+  function toggleLoginModal() {
+    setShowModal(!showModal);
+  }
+
   return (
     <div className="main-page-wrapper p0 font-gordita">
-      <HeaderLanding />
+      <HeaderLanding toggleModal={toggleLoginModal} showModal={showModal} />
       {/* End .Header */}
 
       {/* <!-- 
@@ -26,12 +31,7 @@ const AppIndex = (props) => {
 			--> */}
       <div className="hero-banner-fourteen lg-container" id="home">
         <div className="container">
-          <HeroBanner />
-           <div class="btns">
-                <div class="searchbox-wrap">
-                  <button>4000 panels launching soon!<span>Register Now</span> </button>
-                </div>
-              </div>
+          <HeroBanner toggleModal={toggleLoginModal} />
           <div className="screen-holder">
             <img src="images/banner.png" alt="" className="img-meta" />
             {/* <img
@@ -88,7 +88,7 @@ const AppIndex = (props) => {
               >
                 <div className="title-style-six">
                   <h2>
-                    What is <span>Vefes</span>?
+                    Why <span>Purchase</span>?
                   </h2>
                 </div>
                 {/* /.title-style-six */}
@@ -118,48 +118,6 @@ const AppIndex = (props) => {
         {/* /.bg-wrapper */}
       </div>
 
-      <div className="fancy-short-banner-six mt-150 md-mt-80">
-        <img
-          src="images/shape/143.svg"
-          alt="shape"
-          className="shapes shape-one"
-        />
-        <div className="container">
-          <div className="row">
-            <div
-              className="col-xl-9 col-lg-11 m-auto"
-              data-aos="fade-up"
-              data-aos-duration="1200"
-            >
-              <div className="title-style-six text-center">
-                <h2>Why Purchase?</h2>
-              </div>
-              {/* /.title-style-six */}
-            </div>
-          </div>
-          <p data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100">
-            Our asset class with a minimum cost of Rs. 30,000 is accessible to
-            everyone. Our asset class offers lower risk fixed tariffs with a
-            more frequent periodic nature of guaranteed returns.
-          </p>
-        </div>
-        {/* /.container */}
-      </div>
-
-      {/* /.table */}
-      <div className="container">
-        <TableTwo></TableTwo>
-        
-      </div>
-
-      <div
-        className="fancy-feature-twentySeven lg-container mb-170"
-        id="product"
-      >
-        <div className="container">
-          <FancyFeatureTewentySeven />
-        </div>
-      </div>
       <div className="fancy-feature-nine">
         <img
           src="images/shape/107.svg"
@@ -214,8 +172,8 @@ const AppIndex = (props) => {
             className="title-style-eleven text-center mb-40 md-mb-20"
             data-aos="fade-up"
           >
-            <div className="upper-title">ROI Calculator</div>
-            <h2>Check the returns on your purchase of panels</h2>
+            <div className="upper-title">Payback Calculator</div>
+            <h2>Payback on purchase of your panels</h2>
           </div>
 
           <div className="row justify-content-center">
@@ -249,24 +207,12 @@ const AppIndex = (props) => {
           className="shapes shape-two"
         />
         <div className="container" id="faq's">
-          <div className="title-style-five text-center mb-80 md-mb-60">
-            <h6>FAQ</h6>
-            <h2>
-              <span>Question &amp; Answer</span>
-            </h2>
-          </div>
-
-          <div className="row">
-            <div className="col-xl-9 col-lg-10 m-auto">
-              <FaqFour />
-            </div>
-          </div>
           <div
             className="text-center mt-60 md-mt-50"
             data-aos="fade-up"
             data-aos-duration="1200"
           >
-            <h3 className="font-rubik pb-30">Don’t find your answer?</h3>
+            <h3 className="font-rubik pb-30">Need more details?</h3>
             <Link className="theme-btn-five" to="/contact">
               Contact us
             </Link>

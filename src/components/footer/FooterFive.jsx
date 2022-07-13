@@ -43,7 +43,7 @@ const FooterFive = () => {
       {/* End .col */}
 
       <div className="col-lg-4">
-        <div className="title">We’r always happy to help.</div>
+        <div className="title">We’re always happy to help.</div>
         <div className="text-center">
           <a href="mailto:support@vefes.ai" className="email">
             support@vefes.ai

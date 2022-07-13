@@ -21,6 +21,14 @@ const KycForm = () => {
     e.target.reset();
   }
 
+
+  const [file, setFile] = useState();
+  function handleChange(e){
+    console.log(e.target.files);
+        setFile(URL.createObjectURL(e.target.files[0]));
+  }
+ 
+
   return (
     <>
       <form className="user-data-form " onSubmit={handleSubmit(onSubmit)}>
@@ -30,7 +38,8 @@ const KycForm = () => {
               <label>Upload PAN Front Side</label>
               <input
                 type="file"
-                name="name"/>
+                name="name" onChange={handleChange}/>
+                <img src={file} />
             </div>
           </div>
           <div className="col-12">
@@ -38,7 +47,8 @@ const KycForm = () => {
               <label>Upload Aadhaar Front Side</label>
               <input
                 type="file"
-                name="name"/>
+                name="name"  onChange={handleChange}/>
+                <img src={file} />
             </div>
           </div>
           <div className="col-12">
@@ -46,7 +56,8 @@ const KycForm = () => {
               <label>Upload Aadhaar Back Side</label>
               <input
                 type="file"
-                name="name"/>
+                name="name"  onChange={handleChange}/>
+                <img src={file} />
             </div>
           </div>
          
