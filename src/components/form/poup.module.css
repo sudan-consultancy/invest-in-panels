@@ -9,8 +9,7 @@
 
 .active {
   /* background-color: rgb(221, 221, 221); */
-  background-color: #1a9446;
-    color: white;
+  color: #6f55ff;
 }
 .cont {
   margin-bottom: 1rem;
@@ -43,7 +42,7 @@
 
 .active h4 {
   /* color: rgb(119, 91, 242); */
-  color: white;
+  color: var(--blu);
 }
 .tabs_opt {
   padding-top: 1rem;
@@ -55,10 +54,10 @@
 .contact_form button {
   margin-top: 1rem;
 }
-.upactive{
-  background-color: #90ee90;
+.upactive {
+  background-color: #90c5ee;
   color: rgb(0, 0, 0);
-  border:0.2rem solid rgb(0, 255, 0);
+  border: 0.2rem solid var(--blue-dark);
 }
 
 .tabcontent {
@@ -72,35 +71,36 @@
   margin: auto;
   padding-top: 3rem;
 }
-.mainparent{
+.mainparent {
   width: 95%;
   height: 100%;
 }
-.itemcard{
+.itemcard {
   border-radius: 1rem;
-  
+
   background-color: rgb(240, 240, 240);
   width: 90%;
-  margin:2rem;
+  margin: 2rem;
 }
-.imagecont{
+.imagecont {
   border-radius: 5rem;
-  padding:1rem;
-  width:100%;
+  padding: 1rem;
+  width: 100%;
   height: 100%;
 }
-.productdetail{
-  margin:auto;
-}
-.counter{
+.productdetail {
   margin: auto;
-}.counter{
+}
+.counter {
+  margin: auto;
+}
+.counter {
   width: 100%;
   display: flex;
   align-items: center;
- }
- .btn{
-  margin:1rem;
+}
+.btn {
+  margin: 1rem;
   width: 3rem;
   height: 3rem;
   border-radius: 100%;
@@ -113,45 +113,44 @@
   font-weight: 900;
   color: #202020;
   cursor: pointer;
- }
- .count{
+}
+.count {
   font-size: 20px;
   font-family: ‘Open Sans’;
   font-weight: 900;
   color: #202020;
- }
+}
 
- .buybut{
+.buybut {
   display: flex;
   justify-content: center;
-  background-color: rgb(119,91,242);;
+  background-color: rgb(119, 91, 242);
   float: left;
   width: 100%;
   height: 4rem;
   text-align: center;
   border-radius: 1rem;
- }
+}
 
- .okaybut{
+.okaybut {
   display: flex;
   justify-content: center;
-  background-color: rgb(119,91,242);;
+  background-color: rgb(119, 91, 242);
   float: left;
   margin-top: 1rem;
   width: 100%;
   height: 4rem;
   text-align: center;
   border-radius: 1rem;
- }
- .popup_buy{
+}
+.popup_buy {
   background-color: aliceblue;
   height: 25rem;
   border-radius: 2rem;
   width: 25rem;
   position: fixed;
-  padding:3rem;
+  padding: 3rem;
   margin: auto;
   margin-top: -20%;
   margin-left: 30%;
-
- }
+}
