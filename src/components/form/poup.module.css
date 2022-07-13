@@ -33,6 +33,7 @@
   margin: 0.3rem;
   padding: 0.5rem;
   width: 100%;
+  overflow: hidden;
   margin-bottom: 3rem;
   border: 0.2rem dotted darkgray;
 }
@@ -48,6 +49,11 @@
 }
 .contact_form button {
   margin-top: 1rem;
+}
+.upactive{
+  background-color: #90ee90;
+  color: rgb(0, 0, 0);
+  border:0.2rem solid rgb(0, 255, 0);
 }
 
 .tabcontent {

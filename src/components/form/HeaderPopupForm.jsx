@@ -6,10 +6,12 @@ import { api } from "../../api";
 import { Link } from "react-router-dom";
 import TermsConditions from "../../views/inner-pages/features/miscellaneous/TermsConditions";
 import PrivacyPolicy from "../../views/inner-pages/features/miscellaneous/PrivacyPolicy";
+import OtpPopup from "../contact/form/OtpPopup";
 
 const HeaderPopupForm = (props) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [otp,setotp]= useState(false);
 
   // for validation
   const validationSchema = Yup.object().shape({
@@ -32,6 +34,7 @@ const HeaderPopupForm = (props) => {
   const { errors } = formState;
 
   function onSubmit(data, e) {
+
     // display form data on success
     // console.log("Message submited: ", data);
     setLoading(true);
@@ -39,7 +42,9 @@ const HeaderPopupForm = (props) => {
       .post("auth/register", data)
       .then((res) => {
         setLoading(false);
-        props.toggleLogin();
+        setotp(true);
+
+        // props.toggleLogin();
       })
       .catch((err) => {
         setLoading(false);
@@ -50,7 +55,9 @@ const HeaderPopupForm = (props) => {
 
   return (
     <>
-      <form id="contact-form" onSubmit={handleSubmit(onSubmit)}>
+          {otp && <OtpPopup></OtpPopup>}
+
+      {!otp && <form id="contact-form" onSubmit={handleSubmit(onSubmit)}> 
         <div className="messages text-danger text-capitalize">{error}</div>
         <div className="row controls">
           <div className="col-12">
@@ -145,7 +152,7 @@ const HeaderPopupForm = (props) => {
           </div>
           {/* End .col */}
         </div>
-      </form>
+      </form>}
     </>
   );
 };

@@ -7,6 +7,7 @@ import Cookie from "js-cookie";
 import { useHistory } from "react-router-dom";
 import { api } from "../../api";
 import HeaderLanding from "../vr-landing/Header";
+import { Redirect } from "react-router-dom";
 
 const PopupKyc = (props) => {
   // for password show hide
@@ -17,7 +18,15 @@ const PopupKyc = (props) => {
   // };
   const history = useHistory();
   const [tab, setTab] = useState("profile");
-  const [user, setUser] = useState({});
+  let [user, setUser] = useState({});
+  let [username, setname] = useState(null);
+  let [email, setemail] = useState(null);
+  let [phonenumber, setphonenumber] = useState(null);
+  let [kycpass, setkycpass]=useState(null);
+  let [adharfront, setadharfront] = useState(null);
+  let [adharback, setadharback] = useState(null);
+  let [pan, setpan] = useState(null);
+
   // for validation
   const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -26,7 +35,6 @@ const PopupKyc = (props) => {
     password: Yup.string().required("Password is required"),
     phone_number: Yup.string().required(" Phone Number is required"),
   });
-
   useEffect(() => {
     try {
       let user = JSON.parse(Cookie.get("vf_user"));
@@ -39,23 +47,42 @@ const PopupKyc = (props) => {
   // get functions to build form with useForm() hook
   const { register, handleSubmit, formState } = useForm(formOptions);
   const { errors } = formState;
+  const kycform = new FormData();
+
   // const hiddenFileInput = React.useRef(null);
 
   function changeTab(to) {
     setTab(to);
   }
-  function onSubmit(data, e) {
-    // display form data on success
-    console.log("Message submited: " + JSON.stringify(data));
-    e.target.reset();
-  }
-
-  function onKYC(e) {
+  function senddata(e) {
     e.preventDefault();
+    // display form data on success
+    const profileform = new FormData();
+    console.log(username,email,phonenumber);
+    profileform.append("name", username);
+    profileform.append("email", email);
+    profileform.append("phone_number", phonenumber);
+    for (const value of profileform.values()) {
+      console.log(value);
+    }
+  }
+  async function onKYC(e) {
+    e.preventDefault();
+    const form = new FormData();
+    form.append("aadhar_card_front", adharfront);
+    form.append("aadhar_card_back", adharback);
+    form.append("pan_card", pan);
+    for (const value of form.values()) {
+      console.log(value);
+    }
+
+    api.post("auth/upload-docs", form).then((res) => {res.status ==200 && setkycpass(true)});
   }
 
   return (
+    
     <>
+    {kycpass && <Redirect to="/dashboard" />}
       <HeaderLanding />
       <div
         className="row"
@@ -103,42 +130,61 @@ const PopupKyc = (props) => {
                 verify your PAN and Aadhaar Cards.
               </div>
             </div>
-            <div className={`row flex-wrap ${poupstyle.cont}`}>
+            <div className={`row flex-wrap ${poupstyle.cont} `}>
               <div className="col-12 col-md-6 col-lg-4">
                 Upload PAN front
                 <label
                   htmlFor="pan"
                   name="pan_card"
-                  className={`w-100 ${poupstyle.upload}`}
+                  className={`w-100 ${poupstyle.upload} ${pan && poupstyle.upactive}`}
                 >
-                  Upload
+                  {pan ? pan.name : "Upload"}
                 </label>
-                <input id="pan" type="file" className="d-none" />
+                <input
+                  id="pan"
+                  type="file"
+                  className="d-none"
+                  onChange={(event) => {
+                    setpan(event.target.files[0]);
+                  }}
+                />
               </div>
               <div className="col-12 col-md-6 col-lg-4">
                 Upload Aadhaar front
                 <label
                   htmlFor="ad_front"
                   name="aadhar_card_front"
-                  className={`w-100 ${poupstyle.upload}`}
+                  className={`w-100 ${poupstyle.upload} ${adharfront && poupstyle.upactive}`}
                 >
-                  Upload
+                  {adharfront ? adharfront.name : "Upload"}{" "}
                 </label>
-                <input id="ad_front" type="file" className="d-none" />
+                <input
+                  id="ad_front"
+                  type="file"
+                  className="d-none"
+                  onChange={(event) => {
+                    setadharfront(event.target.files[0]);
+                  }}
+                />
               </div>
               <div className="col-12 col-md-6 col-lg-4">
                 Upload Aadhaar back
                 <label
                   htmlFor="ad_back"
                   name="aadhar_card_back"
-                  className={`w-100 ${poupstyle.upload}`}
+                  className={`w-100 ${poupstyle.upload} ${adharback && poupstyle.upactive}`}
                 >
-                  Upload
+                  {adharback ? adharback.name : "Upload"}{" "}
                 </label>
-                <input id="ad_back" type="file" className="d-none" />
+                <input
+                  id="ad_back"
+                  type="file"
+                  className="d-none"
+                  onChange={(event) => setadharback(event.target.files[0])}
+                />
               </div>
             </div>
-            <div className={`row ${poupstyle.cont}`}>
+            <div className={`row ${poupstyle.cont} `}>
               <div className="col-12">
                 <button className="theme-btn-one mt-50 mb-50" type="submit">
                   Upload
@@ -148,7 +194,7 @@ const PopupKyc = (props) => {
           </div>
         </form>
         <form
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={senddata}
           className={`user-data-form col-12 col-md-8 ${poupstyle.main_form} ${
             tab === "profile" ? "" : "d-none"
           }`}
@@ -168,6 +214,9 @@ const PopupKyc = (props) => {
                     placeholder="Name"
                     name="name"
                     type="text"
+                    onChange={event => {
+                      setname(event.target.value);
+                    }}
                     value={user?.name}
                     required
                     {...register("name")}
@@ -187,6 +236,9 @@ const PopupKyc = (props) => {
                     placeholder="Enter Your Email"
                     name="email"
                     type="email"
+                    onChange={event =>
+                      setemail(event.target.value)
+                    }
                     value={user?.email}
                     required
                     {...register("email")}
@@ -207,6 +259,8 @@ const PopupKyc = (props) => {
                     name="phone_number"
                     type="number"
                     required
+                    onChange={event=>setphonenumber(event.target.value)
+                    }
                     value={user?.phone_number}
                     {...register("phone_number")}
                   />
