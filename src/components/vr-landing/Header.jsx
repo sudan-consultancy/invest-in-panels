@@ -182,41 +182,38 @@ const HeaderLanding = (props) => {
           currentClassName="active"
           offset={-200}
         >
-           <li className="nav-item">
-                      <a className="nav-link" href="/">
-                        Home
-                      </a>
-                      {/* <div className="dropdown-menu">
+          <li className="nav-item">
+            <a className="nav-link" href="/">
+              Home
+            </a>
+            {/* <div className="dropdown-menu">
                         <MegaMenuLanding />
                       </div> */}
-                    </li>
-                    <li className="nav-item">
-                      <a href="/about" className="nav-link">
-                        About
-                      </a>
-                    </li>
+          </li>
+          <li className="nav-item">
+            <a href="/about" className="nav-link">
+              About
+            </a>
+          </li>
 
-                    <li className="nav-item">
-                      <a href="/contact" className="nav-link">
-                        Contact Us
-                      </a>
-                    </li>
+          <li className="nav-item">
+            <a href="/contact" className="nav-link">
+              Contact Us
+            </a>
+          </li>
           <li className="nav-item">
             {user?.id && props.onDashboard && (
               <a className="nav-link" href="/kyc">
-              KYC
-            </a>
+                KYC
+              </a>
             )}
             {user?.id && !props.onDashboard && (
               <a className="nav-link" href="/dashboard">
                 Dashboard
               </a>
             )}
-        
           </li>
 
-         
-         
           {/* <li className="nav-item">
             <a href="#testimonial" className="nav-link" onClick={handleClick}>
               Testimonials
@@ -261,11 +258,11 @@ const HeaderLanding = (props) => {
             {/* /.left-side */}
 
             <div className="right-side">
-              <h2 className="form-title">{isLogin ? "Login" : "Register"}</h2>
+              <h2 className="form-title">{isLogin ? "Register" : "Login"}</h2>
               {isLogin ? (
-                <LoginPopupForm toggleLogin={toggleLogin} />
-              ) : (
                 <HeaderPopupForm toggleLogin={toggleLogin} />
+              ) : (
+                <LoginPopupForm toggleLogin={toggleLogin} />
               )}
             </div>
             {/*  /.right-side */}
