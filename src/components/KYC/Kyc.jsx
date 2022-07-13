@@ -2,7 +2,7 @@ import React from "react";
 import FooterFive from "../footer/FooterFive";
 import KycForm from "../form/KycForm";
 import HeaderLanding from "../header/landing/HeaderLanding";
-
+import "./dash.css"
 
 const ProfileIndex = (props) => {
   return (
