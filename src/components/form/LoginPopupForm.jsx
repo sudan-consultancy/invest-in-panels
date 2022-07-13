@@ -31,7 +31,7 @@ const LoginPopupForm = (props) => {
 
   function onSubmit(data, e) {
     // display form data on success
-    // console.log("Message submited: ", data);
+    console.log("Message submited: ", data);
     setLoading(true);
     api
       .post("auth/login", data)

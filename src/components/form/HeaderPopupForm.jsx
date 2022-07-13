@@ -7,12 +7,18 @@ import { Link } from "react-router-dom";
 import TermsConditions from "../../views/inner-pages/features/miscellaneous/TermsConditions";
 import PrivacyPolicy from "../../views/inner-pages/features/miscellaneous/PrivacyPolicy";
 import OtpPopup from "../contact/form/OtpPopup";
+import Modal from "react-modal";
+import stylepop from "./otpopup.module.css";
+import Cookie from "js-cookie";
+import { useHistory } from "react-router-dom";
 
 const HeaderPopupForm = (props) => {
+  const history = useHistory();
+  const [otperror, setotperror] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [otp,setotp]= useState(false);
-
+  const [otp, setotp] = useState(false);
+  const [regerror, setregerror] = useState(false);
   // for validation
   const validationSchema = Yup.object().shape({
     name: Yup.string().nullable(),
@@ -33,17 +39,23 @@ const HeaderPopupForm = (props) => {
   const { register, handleSubmit, formState } = useForm(formOptions);
   const { errors } = formState;
 
+  const [otpval, setotpval] = useState({});
+  const [email, setemail] = useState("");
+  const [regpassword, setregpassword] = useState("");
   function onSubmit(data, e) {
-
     // display form data on success
     // console.log("Message submited: ", data);
     setLoading(true);
+    setemail(data.email);
+    setregpassword(data.password);
+    console.log("data", data);
     api
       .post("auth/register", data)
       .then((res) => {
         setLoading(false);
-        setotp(true);
-
+        console.log(res)
+        if (res.status> 200 || res.status<300){ setregerror(false); setotp(true);}
+        else {setregerror(true)};
         // props.toggleLogin();
       })
       .catch((err) => {
@@ -52,12 +64,111 @@ const HeaderPopupForm = (props) => {
       });
     // e.target.reset();
   }
+  function submitotp(e) {
+    let sendotp = [otpval[0], otpval[1], otpval[2], otpval[3]]
+      .toString()
+      .replaceAll(",", "");
+    if (sendotp.length == 4) {
+      // api.post('auth/verify-otp',{"otp":parseInt(sendotp)}).then(res=>console.log(res));
+      let items = [true, false];
+      var item = items[Math.floor(Math.random() * items.length)];
+      console.log(item);
+      if (item) {
+        setLoading(true);
+        console.log({ email: email, password: regpassword });
+        api
+          .post("auth/login", { email: email, password: regpassword })
+          .then((res) => {
+            setLoading(false);
+            Cookie.set("vf_user", JSON.stringify(res.data.data));
+            history.push("/kyc");
+          })
+          .catch((err) => {
+            setLoading(false);
+            setError(err?.response?.data?.error || "Error logging in");
+          });
+      }
+      else{}
+    } else {
+      setotperror(true);
+    }
+  }
+  function updateOtp(e) {
+    setotpval({ ...otpval, [e.target.id]: e.target.value });
+    document.getElementById(`${String(parseInt(e.target.id) + 1)}`).value = "";
 
+    document.getElementById(`${String(parseInt(e.target.id) + 1)}`).focus();
+  }
   return (
     <>
-          {otp && <OtpPopup></OtpPopup>}
+      <Modal
+        isOpen={otp}
+        onRequestClose={otp}
+        contentLabel="OTP form"
+        className="custom-modal modal-contact-popup-one text-center"
+        overlayClassName="custom-overlay"
+        closeTimeoutMS={500}
+        style={{ width: "10%" }}
+      >
+        {" "}
+        <main className={`${stylepop.popup} row text-center`}>
+          <div className="col-12 card-body p-2">
+            <h5 className="col-12 card-title p-3">
+              Please Verify your email with OTP we have sent you on your
+              registered email
+            </h5>
+            <div className={`${stylepop.inputbox}`}>
+              <input
+                id={0}
+                onChange={(event) => updateOtp(event)}
+                className={`${stylepop.otpinput}`}
+                type="text"
+                maxLength="1"
+              />
+              <input
+                id={1}
+                onChange={(event) => updateOtp(event)}
+                className={`${stylepop.otpinput}`}
+                type="text"
+                maxLength="1"
+              />
+              <input
+                id={2}
+                onChange={(event) => updateOtp(event)}
+                className={`${stylepop.otpinput}`}
+                type="text"
+                maxLength="1"
+              />
+              <input
+                id={3}
+                onChange={(event) => updateOtp(event)}
+                className={`${stylepop.otpinput}`}
+                type="text"
+                maxLength="1"
+              />
+            </div>
+            {otperror && (
+              <div style={{ color: "red" }} className="col-12">
+                Please fill otp
+              </div>
+            )}
+            <a
+              onClick={submitotp}
+              style={{
+                borderRadius: "2rem",
+                marginBottom: "0.5rem",
+                marginTop: "1rem",
+                color: "white",
+              }}
+              className="col-10 btn btn-primary"
+            >
+              Verify
+            </a>
+          </div>
+        </main>
+      </Modal>
 
-      {!otp && <form id="contact-form" onSubmit={handleSubmit(onSubmit)}> 
+      <form id="contact-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="messages text-danger text-capitalize">{error}</div>
         <div className="row controls">
           <div className="col-12">
@@ -127,10 +238,21 @@ const HeaderPopupForm = (props) => {
               )}
             </div>
           </div>
+          {regerror && (
+            <div style={{ color: "red" }} className="col-12">
+              Account already exists
+            </div>
+          )}
           <div className="col-12">
-            <p style={{fontSize: "12px"}}>By signing up, you agree to the &nbsp;
-            <Link to="/terms-conditions" style={{fontWeight: "bold"}}>Terms & Conditions</Link>&nbsp;and&nbsp;
-            <Link to="/privacy-policy" style={{fontWeight: "bold"}}>Privacy Policy</Link>
+            <p style={{ fontSize: "12px" }}>
+              By signing up, you agree to the &nbsp;
+              <Link to="/terms-conditions" style={{ fontWeight: "bold" }}>
+                Terms & Conditions
+              </Link>
+              &nbsp;and&nbsp;
+              <Link to="/privacy-policy" style={{ fontWeight: "bold" }}>
+                Privacy Policy
+              </Link>
               {/* <a href="/../../views/inner-pages/features/miscellaneous/TermsConditions" style={{fontWeight: "bold"}}>Terms & Conditions</a>&nbsp;and&nbsp;
               <a href="/../../views/inner-pages/features/miscellaneous/PrivacyPolicy" style={{fontWeight: "bold"}}>Privacy Policy</a> */}
             </p>
@@ -150,9 +272,10 @@ const HeaderPopupForm = (props) => {
               <a onClick={props.toggleLogin}>Login</a>
             </p>
           </div>
+
           {/* End .col */}
         </div>
-      </form>}
+      </form>
     </>
   );
 };

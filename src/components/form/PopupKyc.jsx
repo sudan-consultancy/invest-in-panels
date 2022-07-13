@@ -19,9 +19,9 @@ const PopupKyc = (props) => {
   const history = useHistory();
   const [tab, setTab] = useState("profile");
   let [user, setUser] = useState({});
-  let [username, setname] = useState(null);
-  let [email, setemail] = useState(null);
-  let [phonenumber, setphonenumber] = useState(null);
+  // let [username, setname] = useState(null);
+  // let [email, setemail] = useState(null);
+  // let [phonenumber, setphonenumber] = useState(null);
   let [kycpass, setkycpass]=useState(null);
   let [adharfront, setadharfront] = useState(null);
   let [adharback, setadharback] = useState(null);
@@ -29,6 +29,7 @@ const PopupKyc = (props) => {
 
   // for validation
   const validationSchema = Yup.object().shape({
+    name:Yup.string().required('name is required'),
     email: Yup.string()
       .required("Email is required")
       .email("Entered value does not match email format"),
@@ -38,6 +39,7 @@ const PopupKyc = (props) => {
   useEffect(() => {
     try {
       let user = JSON.parse(Cookie.get("vf_user"));
+      user.phone_number= parseInt(user.phone_number);
       setUser(user);
     } catch {}
   }, [user?.id]);
@@ -58,13 +60,13 @@ const PopupKyc = (props) => {
     e.preventDefault();
     // display form data on success
     const profileform = new FormData();
-    console.log(username,email,phonenumber);
-    profileform.append("name", username);
-    profileform.append("email", email);
-    profileform.append("phone_number", phonenumber);
-    for (const value of profileform.values()) {
-      console.log(value);
-    }
+    console.log(user);
+    // profileform.append("name", username);
+    // profileform.append("email", email);
+    // profileform.append("phone_number", phonenumber);
+    // for (const value of profileform.values()) {
+    //   console.log(value);
+    // }
   }
   async function onKYC(e) {
     e.preventDefault();
@@ -214,10 +216,8 @@ const PopupKyc = (props) => {
                     placeholder="Name"
                     name="name"
                     type="text"
-                    onChange={event => {
-                      setname(event.target.value);
-                    }}
-                    value={user?.name}
+                    
+                    defaultValue={user?.name}
                     required
                     {...register("name")}
                   />
@@ -236,10 +236,7 @@ const PopupKyc = (props) => {
                     placeholder="Enter Your Email"
                     name="email"
                     type="email"
-                    onChange={event =>
-                      setemail(event.target.value)
-                    }
-                    value={user?.email}
+                    defaultValue={user?.email}
                     required
                     {...register("email")}
                   />
@@ -258,10 +255,9 @@ const PopupKyc = (props) => {
                     placeholder="Phone number"
                     name="phone_number"
                     type="number"
+                    defaultValue={user?.phone_number}
                     required
-                    onChange={event=>setphonenumber(event.target.value)
-                    }
-                    value={user?.phone_number}
+
                     {...register("phone_number")}
                   />
                   {errors.phone_number && (

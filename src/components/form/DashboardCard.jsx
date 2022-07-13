@@ -67,7 +67,7 @@ const DashboardCard = (props) => {
                 </button>
               </div>
             </div>
-            <div class="row card-footer">
+            <div className="row card-footer">
               {!kyc && (
                 <div className="d-flex col-8 align-items-center mt-1">
                   <span className="text-danger mr-3">
