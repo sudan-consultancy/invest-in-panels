@@ -4,12 +4,12 @@ const FeatureContent = [
   {
     icon: "Onboarding-pana",
     meta: "Get onboard",
-    subTitle: `Sign-up with us and complete your KYC`,
+    subTitle: `Sign-up with us`,
   },
   {
     icon: "House searching-bro",
     meta: "Own a solar asset",
-    subTitle: `Purchase a panel with min ₹30,000`,
+    subTitle: `Purchase a panel`,
   },
   {
     icon: "Accept tasks-rafiki",
@@ -18,8 +18,8 @@ const FeatureContent = [
   },
   {
     icon: "Building-cuate",
-    meta: "Infrastructure is setup",
-    subTitle: `We setup infrastructure required for sale of power`,
+    meta: "Monetize your solar asset",
+    subTitle: `We rent your panel to Solar Plant for you before your asset`,
   },
   {
     icon: "Wallet-pana",

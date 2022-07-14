@@ -285,7 +285,7 @@ const PopupKyc = (props) => {
                         </p>
                       ) : (
                         <>
-                          <p>Complete your KYC with Leegality</p>
+                          <p>On board with Leegality</p>
                           {signUrl ? (
                             <>
                               <br />

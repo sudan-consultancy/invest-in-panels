@@ -29,7 +29,7 @@ const HeroBanner = (props) => {
                 className="d-inline theme-btn-nine"
               >
                 Buy Now
-              </button>
+              </button>@ Rs. 30,000/- Rs. 27,000/
               &nbsp; &nbsp;
               <span style={{ opacity: "1", textDecoration: "underline" }}>
                 Early bird 10% Discount

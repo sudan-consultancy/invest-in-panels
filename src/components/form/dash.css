@@ -1,0 +1,28 @@
+.section-profile {
+    height: auto;
+    padding: 3em 0px 100px 0px;
+}
+.section-profile .container {
+    text-align: center;
+    max-width: 70%;
+    padding-bottom: 0px;
+}
+.section-profile .flex-div {
+    display: flex;
+    flex-direction: row;
+}
+.profile-vertical {
+    border: 1px solid #ccc;
+    background-color: #f5faea;
+    width: 30%;
+    min-height: 700px;
+    border-right: none;
+    border-radius: 10px 0 0 10px;
+}
+.tabcontent {
+    padding: 1em;
+    border: 1px solid #ccc;
+    width: 70%;
+    min-height: 700px;
+    border-radius: 0 10px 10px 0;
+}

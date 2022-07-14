@@ -88,7 +88,7 @@ const AppIndex = (props) => {
               >
                 <div className="title-style-six">
                   <h2>
-                    Why <span>Purchase</span>?
+                  Why <span>Own</span>?
                   </h2>
                 </div>
                 {/* /.title-style-six */}
