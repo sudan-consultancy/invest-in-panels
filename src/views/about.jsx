@@ -5,7 +5,7 @@ import FancyVideoOne from "../components/video/FancyVideoOne";
 import AboutTabs from "../components/block-slider/AboutTabs";
 import CounterThree from "../components/counter/CounterThree";
 import TeamFive from "../components/team/TeamFive";
-
+import { Link } from "react-router-dom";
 
 
 const AboutIndex = (props) => {
@@ -141,7 +141,21 @@ const AboutIndex = (props) => {
           >
             Vefes
           </a>{" "}
-          AI.
+          AI. &nbsp;|&nbsp;<Link
+                to="/terms-conditions"
+                target="_blank"
+                style={{ fontWeight: "bold" }}
+              >
+                Terms &amp; Conditions
+              </Link>
+              &nbsp;|&nbsp;
+              <Link
+                to="/privacy-policy"
+                target="_blank"
+                style={{ fontWeight: "bold" }}
+              >
+                Privacy Policy
+              </Link>
         </p>
       </footer>
     </div>

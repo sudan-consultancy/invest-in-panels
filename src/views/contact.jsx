@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import FooterFive from "../components/footer/FooterFive";
 import ContactAddressTwo from "../components/contact/address/ContactAddressTwo";
 import HeaderLanding from "../components/vr-landing/Header";
@@ -76,7 +76,21 @@ const ContactIndex = (props) => {
           >
             Vefes
           </a>{" "}
-          AI.
+          AI. &nbsp;|&nbsp;<Link
+                to="/terms-conditions"
+                target="_blank"
+                style={{ fontWeight: "bold" }}
+              >
+                Terms &amp; Conditions
+              </Link>
+              &nbsp;|&nbsp;
+              <Link
+                to="/privacy-policy"
+                target="_blank"
+                style={{ fontWeight: "bold" }}
+              >
+                Privacy Policy
+              </Link>
         </p>
       </footer>
     </div>

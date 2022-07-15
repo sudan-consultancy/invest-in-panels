@@ -237,7 +237,21 @@ const AppIndex = (props) => {
           <a href="#" target="_blank" rel="noreferrer">
             Vefes
           </a>{" "}
-          AI.
+          AI. &nbsp;|&nbsp;<Link
+                to="/terms-conditions"
+                target="_blank"
+                style={{ fontWeight: "bold" }}
+              >
+                Terms &amp; Conditions
+              </Link>
+              &nbsp;|&nbsp;
+              <Link
+                to="/privacy-policy"
+                target="_blank"
+                style={{ fontWeight: "bold" }}
+              >
+                Privacy Policy
+              </Link>
         </p>
       </footer>
     </div>

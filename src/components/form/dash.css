@@ -13,7 +13,7 @@
 }
 .profile-vertical {
     border: 1px solid #ccc;
-    background-color: #f5faea;
+    background-color: #eee;
     width: 30%;
     min-height: 700px;
     border-right: none;
@@ -25,4 +25,79 @@
     width: 70%;
     min-height: 700px;
     border-radius: 0 10px 10px 0;
+}
+
+.profile-vertical button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 15px 15px;
+    width: 90%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 17px;
+    margin: 5%;
+    border-radius: 4px;
+}
+
+.profile-vertical button.active {
+    /* background-color: #1a9446; */
+    color: #6f55ff;
+}
+
+.profile-vertical .icon-class {
+    font-size: 1.5em;
+    color: black;
+    display: none;
+}
+
+.upload-doc{
+    margin: 2em 2em 2em 2em;
+    background-color: white;
+    box-shadow: 0 0px 10px rgb(196 195 196);
+    border: 2px solid #6f55ff;
+    width: 570px;
+    margin-left: auto!important;
+    margin-right: auto!important;
+    margin-bottom: 1rem;
+}
+
+
+@media (max-width: 1000px){
+
+    .profile-vertical .icon-class {
+        display: block;
+    }
+    .profile-vertical .icon-class {
+        font-size: 1.5em;
+        color: black;
+    }
+    .profile-vertical button.active .icon-class {
+        /* background-color: #1a9446; */
+        color: #6f55ff;
+    }
+    .profile-vertical .label-class {
+        display: none;
+    }
+    .profile-vertical {
+        border: 1px solid #ccc;
+        background-color: #eee;
+        width: 15%;
+        min-height: 700px;
+        border-right: none;
+        border-radius: 10px 0 0 10px;
+    }
+}
+
+@media (max-width: 900px){
+    .upload-doc {
+        flex-direction: column;
+    }
+    .upload-doc {
+        width: 100%;
+        margin: 1em 1em 1em 1em;
+    }
 }
