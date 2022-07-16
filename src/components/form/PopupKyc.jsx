@@ -201,7 +201,7 @@ const PopupKyc = (props) => {
                 </button>
                 <button  id="profileTabBtn" className={` tablinks ${ tab === "kyc" ? "active" : ""}`} onClick={() => changeTab("kyc")}>
                   <i class="fa fa-address-card icon-class"></i>
-                  <label class="label-class">KYC</label>
+                  <label class="label-class">Onboarding</label>
                 </button>
                 <button  id="profileTabBtn" className={` tablinks ${ tab === "credentials" ? "active" : ""}`} onClick={() => changeTab("credentials")}>
                   <i class="fa fa-lock icon-class"></i>
