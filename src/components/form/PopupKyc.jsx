@@ -65,9 +65,7 @@ const PopupKyc = (props) => {
   const { errors } = formState;
 
   // const hiddenFileInput = React.useRef(null);
-  function resendotp(){
-
-  }
+  function resendotp() {}
   function submitotp(e) {
     setotploading(true);
     let sendotp = [otpval[0], otpval[1], otpval[2], otpval[3]]
@@ -112,16 +110,19 @@ const PopupKyc = (props) => {
     //   console.log(value);
     // }
   }
-  const closeOtpModal = () => {setotp(null);setotperror(null);}
+  const closeOtpModal = () => {
+    setotp(null);
+    setotperror(null);
+  };
   const [file, setFile] = useState();
   function handleChange(e) {
     console.log(e.target.files);
     setFile(URL.createObjectURL(e.target.files[0]));
   }
- function toggleotp(e){
-  e.preventDefault();
-  setotp(true);
- }  
+  function toggleotp(e) {
+    e.preventDefault();
+    setotp(true);
+  }
   const [updating, setUpdating] = useState(false);
   const [uError, setuError] = useState(null);
   const [uSuccess, setuSuccess] = useState(false);
@@ -230,7 +231,7 @@ const PopupKyc = (props) => {
 
   return (
     <>
-     <Modal
+      <Modal
         isOpen={otp}
         onRequestClose={closeOtpModal}
         contentLabel="OTP form"
@@ -295,10 +296,7 @@ const PopupKyc = (props) => {
             </a>
           </div>
           <div className="col-12">
-          <a
-              onClick={resendotp}
-              className={`${stylepop.resendotp} col-10 `}
-            >
+            <a onClick={resendotp} className={`${stylepop.resendotp} col-10 `}>
               Resend OTP
             </a>
           </div>
@@ -306,82 +304,116 @@ const PopupKyc = (props) => {
       </Modal>
       {kycpass && <Redirect to="/dashboard" />}
       <HeaderLanding />
-      <div className="section-profile" style={{ height: "auto", padding: "3em 0px 100px 0px" }}>
-        <div className="row" style={{ paddingTop: "10rem", gap: "1em", overfloy: "hidden" }}>
+      <div
+        className="section-profile"
+        style={{ height: "auto", padding: "3em 0px 100px 0px" }}
+      >
+        <div
+          className="row"
+          style={{ paddingTop: "10rem", gap: "1em", overfloy: "hidden" }}
+        >
           <div className="container">
             <div className="flex-div">
               <div className="profile-vertical tab">
-                <button id="profileTabBtn" className={`tablinks ${ tab === "profile" ? "active" : ""}`} onClick={() => {changeTab("profile");}}>
+                <button
+                  id="profileTabBtn"
+                  className={`tablinks ${tab === "profile" ? "active" : ""}`}
+                  onClick={() => {
+                    changeTab("profile");
+                  }}
+                >
                   <i class="fa fa-user-circle-o icon-class"></i>
                   <label class="label-class">Profile</label>
                 </button>
-                <button  id="profileTabBtn" className={` tablinks ${ tab === "kyc" ? "active" : ""}`} onClick={() => changeTab("kyc")}>
+                <button
+                  id="profileTabBtn"
+                  className={` tablinks ${tab === "kyc" ? "active" : ""}`}
+                  onClick={() => changeTab("kyc")}
+                >
                   <i class="fa fa-address-card icon-class"></i>
                   <label class="label-class">KYC</label>
                 </button>
-                <button  id="profileTabBtn" className={` tablinks ${ tab === "credentials" ? "active" : ""}`} onClick={() => changeTab("credentials")}>
+                <button
+                  id="profileTabBtn"
+                  className={` tablinks ${
+                    tab === "credentials" ? "active" : ""
+                  }`}
+                  onClick={() => changeTab("credentials")}
+                >
                   <i class="fa fa-lock icon-class"></i>
                   <label class="label-class">Credentials</label>
                 </button>
               </div>
               <div id="profileTab" class="tabcontent">
-                <div  className={`user-data-form col-12 col-md-12 ${ poupstyle.main_form } ${tab === "kyc" ? "" : "d-none"}`}>
-                  <div className={`col-12 justufy-content-center text-center ${poupstyle.tabcontent} ${setTab === "kyc" ? " active_tab" : ""}`}>
+                <div
+                  className={`user-data-form col-12 col-md-12 ${
+                    poupstyle.main_form
+                  } ${tab === "kyc" ? "" : "d-none"}`}
+                >
+                  <div
+                    className={`col-12 justufy-content-center text-center ${
+                      poupstyle.tabcontent
+                    } ${setTab === "kyc" ? " active_tab" : ""}`}
+                  >
                     <div className={`row ${poupstyle.cont}`}>
-                      <div className="col-12" style={{ textAlign: "center" }}>KYC</div>
+                      <div className="col-12" style={{ textAlign: "center" }}>
+                        KYC
+                      </div>
                     </div>
                   </div>
                   <div className={`row ${poupstyle.cont}`}>
-                      <div className="col-12" style={{ textAlign: "center" }}> Hello {user?.name}, as per regulatory requirements we need to verify your identity.</div>
+                    <div className="col-12" style={{ textAlign: "center" }}>
+                      {" "}
+                      Hello {user?.name}, as per regulatory requirements we need
+                      to verify your identity.
+                    </div>
                   </div>
                   <div className="p-5 flex-wrap upload-doc">
-                      {hasCompletedProfile ? (
-                        <p className="text-success">
-                          Congrats! KYC already done
-                        </p>
-                      ) : (
-                        <>
-                          <p>On board with Leegality</p>
-                          {signUrl ? (
-                            <>
-                              <br />
-                              <p>
-                                KYC initiated.{" "}
-                                <a
-                                  href={signUrl}
-                                  target="_blank"
-                                  style={{ textDecoration: "underline" }}
-                                >
-                                  Click here
-                                </a>{" "}
-                                to complete it.
-                              </p>
-                              <button
-                                onClick={checkLeegalityStatus}
-                                className="theme-btn-one mb-50"
+                    {hasCompletedProfile ? (
+                      <p className="text-success">Congrats! KYC already done</p>
+                    ) : (
+                      <>
+                        <p>On board with Leegality</p>
+                        {signUrl ? (
+                          <>
+                            <br />
+                            <p>
+                              KYC initiated.{" "}
+                              <a
+                                href={signUrl}
+                                target="_blank"
+                                style={{ textDecoration: "underline" }}
                               >
-                                Check KYC status
-                              </button>
-                            </>
-                          ) : (
+                                Click here
+                              </a>{" "}
+                              to complete it.
+                            </p>
                             <button
+                              onClick={checkLeegalityStatus}
                               className="theme-btn-one mb-50"
-                              type="submit"
-                              style={{
-                                backgroundColor: "var(--blue-dark)",
-                                color: "white",
-                                webkitAppearance: " none",
-                                opacity: " 1",
-                              }}
-                              disabled={kycLoading}
-                              onClick={leegalityKyc}
                             >
-                              {kycLoading ? "Loading..." : "Initiate KYC"}
+                              Check KYC status
                             </button>
-                          )}
-                          <p className="text-danger">{kycError}</p>
-                        </>
-                      )}
+                          </>
+                        ) : (
+                          <button
+                            className="theme-btn-one mb-50"
+                            type="submit"
+                            style={{
+                              backgroundColor: "var(--blue-dark)",
+                              color: "white",
+                              webkitAppearance: " none",
+                              opacity: " 1",
+                            }}
+                            disabled={kycLoading}
+                            onClick={leegalityKyc}
+                          >
+                            {kycLoading ? "Loading..." : "Initiate KYC"}
+                          </button>
+                        )}
+                        <p className="text-danger">{kycError}</p>
+                      </>
+                    )}
                   </div>
                 </div>
                 <form
@@ -464,7 +496,7 @@ const PopupKyc = (props) => {
                     </div>
                     <div className="row">
                       <div className="col-12">
-                        <div className="input-group-meta mb-25">
+                        <div className="input-group-meta">
                           <input
                             placeholder="Phone number"
                             name="phone_number"
@@ -492,27 +524,22 @@ const PopupKyc = (props) => {
                             </div>
                           )}
                         </div>
-                      </div> </div>
-                  { !user.isOtpVerified && <div className="row">
-                      <div className="offset-5 col-7">
-                        <button
-                        disabled={otploading}
-                          className="theme-btn-one"
-                          style={{
-                            padding:'0.5rem',
-                            backgroundColor: "var(--blue-dark)",
-                            color: "white",
-                            webkitAppearance: " none",
-                            opacity: " 1",
-                          }}
-                          onClick={toggleotp}
-                        >
-                          Verify Number
-                        </button>
-                      </div> </div>}
-                   
+                      </div>
+                    </div>
+                    {!user.isOtpVerified && (
+                            <div className="row">
+                              <div className={`${poupstyle.verifynumber}  offset-8 col-4 mb-25`}>
+                                <a
+
+                                  onClick={toggleotp}
+                                >
+                                  Verify Number
+                                </a>
+                              </div>{" "}
+                            </div>
+                          )}
                     <div className="row">
-                      <div className="col-12">
+                      <div className="col-12 mb-25">
                         <div className="input-group-meta mb-25">
                           <textarea
                             placeholder="Address"
@@ -527,16 +554,17 @@ const PopupKyc = (props) => {
                             }`}
                             style={{
                               width: "100%",
-    height:" 100%",
-    borderRadius: "5px",
-    fontSize: "16px",
-    color: "var(--heading)",
-    border: "solid 1px #d6d6d6",
-    resize: "none",
-    padding: "20px",
-    
+                              height: " 100%",
+                              height:'5rem',
+                              borderRadius: "5px",
+                              fontSize: "16px",
+                              color: "var(--heading)",
+                              border: "solid 1px #d6d6d6",
+                              resize: "none",
+                              padding: "20px",
                             }}
                           />
+                          
                           {errors.phone_number && (
                             <div className="invalid-feedback">
                               {errors.phone_number?.message}
@@ -545,6 +573,7 @@ const PopupKyc = (props) => {
                         </div>
                       </div>
                     </div>
+                   
                     <div className="row">
                       <div className="col-12">
                         <button
@@ -578,7 +607,6 @@ const PopupKyc = (props) => {
                       setTab === "credentials" ? " active_tab" : ""
                     }`}
                   >
-                    
                     <div className="row">
                       <div className="col-12">
                         <div className="input-group-meta mb-25">
@@ -588,7 +616,9 @@ const PopupKyc = (props) => {
                             type="text"
                             required
                             {...register("oldPassword")}
-                            className={`${errors.oldPassword ? "is-invalid" : ""}`}
+                            className={`${
+                              errors.oldPassword ? "is-invalid" : ""
+                            }`}
                             style={{
                               padding: "20px 20px",
                               marginTop: "8px",
@@ -616,7 +646,9 @@ const PopupKyc = (props) => {
                             type="email"
                             required
                             {...register("newPassword")}
-                            className={`${errors.newPassword ? "is-invalid" : ""}`}
+                            className={`${
+                              errors.newPassword ? "is-invalid" : ""
+                            }`}
                             style={{
                               padding: "20px 20px",
                               marginTop: "8px",
