@@ -232,12 +232,13 @@ const AppIndex = (props) => {
         </div>
         {/* /.inner-container */}
         <p className="copyright">
-          {" "}
+          {/* {" "}
           Copyright @{new Date().getFullYear()}{" "}
           <a href="#" target="_blank" rel="noreferrer">
             Vefes
           </a>{" "}
-          AI. &nbsp;|&nbsp;<Link
+          AI.  */}
+          &nbsp;&nbsp;<Link
                 to="/terms-conditions"
                 target="_blank"
                 style={{ fontWeight: "bold" }}
@@ -250,9 +251,30 @@ const AppIndex = (props) => {
                 target="_blank"
                 style={{ fontWeight: "bold" }}
               >
-                Privacy Policy
+                Privacy Policy 
               </Link>
+<br></br>
+
+{" "}
+          Copyright @{new Date().getFullYear()}{" "}
+          <a href="#" target="_blank" rel="noreferrer">
+          Vefes Engineering Pvt. Ltd.
+          </a>{" "}
+          &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST No.:27AAHCV6353M1ZP
+          
+              {/* <a href="#" target="_blank" rel="noreferrer">
+              Vefes Engineering Pvt. Ltd. &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST No.:27AAHCV6353M1ZP
+          </a>{" "} */}
+         
         </p>
+        {/* <p className="copyright">
+          {" "}
+          
+          <a href="#" target="_blank" rel="noreferrer">
+            Vefes Engineering
+          </a>{" "}
+          Pvt. Ltd.
+        </p> */}
       </footer>
     </div>
   );

@@ -312,12 +312,16 @@ const PopupKyc = (props) => {
             <div className="flex-div">
               <div className="profile-vertical tab">
                 <button id="profileTabBtn" className={`tablinks ${ tab === "profile" ? "active" : ""}`} onClick={() => {changeTab("profile");}}>
-                  <i class="fa fa-user icon-class"></i>
+                  <i class="fa fa-user-circle-o icon-class"></i>
                   <label class="label-class">Profile</label>
                 </button>
                 <button  id="profileTabBtn" className={` tablinks ${ tab === "kyc" ? "active" : ""}`} onClick={() => changeTab("kyc")}>
                   <i class="fa fa-address-card icon-class"></i>
                   <label class="label-class">KYC</label>
+                </button>
+                <button  id="profileTabBtn" className={` tablinks ${ tab === "credentials" ? "active" : ""}`} onClick={() => changeTab("credentials")}>
+                  <i class="fa fa-lock icon-class"></i>
+                  <label class="label-class">Credentials</label>
                 </button>
               </div>
               <div id="profileTab" class="tabcontent">
@@ -507,6 +511,160 @@ const PopupKyc = (props) => {
                         </button>
                       </div> </div>}
                    
+                    <div className="row">
+                      <div className="col-12">
+                        <div className="input-group-meta mb-25">
+                          <textarea
+                            placeholder="Address"
+                            name="address"
+                            type="text"
+                            required
+                            disabled={true}
+                            defaultValue={user?.address}
+                            {...register("address")}
+                            className={`${
+                              errors.phonenumber ? "is-invalid" : ""
+                            }`}
+                            style={{
+                              width: "100%",
+    height:" 100%",
+    borderRadius: "5px",
+    fontSize: "16px",
+    color: "var(--heading)",
+    border: "solid 1px #d6d6d6",
+    resize: "none",
+    padding: "20px",
+    
+                            }}
+                          />
+                          {errors.phone_number && (
+                            <div className="invalid-feedback">
+                              {errors.phone_number?.message}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-12">
+                        <button
+                          className="theme-btn-one mt-50 mb-50"
+                          type="submit"
+                          style={{
+                            backgroundColor: "var(--blue-dark)",
+                            color: "white",
+                            webkitAppearance: " none",
+                            opacity: " 1",
+                          }}
+                          disabled={updating}
+                        >
+                          {updating ? "Saving" : "Save"}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <form
+                  onSubmit={handleSubmit(onSubmit)}
+                  className={`user-data-form col-12 col-md-12 ${
+                    poupstyle.main_form
+                  } ${tab === "credentials" ? "" : "d-none"}`}
+                >
+                  <div
+                    id="kyc"
+                    className={`col-12 justify-content-center text-center ${
+                      poupstyle.tabcontent
+                    } ${poupstyle.contact_form} ${
+                      setTab === "credentials" ? " active_tab" : ""
+                    }`}
+                  >
+                    
+                    <div className="row">
+                      <div className="col-12">
+                        <div className="input-group-meta mb-25">
+                          <input
+                            placeholder="Old Password"
+                            name="oldPassword"
+                            type="text"
+                            required
+                            {...register("oldPassword")}
+                            className={`${errors.oldPassword ? "is-invalid" : ""}`}
+                            style={{
+                              padding: "20px 20px",
+                              marginTop: "8px",
+                              marginBottom: "15px",
+                              border: "1px solid #ccc",
+                              borderRadius: "4px",
+                              boxSizing: " border-box",
+                              fontSize: "0.9em",
+                            }}
+                          />
+                          {errors.oldPassword && (
+                            <div className="invalid-feedback">
+                              {errors.oldPassword?.message}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-12">
+                        <div className="input-group-meta mb-25">
+                          <input
+                            placeholder="New Password"
+                            name="newPassword"
+                            type="email"
+                            required
+                            {...register("newPassword")}
+                            className={`${errors.newPassword ? "is-invalid" : ""}`}
+                            style={{
+                              padding: "20px 20px",
+                              marginTop: "8px",
+                              marginBottom: "15px",
+                              border: "1px solid #ccc",
+                              borderRadius: "4px",
+                              boxSizing: " border-box",
+                              fontSize: "0.9em",
+                            }}
+                          />
+                          {errors.newPassword && (
+                            <div className="invalid-feedback">
+                              {errors.newPassword?.message}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-12">
+                        <div className="input-group-meta mb-25">
+                          <input
+                            placeholder="Retype New Password"
+                            name="retypeNewPassword"
+                            type="text"
+                            required
+                            {...register("retypeNewPassword")}
+                            className={`${
+                              errors.retypeNewPassword ? "is-invalid" : ""
+                            }`}
+                            style={{
+                              padding: "20px 20px",
+                              marginTop: "8px",
+                              marginBottom: "15px",
+                              border: "1px solid #ccc",
+                              borderRadius: "4px",
+                              boxSizing: " border-box",
+                              fontSize: "0.9em",
+                            }}
+                          />
+                          {errors.retypeNewPassword && (
+                            <div className="invalid-feedback">
+                              {errors.retypeNewPassword?.message}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
                     <div className="row">
                       <div className="col-12">
                         <button
