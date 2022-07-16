@@ -492,7 +492,7 @@ const PopupKyc = (props) => {
                   { !user.isOtpVerified && <div className="row">
                       <div className="offset-5 col-7">
                         <button
-                        disabled={loading}
+                        disabled={otploading}
                           className="theme-btn-one"
                           style={{
                             padding:'0.5rem',
