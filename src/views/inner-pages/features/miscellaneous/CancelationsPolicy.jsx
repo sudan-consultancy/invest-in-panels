@@ -1,65 +1,61 @@
 import React from "react";
+import { Helmet } from "react-helmet";
+import FooterFive from "../../../../components/footer/FooterFive";
+import HeaderLanding from "../../../../components/vr-landing/Header";
 import { Link } from "react-router-dom";
-import FooterFive from "../components/footer/FooterFive";
-import ContactAddressTwo from "../components/contact/address/ContactAddressTwo";
-import HeaderLanding from "../components/vr-landing/Header";
-import ContactForm from "../components/contact/form/ContactForm";
 
-const ContactIndex = (props) => {
+const CancelationsPolicy = () => {
   return (
-    <div className="main-page-wrapper p0 font-gordita">
+    <div className="doc-container main-page-wrapper">
+      <Helmet>
+        <title>
+         Privacy Policy || Vefes AI
+        </title>
+      </Helmet>
+      {/* End Page SEO Content */}
+
       <HeaderLanding />
-      {/* End .Header */}
-
-      {/* <!-- 
-			=============================================
-				Theme Hero Banner
-			============================================== 
-			--> */}
-
-      <div className="fancy-hero-one lg-container" style = {{marginTop: "100px"}}>
-        <div className="container">
-          <div className="row">
-            <div className="col-xl-9 col-lg-11 m-auto">
-              <div className="page-title">Contact us</div>
-              <h2 className="font-rubik">
-                Feel free to contact us or just say hi!
-              </h2>
-            </div>
-          </div>
-          {/* End .row */}
-        </div>
-        {/* End .container */}
-        <div className="bubble-one"></div>
-        <div className="bubble-two"></div>
-        <div className="bubble-three"></div>
-        <div className="bubble-four"></div>
-        <div className="bubble-five"></div>
-        <div className="bubble-six"></div>
-      </div>
-      {/* /.fancy-hero-one */}
-
-      {/* 	=============================================
-				Contact Us Light
-			==============================================  */}
-      <div className="contact-us-light pt-140 pb-200 md-pt-90 md-pb-80">
-        <div className="bubble-one"></div>
-        <div className="bubble-two"></div>
-        <div className="bubble-three"></div>
-        <div className="bubble-four"></div>
-        <div className="container">
-          <ContactAddressTwo />
-          <div className="form-style-light">
-            <ContactForm />
-          </div>
-        </div>
-      </div>
-      {/* /.contact-us-light */}
+      {/* End Header */}
 
       {/* =====================================================
-            Footer Style Seven
-        ===================================================== */}
-        <footer className="theme-footer-five mt-130 md-mt-100">
+				Terms and Condition
+			===================================================== */}
+
+      <div className="terms_and_policy">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12 ">
+              {/* Tab panes */}
+              <div className="tab-content">
+                <div id="opt1">
+                  <h2 className="font-gilroy-bold">Vefes Cancellation & Refund Policy</h2>
+                  <br />
+                  <p>
+                  In case you wish to cancel the order, please send us an email with your order 
+                  number and Invoice Copy to support@vefes.in within 12 hours from the time your
+                 order is placed. Any requests for cancellation beyond 12 hours of order placed will not be processed.
+                  </p>
+                  <p>Once your cancellation request is processed, your order amount will be reversed to the source of the payment.</p>
+                  
+                </div>
+                <div id="opt2">
+                  <h2 className="font-gilroy-bold">Vefes Shipping Policy</h2>
+                  <br />
+                  
+                  <p>Assets once purchased, as per the terms of our contract, will directly be
+                   installed at our Solar Power Park. You will receive a copy of your invoice from us over email.</p>
+                  
+                </div>
+
+             
+              </div>
+              {/*  /.tab-content */}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer className="theme-footer-five mt-130 md-mt-100">
         <div className="inner-container">
           <div className="container">
             <FooterFive />
@@ -127,8 +123,9 @@ const ContactIndex = (props) => {
           Pvt. Ltd.
         </p> */}
       </footer>
+      {/* /.theme-footer-one */}
     </div>
   );
 };
 
-export default ContactIndex;
+export default CancelationsPolicy;

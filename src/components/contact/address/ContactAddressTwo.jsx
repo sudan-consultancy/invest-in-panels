@@ -25,7 +25,7 @@ const ContactAddressTwo = () => {
           </div>
           <div className="title">Location</div>
           <p className="font-rubik">
-            Kailash Business Park, <br /> Vikroli.
+          B/208,Kailas Business Park, <br />  Vikroli(West),Mumbai-400079.
           </p>
         </div>
         {/* /.address-info */}
@@ -38,8 +38,12 @@ const ContactAddressTwo = () => {
             <img src="images/icon/16.svg" alt="icon" />
           </div>
           <div className="title">Contact</div>
-          <p className="font-rubik">
+          {/* <p className="font-rubik">
             support@vefes.ai <br />
+            9987413040
+          </p> */}
+          <p className="font-rubik">
+            support@vefes.in <br />
             9987413040
           </p>
         </div>{" "}

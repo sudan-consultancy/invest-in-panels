@@ -124,7 +124,7 @@ const AboutIndex = (props) => {
       {/* =====================================================
             Footer Style Seven
         ===================================================== */}
-     <footer className="theme-footer-five mt-130 md-mt-100">
+        <footer className="theme-footer-five mt-130 md-mt-100">
         <div className="inner-container">
           <div className="container">
             <FooterFive />
@@ -132,7 +132,7 @@ const AboutIndex = (props) => {
         </div>
         {/* /.inner-container */}
         <p className="copyright">
-         {/* {" "}
+          {/* {" "}
           Copyright @{new Date().getFullYear()}{" "}
           <a href="#" target="_blank" rel="noreferrer">
             Vefes
@@ -152,6 +152,22 @@ const AboutIndex = (props) => {
                 style={{ fontWeight: "bold" }}
               >
                 Privacy Policy 
+              </Link>
+              &nbsp;|&nbsp;
+              <Link
+                to="/concelation-policy"
+                target="_blank"
+                style={{ fontWeight: "bold" }}
+              >
+               Concelation Policy 
+              </Link>
+              &nbsp;|&nbsp;
+              <Link
+                to="/concelation-policy"
+                target="_blank"
+                style={{ fontWeight: "bold" }}
+              >
+                Shipping Policy 
               </Link>
 <br></br>
 
@@ -175,31 +191,6 @@ const AboutIndex = (props) => {
           </a>{" "}
           Pvt. Ltd.
         </p> */}
-          {/* {" "}
-          Copyright @{new Date().getFullYear()}{" "}
-          <a
-            href="#"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Vefes
-          </a>{" "}
-          AI. &nbsp;|&nbsp;<Link
-                to="/terms-conditions"
-                target="_blank"
-                style={{ fontWeight: "bold" }}
-              >
-                Terms &amp; Conditions
-              </Link>
-              &nbsp;|&nbsp;
-              <Link
-                to="/privacy-policy"
-                target="_blank"
-                style={{ fontWeight: "bold" }}
-              >
-                Privacy Policy
-              </Link> */}
-        
       </footer>
     </div>
   );

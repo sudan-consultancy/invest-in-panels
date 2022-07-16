@@ -58,6 +58,7 @@ import Login from "../views/inner-pages/features/miscellaneous/Login";
 import SignUp from "../views/inner-pages/features/miscellaneous/SignUp";
 import TermsConditions from "../views/inner-pages/features/miscellaneous/TermsConditions";
 import PrivacyPolicy from "../views/inner-pages/features/miscellaneous/PrivacyPolicy";
+import CancelationsPolicy from "../views/inner-pages/features/miscellaneous/CancelationsPolicy";
 import SolutionMangement from "../views/inner-pages/features/SolutionMangement";
 import ProductCustomerSupport from "../views/inner-pages/features/ProductCustomerSupport";
 import FeaturesCustomerSupport from "../views/inner-pages/features/FeaturesCustomerSupport";
@@ -166,6 +167,7 @@ const Routes = () => {
           <Route path="/SignUp" component={SignUp} /> */}
           <Route path="/terms-conditions" component={TermsConditions} />
           <Route path="/privacy-policy" component={PrivacyPolicy} />
+          <Route path="/concelation-policy" component={CancelationsPolicy} />
           <Route path="/management-agreement" component={ManagementContract} />
           {/* <Route path="/solution-management" component={SolutionMangement} />
           <Route
