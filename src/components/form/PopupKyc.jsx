@@ -10,6 +10,8 @@ import { api } from "../../api";
 import HeaderLanding from "../vr-landing/Header";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
+import Modal from "react-modal";
+import stylepop from "./otpopup.module.css";
 
 const PopupKyc = (props) => {
   // for password show hide
@@ -21,6 +23,9 @@ const PopupKyc = (props) => {
   const history = useHistory();
   const [tab, setTab] = useState("profile");
   let [user, setUser] = useState({});
+  const [otperror, setotperror] = useState(null);
+  const [otp, setotp] = useState(null);
+
   // let [username, setname] = useState(null);
   // let [email, setemail] = useState(null);
   // let [phonenumber, setphonenumber] = useState(null);
@@ -28,6 +33,8 @@ const PopupKyc = (props) => {
   let [adharfront, setadharfront] = useState(null);
   let [adharback, setadharback] = useState(null);
   let [pan, setpan] = useState(null);
+  const [otpval, setotpval] = useState({});
+
   const [hasCompletedProfile, setHasCompleteProfile] = useState(false);
 
   // for validation
@@ -58,7 +65,33 @@ const PopupKyc = (props) => {
   const { errors } = formState;
 
   // const hiddenFileInput = React.useRef(null);
+  function resendotp(){
 
+  }
+  function submitotp(e) {
+    let sendotp = [otpval[0], otpval[1], otpval[2], otpval[3]]
+      .toString()
+      .replaceAll(",", "");
+    if (sendotp.length == 4) {
+      api
+        .post("auth/verify-otp", { id: user?.id, otp: parseInt(sendotp) })
+        .then((res) => {
+          setotperror(null);
+        })
+        .catch((err) => {
+          setotperror(
+            err?.response?.data?.error || "Error validating otp. Retry"
+          );
+        });
+    } else {
+      setotperror(null);
+    }
+  }
+  function updateOtp(e) {
+    setotpval({ ...otpval, [e.target.id]: e.target.value });
+    document.getElementById(`${String(parseInt(e.target.id) + 1)}`).value = "";
+    document.getElementById(`${String(parseInt(e.target.id) + 1)}`).focus();
+  }
   function changeTab(to) {
     setTab(to);
   }
@@ -74,13 +107,16 @@ const PopupKyc = (props) => {
     //   console.log(value);
     // }
   }
-
+  const closeOtpModal = () => {setotp(null);setotperror(null);}
   const [file, setFile] = useState();
   function handleChange(e) {
     console.log(e.target.files);
     setFile(URL.createObjectURL(e.target.files[0]));
   }
-
+ function toggleotp(e){
+  e.preventDefault();
+  setotp(true);
+ }  
   const [updating, setUpdating] = useState(false);
   const [uError, setuError] = useState(null);
   const [uSuccess, setuSuccess] = useState(false);
@@ -188,6 +224,80 @@ const PopupKyc = (props) => {
 
   return (
     <>
+     <Modal
+        isOpen={otp}
+        onRequestClose={closeOtpModal}
+        contentLabel="OTP form"
+        className="custom-modal modal-contact-popup-one text-center"
+        overlayClassName="custom-overlay"
+        closeTimeoutMS={500}
+        style={{ width: "10%" }}
+      >
+        {" "}
+        <main className={`${stylepop.popup} row text-center`}>
+          <div className="col-12 card-body p-2">
+            <h5 className="col-12 card-title p-3">
+              Please Verify your phone number with OTP we have sent you on your
+              registered number
+            </h5>
+            <div className={`${stylepop.inputbox}`}>
+              <input
+                id={0}
+                onChange={(event) => updateOtp(event)}
+                className={`${stylepop.otpinput}`}
+                type="text"
+                maxLength="1"
+              />
+              <input
+                id={1}
+                onChange={(event) => updateOtp(event)}
+                className={`${stylepop.otpinput}`}
+                type="text"
+                maxLength="1"
+              />
+              <input
+                id={2}
+                onChange={(event) => updateOtp(event)}
+                className={`${stylepop.otpinput}`}
+                type="text"
+                maxLength="1"
+              />
+              <input
+                id={3}
+                onChange={(event) => updateOtp(event)}
+                className={`${stylepop.otpinput}`}
+                type="text"
+                maxLength="1"
+              />
+            </div>
+            {otperror !== null && (
+              <div style={{ color: "red" }} className="col-12">
+                {otperror}
+              </div>
+            )}
+            <a
+              onClick={submitotp}
+              style={{
+                borderRadius: "2rem",
+                marginBottom: "0.5rem",
+                marginTop: "1rem",
+                color: "white",
+              }}
+              className="col-10 btn btn-primary"
+            >
+              Verify
+            </a>
+          </div>
+          <div className="col-12">
+          <a
+              onClick={resendotp}
+              className={`${stylepop.resendotp} col-10 `}
+            >
+              Resend OTP
+            </a>
+          </div>
+        </main>
+      </Modal>
       {kycpass && <Redirect to="/dashboard" />}
       <HeaderLanding />
       <div className="section-profile" style={{ height: "auto", padding: "3em 0px 100px 0px" }}>
@@ -372,8 +482,24 @@ const PopupKyc = (props) => {
                             </div>
                           )}
                         </div>
-                      </div>
-                    </div>
+                      </div> </div>
+                  { !user.isOtpVerified && <div className="row">
+                      <div className="offset-5 col-7">
+                        <button
+                          className="theme-btn-one"
+                          style={{
+                            padding:'0.5rem',
+                            backgroundColor: "var(--blue-dark)",
+                            color: "white",
+                            webkitAppearance: " none",
+                            opacity: " 1",
+                          }}
+                          onClick={toggleotp}
+                        >
+                          Verify Number
+                        </button>
+                      </div> </div>}
+                   
                     <div className="row">
                       <div className="col-12">
                         <button

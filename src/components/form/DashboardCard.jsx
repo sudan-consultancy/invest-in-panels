@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { api } from "../../api";
 import Modal from "react-modal";
 import HeaderLanding from "../vr-landing/Header";
+import Cookie from "js-cookie";
 
 const Container = {
   backgroundColor: "lightgray",
@@ -11,7 +12,7 @@ const DashboardCard = (props) => {
   let [count, setCount] = useState(1);
   let [popupflag, setpopup] = useState(false);
   let [kyc, setkyc] = useState(true);
-
+  let user = JSON.parse(Cookie.get("vf_user"));
   function popup() {
     setpopup(!popupflag);
   }
@@ -81,9 +82,17 @@ const DashboardCard = (props) => {
                   </span>
                 </div>
               )}
+              {!user?.isOtpVerified && (
+                <div className="d-flex col-8 align-items-center mt-1">
+                  <span className="text-danger mr-3">
+                    Verify your number first.{" "}
+                   
+                  </span>
+                </div>
+              )}
               <button
                 className="theme-btn-one float-right col-4"
-                disabled={!kyc}
+                disabled={!kyc || !user?.isOtpVerified}
                 onClick={popup}
               >
                 Buy

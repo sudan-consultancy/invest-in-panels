@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { api } from "../../api";
 import { Link } from "react-router-dom";
+
 import Modal from "react-modal";
 import stylepop from "./otpopup.module.css";
 import Cookie from "js-cookie";
@@ -16,6 +17,8 @@ const HeaderPopupForm = (props) => {
   const [error, setError] = useState(null);
   const [otp, setotp] = useState(false);
   const [regerror, setregerror] = useState(false);
+  const[regstatus,setregstatus]= useState(false);
+
   // for validation
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
@@ -35,7 +38,7 @@ const HeaderPopupForm = (props) => {
   // get functions to build form with useForm() hook
   const { register, handleSubmit, formState } = useForm(formOptions);
   const { errors } = formState;
-
+  
   const [otpval, setotpval] = useState({});
   const [email, setemail] = useState("");
   const [regpassword, setregpassword] = useState("");
@@ -43,6 +46,8 @@ const HeaderPopupForm = (props) => {
   function onSubmit(data, e) {
     // display form data on success
     // console.log("Message submited: ", data);
+    setotperror(false);
+    setregstatus(true);
     setLoading(true);
     setemail(data.email);
     setregpassword(data.password);
@@ -63,9 +68,12 @@ const HeaderPopupForm = (props) => {
       })
       .catch((err) => {
         setLoading(false);
-        setError(err?.response?.error || "error creating user");
+          setError(err?.response?.data?.message || "error creating user");
       });
     // e.target.reset();
+  }
+  function resendotp(){
+
   }
   function submitotp(e) {
     let sendotp = [otpval[0], otpval[1], otpval[2], otpval[3]]
@@ -90,7 +98,7 @@ const HeaderPopupForm = (props) => {
         })
         .catch((err) => {
           setotperror(
-            err?.response?.data?.message || "Error validating otp. Retry"
+            err?.response?.data?.error || "Error validating otp. Retry"
           );
         });
     } else {
@@ -103,8 +111,21 @@ const HeaderPopupForm = (props) => {
     document.getElementById(`${String(parseInt(e.target.id) + 1)}`).focus();
   }
 
-  const closeOtpModal = () => setotp(null);
+  const closeOtpModal = () =>{ setotp(null);
+    api
+            .post("auth/login", { email: email, password: regpassword })
+            .then((res) => {
+              setLoading(false);
+              Cookie.set("vf_user", JSON.stringify(res.data.data));
+              history.push("/kyc");
+            })
+            .catch((err) => {
+              setLoading(false);
+              setError(err?.response?.data?.error || "Error logging in");
+            });
+  }
   return (
+    
     <>
       <Modal
         isOpen={otp}
@@ -170,9 +191,16 @@ const HeaderPopupForm = (props) => {
               Verify
             </a>
           </div>
+          <div className="col-12">
+          <a
+              onClick={resendotp}
+              className={`${stylepop.resendotp} col-10 `}
+            >
+              Resend OTP
+            </a>
+          </div>
         </main>
       </Modal>
-
       <form id="contact-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="messages text-danger text-capitalize">{error}</div>
         <div className="row controls">
