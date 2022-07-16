@@ -76,6 +76,7 @@ const HeaderPopupForm = (props) => {
 
   }
   function submitotp(e) {
+    setLoading(true);
     let sendotp = [otpval[0], otpval[1], otpval[2], otpval[3]]
       .toString()
       .replaceAll(",", "");
@@ -97,6 +98,8 @@ const HeaderPopupForm = (props) => {
             });
         })
         .catch((err) => {
+          setLoading(false);
+
           setotperror(
             err?.response?.data?.error || "Error validating otp. Retry"
           );
@@ -180,6 +183,7 @@ const HeaderPopupForm = (props) => {
             )}
             <a
               onClick={submitotp}
+              disabled={loading}
               style={{
                 borderRadius: "2rem",
                 marginBottom: "0.5rem",

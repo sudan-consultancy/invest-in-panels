@@ -69,6 +69,7 @@ const PopupKyc = (props) => {
 
   }
   function submitotp(e) {
+    setotploading(true);
     let sendotp = [otpval[0], otpval[1], otpval[2], otpval[3]]
       .toString()
       .replaceAll(",", "");
@@ -76,9 +77,13 @@ const PopupKyc = (props) => {
       api
         .post("auth/verify-otp", { id: user?.id, otp: parseInt(sendotp) })
         .then((res) => {
+          setotploading(false);
+
           setotperror(null);
         })
         .catch((err) => {
+          setotploading(false);
+
           setotperror(
             err?.response?.data?.error || "Error validating otp. Retry"
           );
@@ -140,6 +145,7 @@ const PopupKyc = (props) => {
         setuError(err?.response?.data?.error || "Error updating user");
       });
   };
+  const [otploading, setotploading] = useState(false);
 
   const [kycLoading, setKycLoading] = useState(false);
   const [signUrl, setSignUrl] = useState("");
@@ -486,6 +492,7 @@ const PopupKyc = (props) => {
                   { !user.isOtpVerified && <div className="row">
                       <div className="offset-5 col-7">
                         <button
+                        disabled={loading}
                           className="theme-btn-one"
                           style={{
                             padding:'0.5rem',
