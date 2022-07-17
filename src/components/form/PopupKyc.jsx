@@ -30,21 +30,34 @@ const PopupKyc = (props) => {
   // let [email, setemail] = useState(null);
   // let [phonenumber, setphonenumber] = useState(null);
   let [kycpass, setkycpass] = useState(null);
+  let [credential, setcredential] = useState({ op: "", np: "", cp: "" });
   let [adharfront, setadharfront] = useState(null);
   let [adharback, setadharback] = useState(null);
   let [pan, setpan] = useState(null);
   const [otpval, setotpval] = useState({});
-
+  let [newpwerror, setnewpwerror] = useState(null);
+  let [checkpw, setcheckpw] = useState({});
   const [hasCompletedProfile, setHasCompleteProfile] = useState(false);
-
+  const [matchpw, setmatchpw] = useState(true);
   // for validation
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("name is required"),
     email: Yup.string()
       .required("Email is required")
       .email("Entered value does not match email format"),
-    password: Yup.string().required("Password is required"),
+    password: Yup.string(),
     phone_number: Yup.string().required(" Phone Number is required"),
+  });
+  const validationSchema2 = Yup.object().shape({
+    oldPassword: Yup.string().required("please enter old password"),
+    newPassword: Yup.string()
+      .min(6)
+      .when("oldPassword", (oldPassword, field) =>
+        oldPassword ? field.required() : field
+      ),
+    confirmPassword: Yup.string().when(" ", (newPassword, field) =>
+      newPassword ? field.required().oneOf([Yup.ref("newPassword")]) : field
+    ),
   });
   useEffect(() => {
     try {
@@ -59,10 +72,17 @@ const PopupKyc = (props) => {
   }, [user?.id]);
 
   const formOptions = { resolver: yupResolver(validationSchema) };
-
+  const formvalidateoption = { resolver: yupResolver(validationSchema2) };
   // get functions to build form with useForm() hook
   const { register, handleSubmit, formState } = useForm(formOptions);
+  const {
+    register: register2,
+    handleSubmit: handleSubmit2,
+    formState: formState2,
+  } = useForm(formvalidateoption);
+
   const { errors } = formState;
+  const { errors2 } = formState2;
 
   // const hiddenFileInput = React.useRef(null);
   function resendotp() {}
@@ -119,6 +139,28 @@ const PopupKyc = (props) => {
     console.log(e.target.files);
     setFile(URL.createObjectURL(e.target.files[0]));
   }
+  const verifycredform = (e) => {
+    e.preventDefault();
+    if (matchpw) {
+      let data = {
+        id: user?.id,
+        oldPassword: checkpw?.op,
+        newPassword: checkpw?.np,
+      };
+      api
+        .post("auth/reset-password", data)
+        .then((res) => {
+          console.log(res);
+          setnewpwerror(null);
+          setcheckpw({np:'',op:'',cp:''});
+        })
+        .catch((err) => {
+          console.log(err);
+          setnewpwerror(err?.response?.data?.message);
+        });
+      console.log(data);
+    }
+  };
   function toggleotp(e) {
     e.preventDefault();
     setotp(true);
@@ -204,7 +246,9 @@ const PopupKyc = (props) => {
         setKycError(err?.response?.data?.message || "Error");
       });
   };
-
+  const verifypassword = (e) => {
+    console.log(e.value());
+  };
   const checkLeegalityStatus = () => {
     axios
       .get(
@@ -417,6 +461,7 @@ const PopupKyc = (props) => {
                   </div>
                 </div>
                 <form
+                  key={1}
                   onSubmit={handleSubmit(onSubmit)}
                   className={`user-data-form col-12 col-md-12 ${
                     poupstyle.main_form
@@ -527,17 +572,14 @@ const PopupKyc = (props) => {
                       </div>
                     </div>
                     {!user.isOtpVerified && (
-                            <div className="row">
-                              <div className={`${poupstyle.verifynumber}  offset-8 col-4 mb-25`}>
-                                <a
-
-                                  onClick={toggleotp}
-                                >
-                                  Verify Number
-                                </a>
-                              </div>{" "}
-                            </div>
-                          )}
+                      <div className="row">
+                        <div
+                          className={`${poupstyle.verifynumber}  offset-8 col-4 mb-25`}
+                        >
+                          <a onClick={toggleotp}>Verify Number</a>
+                        </div>{" "}
+                      </div>
+                    )}
                     <div className="row">
                       <div className="col-12 mb-25">
                         <div className="input-group-meta mb-25">
@@ -555,7 +597,7 @@ const PopupKyc = (props) => {
                             style={{
                               width: "100%",
                               height: " 100%",
-                              height:'5rem',
+                              height: "5rem",
                               borderRadius: "5px",
                               fontSize: "16px",
                               color: "var(--heading)",
@@ -564,7 +606,7 @@ const PopupKyc = (props) => {
                               padding: "20px",
                             }}
                           />
-                          
+
                           {errors.phone_number && (
                             <div className="invalid-feedback">
                               {errors.phone_number?.message}
@@ -573,7 +615,7 @@ const PopupKyc = (props) => {
                         </div>
                       </div>
                     </div>
-                   
+
                     <div className="row">
                       <div className="col-12">
                         <button
@@ -594,7 +636,7 @@ const PopupKyc = (props) => {
                   </div>
                 </form>
                 <form
-                  onSubmit={handleSubmit(onSubmit)}
+                  key={2}
                   className={`user-data-form col-12 col-md-12 ${
                     poupstyle.main_form
                   } ${tab === "credentials" ? "" : "d-none"}`}
@@ -613,12 +655,14 @@ const PopupKyc = (props) => {
                           <input
                             placeholder="Old Password"
                             name="oldPassword"
-                            type="text"
+                            type="password"
                             required
-                            {...register("oldPassword")}
-                            className={`${
-                              errors.oldPassword ? "is-invalid" : ""
-                            }`}
+                            onChange={(e) => {
+                              setcheckpw({ ...checkpw, op: e.target.value });
+                            }}
+                            className={``}
+                            value={checkpw?.op}
+
                             style={{
                               padding: "20px 20px",
                               marginTop: "8px",
@@ -629,11 +673,6 @@ const PopupKyc = (props) => {
                               fontSize: "0.9em",
                             }}
                           />
-                          {errors.oldPassword && (
-                            <div className="invalid-feedback">
-                              {errors.oldPassword?.message}
-                            </div>
-                          )}
                         </div>
                       </div>
                     </div>
@@ -643,12 +682,13 @@ const PopupKyc = (props) => {
                           <input
                             placeholder="New Password"
                             name="newPassword"
-                            type="email"
+                            type="password"
+                            value={checkpw?.np}
                             required
-                            {...register("newPassword")}
-                            className={`${
-                              errors.newPassword ? "is-invalid" : ""
-                            }`}
+                            onChange={(e) =>
+                              setcheckpw({ ...checkpw, np: e.target.value })
+                            }
+                            className={``}
                             style={{
                               padding: "20px 20px",
                               marginTop: "8px",
@@ -659,11 +699,6 @@ const PopupKyc = (props) => {
                               fontSize: "0.9em",
                             }}
                           />
-                          {errors.newPassword && (
-                            <div className="invalid-feedback">
-                              {errors.newPassword?.message}
-                            </div>
-                          )}
                         </div>
                       </div>
                     </div>
@@ -673,35 +708,50 @@ const PopupKyc = (props) => {
                           <input
                             placeholder="Retype New Password"
                             name="retypeNewPassword"
-                            type="text"
+                            style={
+                              matchpw
+                                ? {
+                                    padding: "20px 20px",
+                                    marginTop: "8px",
+                                    marginBottom: "15px",
+                                    border: "1px solid #ccc",
+                                    borderRadius: "4px",
+                                    boxSizing: " border-box",
+                                    fontSize: "0.9em",
+                                  }
+                                : {
+                                    padding: "20px 20px",
+                                    marginTop: "8px",
+                                    marginBottom: "15px",
+                                    border: "1px solid red",
+                                    borderRadius: "4px",
+                                    boxSizing: " border-box",
+                                    fontSize: "0.9em",
+                                  }
+                            }
+                            type="password"
+                            value={checkpw?.cp}
+
                             required
-                            {...register("retypeNewPassword")}
-                            className={`${
-                              errors.retypeNewPassword ? "is-invalid" : ""
-                            }`}
-                            style={{
-                              padding: "20px 20px",
-                              marginTop: "8px",
-                              marginBottom: "15px",
-                              border: "1px solid #ccc",
-                              borderRadius: "4px",
-                              boxSizing: " border-box",
-                              fontSize: "0.9em",
+                            onChange={(e) => {
+                              setcheckpw({ ...checkpw, cp: e.target.value });
+                              setmatchpw(checkpw.np == e.target.value);
+                              console.log(checkpw.np == e.target.value);
                             }}
                           />
-                          {errors.retypeNewPassword && (
-                            <div className="invalid-feedback">
-                              {errors.retypeNewPassword?.message}
-                            </div>
-                          )}
                         </div>
                       </div>
                     </div>
+                    {newpwerror !== null && (
+                      <div style={{ color: "red" }} className="col-12">
+                        {newpwerror}
+                      </div>
+                    )}
                     <div className="row">
                       <div className="col-12">
                         <button
                           className="theme-btn-one mt-50 mb-50"
-                          type="submit"
+                          onClick={verifycredform}
                           style={{
                             backgroundColor: "var(--blue-dark)",
                             color: "white",
