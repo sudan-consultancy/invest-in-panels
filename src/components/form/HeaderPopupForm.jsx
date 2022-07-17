@@ -195,14 +195,7 @@ const HeaderPopupForm = (props) => {
               Verify
             </a>
           </div>
-          <div className="col-12">
-          <a
-              onClick={resendotp}
-              className={`${stylepop.resendotp} col-10 `}
-            >
-              Resend OTP
-            </a>
-          </div>
+         
         </main>
       </Modal>
       <form id="contact-form" onSubmit={handleSubmit(onSubmit)}>

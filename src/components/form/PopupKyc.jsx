@@ -61,6 +61,7 @@ const PopupKyc = (props) => {
   });
   useEffect(() => {
     try {
+      
       let user = JSON.parse(Cookie.get("vf_user"));
       setUser(user);
       if (user?.hasCompletedProfile) {
@@ -95,13 +96,18 @@ const PopupKyc = (props) => {
       api
         .post("auth/verify-otp", { id: user?.id, otp: parseInt(sendotp) })
         .then((res) => {
+          console.log(res);
           setotploading(false);
-
           setotperror(null);
+          let changeotpflag= JSON.parse(Cookie.get('vf_user'));
+          Cookie.set('vf_user',JSON.stringify({...changeotpflag,isOtpVerified:true}));
+          console.log(JSON.stringify({...changeotpflag,isOtpVerified:true}));
+          setUser({...changeotpflag,isOtpVerified:true});
+          setotp(false);
         })
         .catch((err) => {
           setotploading(false);
-
+          console.log(err);
           setotperror(
             err?.response?.data?.error || "Error validating otp. Retry"
           );
@@ -161,8 +167,9 @@ const PopupKyc = (props) => {
       console.log(data);
     }
   };
-  function toggleotp(e) {
+  function sendotp(e) {
     e.preventDefault();
+    api.get('auth/resend-otp',null,{headers:{Authorization:user?.token}}).then(res=>console.log(res)).catch(err=>console.log(err));
     setotp(true);
   }
   const [updating, setUpdating] = useState(false);
@@ -339,11 +346,7 @@ const PopupKyc = (props) => {
               Verify
             </a>
           </div>
-          <div className="col-12">
-            <a onClick={resendotp} className={`${stylepop.resendotp} col-10 `}>
-              Resend OTP
-            </a>
-          </div>
+         
         </main>
       </Modal>
       {kycpass && <Redirect to="/dashboard" />}
@@ -574,15 +577,15 @@ const PopupKyc = (props) => {
                     {!user.isOtpVerified && (
                       <div className="row">
                         <div
-                          className={`${poupstyle.verifynumber}  offset-8 col-4 mb-25`}
+                          className={`${poupstyle.verifynumber}  offset-8 col-4 `}
                         >
-                          <a onClick={toggleotp}>Verify Number</a>
+                          <a onClick={sendotp}>Verify Number</a>
                         </div>{" "}
                       </div>
                     )}
                     <div className="row">
-                      <div className="col-12 mb-25">
-                        <div className="input-group-meta mb-25">
+                      <div className="col-12 mt-25 mb-25">
+                        <div className="input-group-meta ">
                           <textarea
                             placeholder="Address"
                             name="address"
