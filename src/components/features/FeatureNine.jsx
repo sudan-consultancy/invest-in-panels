@@ -13,7 +13,7 @@ const FeatureContent = [
   },
   
   {
-    icon: "Paid-idea-bro",
+    icon: "1",
     meta: "Monetize your solar asset",
     subTitle: `We rent your panel to Solar Plant for you`,
   },
