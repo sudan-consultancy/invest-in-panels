@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 export const TableTwo = () => {
   return (
-    <div className="row no-gutters">
+    <div className="row no-gutters table-responsive">
       <table className="table table-bordered">
         <thead>
           <tr>
