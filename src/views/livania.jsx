@@ -1,10 +1,7 @@
 import React from "react";
 import FooterFive from "../components/footer/FooterFive";
 import HeaderLanding from "../components/vr-landing/Header";
-import FancyVideoOne from "../components/video/FancyVideoOne";
-import AboutTabs from "../components/block-slider/AboutTabs";
-import CounterThree from "../components/counter/CounterThree";
-import TeamFive from "../components/team/TeamFive";
+
 import { Link } from "react-router-dom";
 
 const LivaniaIndex = (props) => {
