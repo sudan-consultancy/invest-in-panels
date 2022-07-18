@@ -104,6 +104,7 @@ import FormSurveyLanding from "../views/all-home-pages/FormSurveyLanding";
 import VrLanding from "../views/all-home-pages/VrLanding";
 import ContactIndex from "../views/contact";
 import AboutIndex from "../views/about";
+import LivaniaIndex from "../views/livania";
 import ManagementContract from "../views/inner-pages/features/miscellaneous/ManagementContract";
 import { Logout } from "../logout";
 const Routes = () => {
@@ -115,6 +116,7 @@ const Routes = () => {
           <Route exact path="/" component={AppIndex} />
           <Route exact path="/about" component={AboutIndex} />
           <Route exact path="/contact" component={ContactIndex} />
+          <Route exact path="/livania" component={LivaniaIndex} />
           {/* <Route exact path="/index" component={PreviewMain} /> */}
           {/* 
           <Route path="/event-organizer" component={EventOrganizer} />
