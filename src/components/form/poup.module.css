@@ -19,7 +19,6 @@
   border-radius: 10px 0 0 10px;
 }
 
-
 .main_form {
   /* position: absolute; */
   background-color: rgb(255 255 255);
@@ -85,7 +84,15 @@
 input:disabled {
   background-color: #eee !important;
 }
+.verifynumber:hover{
+  text-decoration: underline !important;
+  color:rgb(8, 93, 251);
+  cursor: pointer;
+}
+.verifynumber{
+  font-size: 1rem;
 
+}
 .tabcontent {
   padding: 1rem;
   margin: auto;

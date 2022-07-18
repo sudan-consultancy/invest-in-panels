@@ -10,6 +10,8 @@ import { api } from "../../api";
 import HeaderLanding from "../vr-landing/Header";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
+import Modal from "react-modal";
+import stylepop from "./otpopup.module.css";
 
 const PopupKyc = (props) => {
   // for password show hide
@@ -21,26 +23,45 @@ const PopupKyc = (props) => {
   const history = useHistory();
   const [tab, setTab] = useState("profile");
   let [user, setUser] = useState({});
+  const [otperror, setotperror] = useState(null);
+  const [otp, setotp] = useState(null);
+
   // let [username, setname] = useState(null);
   // let [email, setemail] = useState(null);
   // let [phonenumber, setphonenumber] = useState(null);
   let [kycpass, setkycpass] = useState(null);
+  let [credential, setcredential] = useState({ op: "", np: "", cp: "" });
   let [adharfront, setadharfront] = useState(null);
   let [adharback, setadharback] = useState(null);
   let [pan, setpan] = useState(null);
+  const [otpval, setotpval] = useState({});
+  let [newpwerror, setnewpwerror] = useState(null);
+  let [checkpw, setcheckpw] = useState({});
   const [hasCompletedProfile, setHasCompleteProfile] = useState(false);
-
+  const [matchpw, setmatchpw] = useState(true);
   // for validation
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("name is required"),
     email: Yup.string()
       .required("Email is required")
       .email("Entered value does not match email format"),
-    password: Yup.string().required("Password is required"),
+    password: Yup.string(),
     phone_number: Yup.string().required(" Phone Number is required"),
+  });
+  const validationSchema2 = Yup.object().shape({
+    oldPassword: Yup.string().required("please enter old password"),
+    newPassword: Yup.string()
+      .min(6)
+      .when("oldPassword", (oldPassword, field) =>
+        oldPassword ? field.required() : field
+      ),
+    confirmPassword: Yup.string().when(" ", (newPassword, field) =>
+      newPassword ? field.required().oneOf([Yup.ref("newPassword")]) : field
+    ),
   });
   useEffect(() => {
     try {
+      
       let user = JSON.parse(Cookie.get("vf_user"));
       setUser(user);
       if (user?.hasCompletedProfile) {
@@ -52,13 +73,54 @@ const PopupKyc = (props) => {
   }, [user?.id]);
 
   const formOptions = { resolver: yupResolver(validationSchema) };
-
+  const formvalidateoption = { resolver: yupResolver(validationSchema2) };
   // get functions to build form with useForm() hook
   const { register, handleSubmit, formState } = useForm(formOptions);
+  const {
+    register: register2,
+    handleSubmit: handleSubmit2,
+    formState: formState2,
+  } = useForm(formvalidateoption);
+
   const { errors } = formState;
+  const { errors2 } = formState2;
 
   // const hiddenFileInput = React.useRef(null);
-
+  function resendotp() {}
+  function submitotp(e) {
+    setotploading(true);
+    let sendotp = [otpval[0], otpval[1], otpval[2], otpval[3]]
+      .toString()
+      .replaceAll(",", "");
+    if (sendotp.length == 4) {
+      api
+        .post("auth/verify-otp", { id: user?.id, otp: parseInt(sendotp) })
+        .then((res) => {
+          console.log(res);
+          setotploading(false);
+          setotperror(null);
+          let changeotpflag= JSON.parse(Cookie.get('vf_user'));
+          Cookie.set('vf_user',JSON.stringify({...changeotpflag,isOtpVerified:true}));
+          console.log(JSON.stringify({...changeotpflag,isOtpVerified:true}));
+          setUser({...changeotpflag,isOtpVerified:true});
+          setotp(false);
+        })
+        .catch((err) => {
+          setotploading(false);
+          console.log(err);
+          setotperror(
+            err?.response?.data?.error || "Error validating otp. Retry"
+          );
+        });
+    } else {
+      setotperror(null);
+    }
+  }
+  function updateOtp(e) {
+    setotpval({ ...otpval, [e.target.id]: e.target.value });
+    document.getElementById(`${String(parseInt(e.target.id) + 1)}`).value = "";
+    document.getElementById(`${String(parseInt(e.target.id) + 1)}`).focus();
+  }
   function changeTab(to) {
     setTab(to);
   }
@@ -74,13 +136,42 @@ const PopupKyc = (props) => {
     //   console.log(value);
     // }
   }
-
+  const closeOtpModal = () => {
+    setotp(null);
+    setotperror(null);
+  };
   const [file, setFile] = useState();
   function handleChange(e) {
     console.log(e.target.files);
     setFile(URL.createObjectURL(e.target.files[0]));
   }
-
+  const verifycredform = (e) => {
+    e.preventDefault();
+    if (matchpw) {
+      let data = {
+        id: user?.id,
+        oldPassword: checkpw?.op,
+        newPassword: checkpw?.np,
+      };
+      api
+        .post("auth/reset-password", data)
+        .then((res) => {
+          console.log(res);
+          setnewpwerror(null);
+          setcheckpw({np:'',op:'',cp:''});
+        })
+        .catch((err) => {
+          console.log(err);
+          setnewpwerror(err?.response?.data?.message);
+        });
+      console.log(data);
+    }
+  };
+  function sendotp(e) {
+    e.preventDefault();
+    api.get('auth/resend-otp',null,{headers:{Authorization:user?.token}}).then(res=>console.log(res)).catch(err=>console.log(err));
+    setotp(true);
+  }
   const [updating, setUpdating] = useState(false);
   const [uError, setuError] = useState(null);
   const [uSuccess, setuSuccess] = useState(false);
@@ -104,6 +195,7 @@ const PopupKyc = (props) => {
         setuError(err?.response?.data?.error || "Error updating user");
       });
   };
+  const [otploading, setotploading] = useState(false);
 
   const [kycLoading, setKycLoading] = useState(false);
   const [signUrl, setSignUrl] = useState("");
@@ -161,7 +253,9 @@ const PopupKyc = (props) => {
         setKycError(err?.response?.data?.message || "Error");
       });
   };
-
+  const verifypassword = (e) => {
+    console.log(e.value());
+  };
   const checkLeegalityStatus = () => {
     axios
       .get(
@@ -188,87 +282,189 @@ const PopupKyc = (props) => {
 
   return (
     <>
+      <Modal
+        isOpen={otp}
+        onRequestClose={closeOtpModal}
+        contentLabel="OTP form"
+        className="custom-modal modal-contact-popup-one text-center"
+        overlayClassName="custom-overlay"
+        closeTimeoutMS={500}
+        style={{ width: "10%" }}
+      >
+        {" "}
+        <main className={`${stylepop.popup} row text-center`}>
+          <div className="col-12 card-body p-2">
+            <h5 className="col-12 card-title p-3">
+              Please Verify your phone number with OTP we have sent you on your
+              registered number
+            </h5>
+            <div className={`${stylepop.inputbox}`}>
+              <input
+                id={0}
+                onChange={(event) => updateOtp(event)}
+                className={`${stylepop.otpinput}`}
+                type="text"
+                maxLength="1"
+              />
+              <input
+                id={1}
+                onChange={(event) => updateOtp(event)}
+                className={`${stylepop.otpinput}`}
+                type="text"
+                maxLength="1"
+              />
+              <input
+                id={2}
+                onChange={(event) => updateOtp(event)}
+                className={`${stylepop.otpinput}`}
+                type="text"
+                maxLength="1"
+              />
+              <input
+                id={3}
+                onChange={(event) => updateOtp(event)}
+                className={`${stylepop.otpinput}`}
+                type="text"
+                maxLength="1"
+              />
+            </div>
+            {otperror !== null && (
+              <div style={{ color: "red" }} className="col-12">
+                {otperror}
+              </div>
+            )}
+            <a
+              onClick={submitotp}
+              style={{
+                borderRadius: "2rem",
+                marginBottom: "0.5rem",
+                marginTop: "1rem",
+                color: "white",
+              }}
+              className="col-10 btn btn-primary"
+            >
+              Verify
+            </a>
+          </div>
+         
+        </main>
+      </Modal>
       {kycpass && <Redirect to="/dashboard" />}
       <HeaderLanding />
-      <div className="section-profile" style={{ height: "auto", padding: "3em 0px 100px 0px" }}>
-        <div className="row" style={{ paddingTop: "10rem", gap: "1em", overfloy: "hidden" }}>
+      <div
+        className="section-profile"
+        style={{ height: "auto", padding: "3em 0px 100px 0px" }}
+      >
+        <div
+          className="row"
+          style={{ paddingTop: "10rem", gap: "1em", overfloy: "hidden" }}
+        >
           <div className="container">
             <div className="flex-div">
               <div className="profile-vertical tab">
-                <button id="profileTabBtn" className={`tablinks ${ tab === "profile" ? "active" : ""}`} onClick={() => {changeTab("profile");}}>
+                <button
+                  id="profileTabBtn"
+                  className={`tablinks ${tab === "profile" ? "active" : ""}`}
+                  onClick={() => {
+                    changeTab("profile");
+                  }}
+                >
                   <i class="fa fa-user-circle-o icon-class"></i>
                   <label class="label-class">Profile</label>
                 </button>
-                <button  id="profileTabBtn" className={` tablinks ${ tab === "kyc" ? "active" : ""}`} onClick={() => changeTab("kyc")}>
+                <button
+                  id="profileTabBtn"
+                  className={` tablinks ${tab === "kyc" ? "active" : ""}`}
+                  onClick={() => changeTab("kyc")}
+                >
                   <i class="fa fa-address-card icon-class"></i>
                   <label class="label-class">Onboarding</label>
                 </button>
-                <button  id="profileTabBtn" className={` tablinks ${ tab === "credentials" ? "active" : ""}`} onClick={() => changeTab("credentials")}>
+                <button
+                  id="profileTabBtn"
+                  className={` tablinks ${
+                    tab === "credentials" ? "active" : ""
+                  }`}
+                  onClick={() => changeTab("credentials")}
+                >
                   <i class="fa fa-lock icon-class"></i>
                   <label class="label-class">Credentials</label>
                 </button>
               </div>
               <div id="profileTab" class="tabcontent">
-                <div  className={`user-data-form col-12 col-md-12 ${ poupstyle.main_form } ${tab === "kyc" ? "" : "d-none"}`}>
-                  <div className={`col-12 justufy-content-center text-center ${poupstyle.tabcontent} ${setTab === "kyc" ? " active_tab" : ""}`}>
+                <div
+                  className={`user-data-form col-12 col-md-12 ${
+                    poupstyle.main_form
+                  } ${tab === "kyc" ? "" : "d-none"}`}
+                >
+                  <div
+                    className={`col-12 justufy-content-center text-center ${
+                      poupstyle.tabcontent
+                    } ${setTab === "kyc" ? " active_tab" : ""}`}
+                  >
                     <div className={`row ${poupstyle.cont}`}>
-                      <div className="col-12" style={{ textAlign: "center" }}>KYC</div>
+                      <div className="col-12" style={{ textAlign: "center" }}>
+                        KYC
+                      </div>
                     </div>
                   </div>
                   <div className={`row ${poupstyle.cont}`}>
-                      <div className="col-12" style={{ textAlign: "center" }}> Hello {user?.name}, as per regulatory requirements we need to verify your identity.</div>
+                    <div className="col-12" style={{ textAlign: "center" }}>
+                      {" "}
+                      Hello {user?.name}, as per regulatory requirements we need
+                      to verify your identity.
+                    </div>
                   </div>
                   <div className="p-5 flex-wrap upload-doc">
-                      {hasCompletedProfile ? (
-                        <p className="text-success">
-                          Congrats! KYC already done
-                        </p>
-                      ) : (
-                        <>
-                          <p>On board with Leegality</p>
-                          {signUrl ? (
-                            <>
-                              <br />
-                              <p>
-                                KYC initiated.{" "}
-                                <a
-                                  href={signUrl}
-                                  target="_blank"
-                                  style={{ textDecoration: "underline" }}
-                                >
-                                  Click here
-                                </a>{" "}
-                                to complete it.
-                              </p>
-                              <button
-                                onClick={checkLeegalityStatus}
-                                className="theme-btn-one mb-50"
+                    {hasCompletedProfile ? (
+                      <p className="text-success">Congrats! KYC already done</p>
+                    ) : (
+                      <>
+                        <p>On board with Leegality</p>
+                        {signUrl ? (
+                          <>
+                            <br />
+                            <p>
+                              KYC initiated.{" "}
+                              <a
+                                href={signUrl}
+                                target="_blank"
+                                style={{ textDecoration: "underline" }}
                               >
-                                Check KYC status
-                              </button>
-                            </>
-                          ) : (
+                                Click here
+                              </a>{" "}
+                              to complete it.
+                            </p>
                             <button
+                              onClick={checkLeegalityStatus}
                               className="theme-btn-one mb-50"
-                              type="submit"
-                              style={{
-                                backgroundColor: "var(--blue-dark)",
-                                color: "white",
-                                webkitAppearance: " none",
-                                opacity: " 1",
-                              }}
-                              disabled={kycLoading}
-                              onClick={leegalityKyc}
                             >
-                              {kycLoading ? "Loading..." : "Initiate KYC"}
+                              Check KYC status
                             </button>
-                          )}
-                          <p className="text-danger">{kycError}</p>
-                        </>
-                      )}
+                          </>
+                        ) : (
+                          <button
+                            className="theme-btn-one mb-50"
+                            type="submit"
+                            style={{
+                              backgroundColor: "var(--blue-dark)",
+                              color: "white",
+                              webkitAppearance: " none",
+                              opacity: " 1",
+                            }}
+                            disabled={kycLoading}
+                            onClick={leegalityKyc}
+                          >
+                            {kycLoading ? "Loading..." : "Initiate KYC"}
+                          </button>
+                        )}
+                        <p className="text-danger">{kycError}</p>
+                      </>
+                    )}
                   </div>
                 </div>
                 <form
+                  key={1}
                   onSubmit={handleSubmit(onSubmit)}
                   className={`user-data-form col-12 col-md-12 ${
                     poupstyle.main_form
@@ -348,7 +544,7 @@ const PopupKyc = (props) => {
                     </div>
                     <div className="row">
                       <div className="col-12">
-                        <div className="input-group-meta mb-25">
+                        <div className="input-group-meta">
                           <input
                             placeholder="Phone number"
                             name="phone_number"
@@ -378,9 +574,18 @@ const PopupKyc = (props) => {
                         </div>
                       </div>
                     </div>
+                    {!user.isOtpVerified && (
+                      <div className="row">
+                        <div
+                          className={`${poupstyle.verifynumber}  offset-8 col-4 `}
+                        >
+                          <a onClick={sendotp}>Verify Number</a>
+                        </div>{" "}
+                      </div>
+                    )}
                     <div className="row">
-                      <div className="col-12">
-                        <div className="input-group-meta mb-25">
+                      <div className="col-12 mt-25 mb-25">
+                        <div className="input-group-meta ">
                           <textarea
                             placeholder="Address"
                             name="address"
@@ -394,16 +599,17 @@ const PopupKyc = (props) => {
                             }`}
                             style={{
                               width: "100%",
-    height:" 100%",
-    borderRadius: "5px",
-    fontSize: "16px",
-    color: "var(--heading)",
-    border: "solid 1px #d6d6d6",
-    resize: "none",
-    padding: "20px",
-    
+                              height: " 100%",
+                              height: "5rem",
+                              borderRadius: "5px",
+                              fontSize: "16px",
+                              color: "var(--heading)",
+                              border: "solid 1px #d6d6d6",
+                              resize: "none",
+                              padding: "20px",
                             }}
                           />
+
                           {errors.phone_number && (
                             <div className="invalid-feedback">
                               {errors.phone_number?.message}
@@ -412,6 +618,7 @@ const PopupKyc = (props) => {
                         </div>
                       </div>
                     </div>
+
                     <div className="row">
                       <div className="col-12">
                         <button
@@ -432,7 +639,7 @@ const PopupKyc = (props) => {
                   </div>
                 </form>
                 <form
-                  onSubmit={handleSubmit(onSubmit)}
+                  key={2}
                   className={`user-data-form col-12 col-md-12 ${
                     poupstyle.main_form
                   } ${tab === "credentials" ? "" : "d-none"}`}
@@ -445,17 +652,20 @@ const PopupKyc = (props) => {
                       setTab === "credentials" ? " active_tab" : ""
                     }`}
                   >
-                    
                     <div className="row">
                       <div className="col-12">
                         <div className="input-group-meta mb-25">
                           <input
                             placeholder="Old Password"
                             name="oldPassword"
-                            type="text"
+                            type="password"
                             required
-                            {...register("oldPassword")}
-                            className={`${errors.oldPassword ? "is-invalid" : ""}`}
+                            onChange={(e) => {
+                              setcheckpw({ ...checkpw, op: e.target.value });
+                            }}
+                            className={``}
+                            value={checkpw?.op}
+
                             style={{
                               padding: "20px 20px",
                               marginTop: "8px",
@@ -466,11 +676,6 @@ const PopupKyc = (props) => {
                               fontSize: "0.9em",
                             }}
                           />
-                          {errors.oldPassword && (
-                            <div className="invalid-feedback">
-                              {errors.oldPassword?.message}
-                            </div>
-                          )}
                         </div>
                       </div>
                     </div>
@@ -480,10 +685,13 @@ const PopupKyc = (props) => {
                           <input
                             placeholder="New Password"
                             name="newPassword"
-                            type="email"
+                            type="password"
+                            value={checkpw?.np}
                             required
-                            {...register("newPassword")}
-                            className={`${errors.newPassword ? "is-invalid" : ""}`}
+                            onChange={(e) =>
+                              setcheckpw({ ...checkpw, np: e.target.value })
+                            }
+                            className={``}
                             style={{
                               padding: "20px 20px",
                               marginTop: "8px",
@@ -494,11 +702,6 @@ const PopupKyc = (props) => {
                               fontSize: "0.9em",
                             }}
                           />
-                          {errors.newPassword && (
-                            <div className="invalid-feedback">
-                              {errors.newPassword?.message}
-                            </div>
-                          )}
                         </div>
                       </div>
                     </div>
@@ -508,35 +711,50 @@ const PopupKyc = (props) => {
                           <input
                             placeholder="Retype New Password"
                             name="retypeNewPassword"
-                            type="text"
+                            style={
+                              matchpw
+                                ? {
+                                    padding: "20px 20px",
+                                    marginTop: "8px",
+                                    marginBottom: "15px",
+                                    border: "1px solid #ccc",
+                                    borderRadius: "4px",
+                                    boxSizing: " border-box",
+                                    fontSize: "0.9em",
+                                  }
+                                : {
+                                    padding: "20px 20px",
+                                    marginTop: "8px",
+                                    marginBottom: "15px",
+                                    border: "1px solid red",
+                                    borderRadius: "4px",
+                                    boxSizing: " border-box",
+                                    fontSize: "0.9em",
+                                  }
+                            }
+                            type="password"
+                            value={checkpw?.cp}
+
                             required
-                            {...register("retypeNewPassword")}
-                            className={`${
-                              errors.retypeNewPassword ? "is-invalid" : ""
-                            }`}
-                            style={{
-                              padding: "20px 20px",
-                              marginTop: "8px",
-                              marginBottom: "15px",
-                              border: "1px solid #ccc",
-                              borderRadius: "4px",
-                              boxSizing: " border-box",
-                              fontSize: "0.9em",
+                            onChange={(e) => {
+                              setcheckpw({ ...checkpw, cp: e.target.value });
+                              setmatchpw(checkpw.np == e.target.value);
+                              console.log(checkpw.np == e.target.value);
                             }}
                           />
-                          {errors.retypeNewPassword && (
-                            <div className="invalid-feedback">
-                              {errors.retypeNewPassword?.message}
-                            </div>
-                          )}
                         </div>
                       </div>
                     </div>
+                    {newpwerror !== null && (
+                      <div style={{ color: "red" }} className="col-12">
+                        {newpwerror}
+                      </div>
+                    )}
                     <div className="row">
                       <div className="col-12">
                         <button
                           className="theme-btn-one mt-50 mb-50"
-                          type="submit"
+                          onClick={verifycredform}
                           style={{
                             backgroundColor: "var(--blue-dark)",
                             color: "white",
