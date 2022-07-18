@@ -25,7 +25,7 @@ const ContactAddressTwo = () => {
           </div>
           <div className="title">Location</div>
           <p className="font-rubik">
-          B/208,Kailas Business Park, <br />  Vikroli(West),Mumbai-400079.
+          B/208,Kailas Business Park,<br/>Park Site,Veer Savarkar Road <br />  Vikroli(West),Mumbai-400079.
           </p>
         </div>
         {/* /.address-info */}

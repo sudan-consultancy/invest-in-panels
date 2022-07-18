@@ -238,7 +238,7 @@ const PrivacyPolicy = () => {
                 target="_blank"
                 style={{ fontWeight: "bold" }}
               >
-               Concelation Policy 
+               Cancellation & Refund Policy 
               </Link>
               &nbsp;|&nbsp;
               <Link
