@@ -17,6 +17,10 @@ const HeroBanner = (props) => {
           rooftop to generate green income, reduce carbon emission and avail tax
           benefit.
         </p>
+        <del style={{fontSize: "24px",lineHeight: "1.83em",color: "#000",margin: "25px 0 38px" }}>Rs. 30,000/</del>&nbsp; &nbsp;
+        <span style={{ opacity: "1", textDecoration: "underline" ,fontSize: "24px",lineHeight: "1.83em",color: "#000",margin: "25px 0 38px" }}>
+                Early bird 10% Discount
+              </span>
         <div
           className="d-lg-flex align-items-center justify-content-between pr-xl-5"
           data-aos="fade-right"
@@ -24,16 +28,17 @@ const HeroBanner = (props) => {
           <div className="info">
             {/* Panels available{" "} */}
             <span className="d-block">
+           
               <button
                 onClick={props.toggleModal}
                 className="d-inline theme-btn-nine"
               >
-                Buy Now
-              </button>@ Rs. 30,000/- Rs. 27,000/
+                Own Now
+              </button> &nbsp; &nbsp;@  Rs. 27,000/
               &nbsp; &nbsp;
-              <span style={{ opacity: "1", textDecoration: "underline" }}>
+              {/* <span style={{ opacity: "1", textDecoration: "underline" }}>
                 Early bird 10% Discount
-              </span>
+              </span> */}
             </span>
           </div>
           {/* <div className="price">1897</div> */}
