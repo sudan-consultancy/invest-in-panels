@@ -253,6 +253,22 @@ const AppIndex = (props) => {
               >
                 Privacy Policy 
               </Link>
+              &nbsp;|&nbsp;
+              <Link
+                to="/concelation-policy"
+                target="_blank"
+                style={{ fontWeight: "bold" }}
+              >
+               Cancellation & Refund Policy 
+              </Link>
+              &nbsp;|&nbsp;
+              <Link
+                to="/concelation-policy"
+                target="_blank"
+                style={{ fontWeight: "bold" }}
+              >
+                Shipping Policy 
+              </Link>
 <br></br>
 
 {" "}

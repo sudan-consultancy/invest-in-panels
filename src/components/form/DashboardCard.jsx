@@ -33,7 +33,7 @@ const DashboardCard = (props) => {
         <div className={`row`}>
           <div
             className="card"
-            style={{ overflow: "hidden", width: "25rem", height: "30rem" }}
+            style={{ overflow: "hidden", width: "25rem", height: "35rem" }}
           >
             <img
               style={{ height: "50%" }}
@@ -42,8 +42,13 @@ const DashboardCard = (props) => {
               src="https://images.unsplash.com/photo-1625301840055-7c1b7198cfc0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80`"
             />
             <div className="card-body">
-              <h5 className="card-title">Panels</h5>
-              <p className="card-text">Unit price: INR 27,000</p>
+              {/* <h5 className="card-title">Panels</h5> */}
+              {/* <p className="card-text">Unit price: INR 27,000</p> */}
+              <p className="card-text">Project Capacity: 25MW</p>
+              <p className="card-text">Assets Type: Solar Panel</p>
+              <p className="card-text">Life of Asset:25 Years</p>
+              <p className="card-text">Expected Earnings:3.80/Unit generated</p>
+              <p className="card-text">Your Cost: INR 27,000 /Panel</p>
               <div className="d-flex col-6 float-right card-text">
                 <button
                   onClick={() => {
