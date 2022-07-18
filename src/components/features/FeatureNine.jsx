@@ -11,16 +11,19 @@ const FeatureContent = [
     meta: "Own a solar asset",
     subTitle: `Purchase a panel`,
   },
+  
+  {
+    icon: "1",
+    meta: "Monetize your solar asset",
+    subTitle: `We rent your panel to Solar Plant for you`,
+  },
+
   {
     icon: "Accept tasks-rafiki",
-    meta: "Your asset on work",
+    meta: "Your asset at work",
     subTitle: `We monitor and manage as your panel generates power`,
   },
-  {
-    icon: "Building-cuate",
-    meta: "Monetize your solar asset",
-    subTitle: `We rent your panel to Solar Plant for you before your asset`,
-  },
+
   {
     icon: "Wallet-pana",
     meta: "Track your earnings",
