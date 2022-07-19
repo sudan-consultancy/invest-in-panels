@@ -6,3 +6,29 @@
 .item_card{
   background-color: red;
 }
+.solarcard{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.parentcard{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  padding:2rem;
+  border: 0.1rem solid rgba(86, 86, 86, 0.656);
+  border-radius: 1rem;
+}
+.infocard{
+  
+  margin: auto;
+}
+@media screen and (min-width: 700px) {
+  .parentcard {
+    height: 30rem;
+    border-radius: "1rem";
+
+  }
+}

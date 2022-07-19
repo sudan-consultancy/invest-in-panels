@@ -92,6 +92,11 @@ const HeaderLanding = (props) => {
                       </div> */}
                     </li>
                     <li className="nav-item">
+                      <a href="/livania" className="nav-link">
+                        Livania
+                      </a>
+                    </li>
+                    <li className="nav-item">
                       <a href="/about" className="nav-link">
                         About
                       </a>
@@ -102,6 +107,7 @@ const HeaderLanding = (props) => {
                         Contact Us
                       </a>
                     </li>
+
                     {user?.id && props.onDashboard && (
                       <li className="nav-item">
                         <a className="nav-link" href="/kyc">
