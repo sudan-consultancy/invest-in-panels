@@ -122,26 +122,27 @@ const LivaniaIndex = (props) => {
           </div>
           <div className="col-lg-6 order-lg-first">
             <div className="img-gallery">
-              <img
+            <video id="background-video" loop autoplay>
+                  <source src="images/media/vfes.mp4" type="video/mp4"/>
+                  <source src="images/media/vfes.mp4" type="video/ogg"/>
+                  Your browser does not support the video tag.
+              </video>
+              {/* <img
                 src="images/media/img_38.png"
                 alt="media"
                 data-aos="fade-right"
                 data-aos-duration="1200"
-              />
-              {/* <img
+              /> */}
+              <img
                 src="images/media/img_36.png"
                 alt="media"
                 className="overlay-img"
                 data-aos="fade-left"
                 data-aos-duration="1200"
                 data-aos-delay="100"
-              /> */}
+              />
 
-              <video id="background-video" loop autoplay>
-                  <source src="images/media/vfes.mp4" type="video/mp4"/>
-                  <source src="images/media/vfes.mp4" type="video/ogg"/>
-                  Your browser does not support the video tag.
-              </video>
+              
 
               {/* <video src="https://drive.google.com/file/d/1rmrlFu_Aq05wNbWR3_zOW0XGRIqxk8Dv/view" autoPlay="true" /> */}
               <img
