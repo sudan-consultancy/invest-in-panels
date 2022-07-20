@@ -122,7 +122,7 @@ const LivaniaIndex = (props) => {
           </div>
           <div className="col-lg-6 order-lg-first">
             <div className="img-gallery">
-            <video id="background-video" loop autoplay>
+            <video id="background-video" autoplay="" muted="" playsinline="" loop="">
                   <source src="images/media/vfes.mp4" type="video/mp4"/>
                   <source src="images/media/vfes.mp4" type="video/ogg"/>
                   Your browser does not support the video tag.
