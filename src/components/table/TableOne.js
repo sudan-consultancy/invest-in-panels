@@ -99,7 +99,7 @@ export const TableOne = () => {
     const yearOne = count * panelCost;
     setInit(yearOne);
     const rentPerUnit = 3.8;
-    const unitsPerPanel = 810;
+    const unitsPerPanel = 820;
     const depreciationRate = 0.4;
     const taxRate = 0.3;
 
