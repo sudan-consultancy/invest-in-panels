@@ -238,7 +238,7 @@ const HeaderLanding = (props) => {
         closeTimeoutMS={500}
       >
         <div className="box_inner ">
-          <main className="main-body box_inner modal-content clearfix" style={{overflow: "scroll"}}>
+          <main className="main-body box_inner modal-content clearfix">
             <button className="close" onClick={props.toggleModal}>
               <img src="images/icon/close.svg" alt="close" />
             </button>
@@ -263,7 +263,7 @@ const HeaderLanding = (props) => {
             </div>
             {/* /.left-side */}
 
-            <div className="right-side">
+            <div className="right-side" style={{overflow:"scroll", height:"600px"}}>
               <h2 className="form-title">{isLogin ? "Register" : "Login"}</h2>
               {isLogin ? (
                 <HeaderPopupForm toggleLogin={toggleLogin} />
