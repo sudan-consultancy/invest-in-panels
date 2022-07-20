@@ -137,7 +137,13 @@ const LivaniaIndex = (props) => {
                 data-aos-delay="100"
               /> */}
 
-              <video src="https://drive.google.com/file/d/1rmrlFu_Aq05wNbWR3_zOW0XGRIqxk8Dv/view" autoPlay="true" />
+              <video id="background-video" loop autoplay>
+                  <source src="images/media/vfes.mp4" type="video/mp4"/>
+                  <source src="images/media/vfes.mp4" type="video/ogg"/>
+                  Your browser does not support the video tag.
+              </video>
+
+              {/* <video src="https://drive.google.com/file/d/1rmrlFu_Aq05wNbWR3_zOW0XGRIqxk8Dv/view" autoPlay="true" /> */}
               <img
                 src="images/shape/49.svg"
                 alt="shape"
