@@ -11,7 +11,7 @@ const Container = {
 const DashboardCard = (props) => {
   let [count, setCount] = useState(1);
   let [popupflag, setpopup] = useState(false);
-  let [kyc, setkyc] = useState(true);
+  let [kyc, setkyc] = useState(false);
   let user = JSON.parse(Cookie.get("vf_user"));
   function popup() {
     setpopup(!popupflag);
@@ -29,7 +29,13 @@ const DashboardCard = (props) => {
   return (
     <>
       <HeaderLanding onDashboard />
+      
       <div className={`container`} style={{ Container, paddingTop: "10em" }}>
+      <div className="title-style-six mb-3">
+                  <h2>
+                  Purchase <span>Panels</span>
+                  </h2>
+                </div>
         <div className="card text-center">
           <div className="card-body row">
             <div className={`col-md-3 col-sm-12`}>
@@ -42,29 +48,32 @@ const DashboardCard = (props) => {
                 />
               </div>
             </div>
-            <div
+            <div  className={`col-md-6 col-sm-12 d-flex align-items-start flex-column`}
               style={{ margin: "auto" }}
-              className={`col-md-6 col-sm-12 d-flex align-items-start flex-column`}
+             
             >
               <h5 className="card-title mt-20 ">Panels</h5>
               <p className="card-text">Unit price: INR 27,000</p>
               <p className="card-text">Project Capacity: 25MW</p>
               <p className="card-text">Assets Type: Solar Panel</p>
               <p className="card-text">Life of Asset:25 Years</p>
-              <p className="card-text">Expected Earnings:3.80/Unit generated</p>
-              <p className="card-text">Your Cost: INR 27,000 /Panel</p>
+              <p className=" card-text ">Expected Earnings:3.80 Per Unit generated</p>
+              <p className="card-text">Your Cost:{count * 27000}</p>
               <div
                 style={{ margin: "auto" }}
                 className={`col-md-3 col-12 align-items-center align-items-md-end`}
               >
                 {" "}
-                <div
+                
+              </div>
+            </div>
+            <div
                   style={{ margin: "auto" }}
-                  className="d-flex align-items-center"
+                  className=" col-md-3 col-sm-12 d-flex align-items-center"
                 >
                   <button
                     onClick={() => {
-                      count > 0 && setCount(count - 1);
+                      count > 1 && setCount(count - 1);
                     }}
                     className="btn btn-danger border border-2 border-danger"
                   >
@@ -74,7 +83,7 @@ const DashboardCard = (props) => {
                     className="form-control"
                     type="number"
                     value={count}
-                    min="1"
+                    min={1}
                     required
                     onChange={(e) => setCount(e.target.value)}
                   />
@@ -87,9 +96,11 @@ const DashboardCard = (props) => {
                     +
                   </button>
                 </div>
-              </div>
-            </div>
-            <div className="card-footer text-muted">
+           
+          </div>
+          <div className=" card-footer  text-muted">
+            <div className="row">
+            <div className="col-md-8">
               {!kyc && (
                 <div className="d-flex   align-items-center">
                   <span className="text-danger">
@@ -107,8 +118,11 @@ const DashboardCard = (props) => {
                   </span>
                 </div>
               )}
+              </div>
+               <div onClick={popup} className={`col-md-2 d-flex offset-md-2 col-sm-2 offset-sm-8 col-smx-2 offset-smx-8` }>
+            <button  disabled={!kyc || !user?.isOtpVerified} className="theme-btn-one ">Buy</button></div>
             </div>
-          </div>
+            </div>
           <Modal
             isOpen={popupflag}
             onRequestClose={popup}
