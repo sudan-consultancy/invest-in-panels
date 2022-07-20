@@ -10,12 +10,12 @@ const Container = {
 
 const DashboardCard = (props) => {
   let [count, setCount] = useState(1);
-  let [popupflag, setpopup] = useState(false);
+  // let [popupflag, setpopup] = useState(false);
   let [kyc, setkyc] = useState(false);
   let user = JSON.parse(Cookie.get("vf_user"));
-  function popup() {
-    setpopup(!popupflag);
-  }
+  // function popup() {
+  //   setpopup(!popupflag);
+  // }
 
   useEffect(() => {
     api
@@ -29,13 +29,13 @@ const DashboardCard = (props) => {
   return (
     <>
       <HeaderLanding onDashboard />
-      
+
       <div className={`container`} style={{ Container, paddingTop: "10em" }}>
-      <div className="title-style-six mb-3">
-                  <h2>
-                  Purchase <span>Panels</span>
-                  </h2>
-                </div>
+        <div className="title-style-six mb-3">
+          <h2>
+            Purchase <span>Panels</span>
+          </h2>
+        </div>
         <div className="card text-center">
           <div className="card-body row">
             <div className={`col-md-3 col-sm-12`}>
@@ -48,82 +48,87 @@ const DashboardCard = (props) => {
                 />
               </div>
             </div>
-            <div  className={`col-md-6 col-sm-12 d-flex align-items-start flex-column`}
+            <div
+              className={`col-md-6 col-sm-12 d-flex align-items-start flex-column`}
               style={{ margin: "auto" }}
-             
             >
               <h5 className="card-title mt-20 ">Panels</h5>
               <p className="card-text">Unit price: INR 27,000</p>
               <p className="card-text">Project Capacity: 25MW</p>
               <p className="card-text">Assets Type: Solar Panel</p>
               <p className="card-text">Life of Asset:25 Years</p>
-              <p className=" card-text ">Expected Earnings:3.80 Per Unit generated</p>
+              <p className=" card-text ">
+                Expected Earnings:3.80 Per Unit generated
+              </p>
               <p className="card-text">Your Cost:{count * 27000}</p>
               <div
                 style={{ margin: "auto" }}
                 className={`col-md-3 col-12 align-items-center align-items-md-end`}
               >
                 {" "}
-                
               </div>
             </div>
             <div
-                  style={{ margin: "auto" }}
-                  className=" col-md-3 col-sm-12 d-flex align-items-center"
-                >
-                  <button
-                    onClick={() => {
-                      count > 1 && setCount(count - 1);
-                    }}
-                    className="btn btn-danger border border-2 border-danger"
-                  >
-                    &minus;
-                  </button>
-                  <input
-                    className="form-control"
-                    type="number"
-                    value={count}
-                    min={1}
-                    required
-                    onChange={(e) => setCount(e.target.value)}
-                  />
-                  <button
-                    onClick={() => {
-                      setCount(count + 1);
-                    }}
-                    className="btn btn-success border border-2 border-success"
-                  >
-                    +
-                  </button>
-                </div>
-           
+              style={{ margin: "auto" }}
+              className=" col-md-3 col-sm-12 d-flex align-items-center"
+            >
+              <button
+                onClick={() => {
+                  count > 1 && setCount(count - 1);
+                }}
+                className="btn btn-danger border border-2 border-danger"
+              >
+                &minus;
+              </button>
+              <input
+                className="form-control"
+                type="number"
+                value={count}
+                min={1}
+                required
+                onChange={(e) => setCount(e.target.value)}
+              />
+              <button
+                onClick={() => {
+                  setCount(count + 1);
+                }}
+                className="btn btn-success border border-2 border-success"
+              >
+                +
+              </button>
+            </div>
           </div>
           <div className=" card-footer  text-muted">
             <div className="row">
-            <div className="col-md-8">
-              {!kyc && (
-                <div className="d-flex   align-items-center">
-                  <span className="text-danger">
-                    Please complete your KYC first.{" "}
-                    <a href="/kyc" className="text-info">
-                      Complete here
-                    </a>
-                  </span>
-                </div>
-              )}
-              {!user?.isOtpVerified && (
-                <div className="d-flex align-items-center">
-                  <span className="text-danger">
-                    Verify your number first.{" "}
-                  </span>
-                </div>
-              )}
+              <div className="col-md-8">
+                {!kyc && (
+                  <div className="d-flex   align-items-center">
+                    <span className="text-danger">
+                      Please complete your KYC first.{" "}
+                      <a href="/kyc" className="text-info">
+                        Complete here
+                      </a>
+                    </span>
+                  </div>
+                )}
+                {!user?.isOtpVerified && (
+                  <div className="d-flex align-items-center">
+                    <span className="text-danger">
+                      Verify your number first.{" "}
+                    </span>
+                  </div>
+                )}
               </div>
-               <div onClick={popup} className={`col-md-2 d-flex offset-md-2 col-sm-2 offset-sm-8 col-smx-2 offset-smx-8` }>
-            <button  disabled={!kyc || !user?.isOtpVerified} className="theme-btn-one ">Buy</button></div>
+              <a
+                type="button"
+                href={`${process.env.REACT_APP_VEFES_IN_URL}/dashboard/${user?.token}`}
+                className="theme-btn-one ml-auto"
+              >
+                Buy
+              </a>
             </div>
-            </div>
-          <Modal
+          </div>
+          {/* <Modal
             isOpen={popupflag}
             onRequestClose={popup}
             contentLabel="Bank details"
@@ -163,7 +168,7 @@ const DashboardCard = (props) => {
                 </tbody>
               </table>
             </main>
-          </Modal>
+          </Modal> */}
         </div>
       </div>
     </>
