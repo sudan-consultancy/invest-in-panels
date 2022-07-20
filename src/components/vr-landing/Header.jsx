@@ -238,7 +238,7 @@ const HeaderLanding = (props) => {
         closeTimeoutMS={500}
       >
         <div className="box_inner ">
-          <main className="main-body box_inner modal-content clearfix">
+          <main className="main-body box_inner modal-content clearfix" style={{overflow: "scroll"}}>
             <button className="close" onClick={props.toggleModal}>
               <img src="images/icon/close.svg" alt="close" />
             </button>
