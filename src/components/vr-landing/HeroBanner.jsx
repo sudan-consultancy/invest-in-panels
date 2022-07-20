@@ -17,7 +17,8 @@ const HeroBanner = (props) => {
           rooftop to generate green income, reduce carbon emission and avail tax
           benefit.
         </p>
-        <del style={{fontSize: "24px",lineHeight: "1.83em",color: "#000",margin: "25px 0 38px" }}>&#x20b9;. 30,000/-</del>&nbsp; &nbsp;
+        <del style={{fontSize: "24px",lineHeight: "1.83em",color: "#000",margin: "25px 0 38px" }}>&#x20b9;. 30,000/-</del>
+        &nbsp; &nbsp;
         <span style={{ opacity: "1", textDecoration: "underline" ,fontSize: "24px",lineHeight: "1.83em",color: "#000",margin: "25px 0 38px" }}>
                 Early bird 10% Discount
               </span>

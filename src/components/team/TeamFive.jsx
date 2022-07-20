@@ -5,37 +5,37 @@ const TeamContent = [
   {
     designation: "Founder and CEO",
     name: "Kaustubh Vagal",
-    img: "kaustubh",
+    img: "Kaustubh",
     animationDelay: "200",
   },
   {
     designation: "Co-Founder and COO",
     name: "Rajesh Vagal",
-    img: "rajesh",
+    img: "Rajesh",
     animationDelay: "250",
   },
   {
     designation: "Finance",
     name: "Pravin Reddy",
-    img: "praveen",
+    img: "Pravin",
     animationDelay: "300",
   },
   {
     designation: "VP, Technology",
     name: "Prabjyot Sudan",
-    img: "prabjyot",
+    img: "PabG",
     animationDelay: "50",
   },
   {
     designation: "Operations",
     name: "Advaitaa Shinde",
-    img: "advaitaa",
+    img: "Advaitaa",
     animationDelay: "100",
   },
    {
     designation: "Marketing",
     name: "Ankita Padnekar",
-    img: "ankita",
+    img: "Ankita",
     animationDelay: "100",
   }
 ];
