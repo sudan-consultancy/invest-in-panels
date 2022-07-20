@@ -128,14 +128,16 @@ const LivaniaIndex = (props) => {
                 data-aos="fade-right"
                 data-aos-duration="1200"
               />
-              <img
+              {/* <img
                 src="images/media/img_36.png"
                 alt="media"
                 className="overlay-img"
                 data-aos="fade-left"
                 data-aos-duration="1200"
                 data-aos-delay="100"
-              />
+              /> */}
+
+              <video src="https://drive.google.com/file/d/1rmrlFu_Aq05wNbWR3_zOW0XGRIqxk8Dv/view" autoPlay="true" />
               <img
                 src="images/shape/49.svg"
                 alt="shape"
