@@ -9237,7 +9237,8 @@ body .theme-btn-fourteen:hover {
   font-weight: 500;
   color: #000;
   /* change done in padding*/
-  padding-bottom: 1px;
+  // padding-bottom: 1px;
+  padding-bottom: 30px;
 }
 .dark-style.modal-contact-popup-one .main-body .right-side .form-title {
   color: #fff;
@@ -9248,7 +9249,7 @@ body .theme-btn-fourteen:hover {
 .modal-contact-popup-one .main-body .input-group-meta label {
   font-size: 15px;
   color: rgba(0, 0, 0, 0.6);
-  padding-bottom: 2px;
+  padding-bottom: 8px;
   /*8 to 2*/
   font-weight: normal;
   display: block;
@@ -9259,7 +9260,7 @@ body .theme-btn-fourteen:hover {
 .modal-contact-popup-one .main-body .input-group-meta input {
   width: 100%;
   /*change 60 to 50 */
-  height: 50px;
+  height: 60px;
   border: 2px solid #000;
   border-radius: 6px;
   padding: 0 20px;
