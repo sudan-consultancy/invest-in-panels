@@ -18,10 +18,15 @@ const HeaderLanding = (props) => {
   const history = useHistory();
 
   const [isLogin, setIsLogin] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   const toggleLogin = () => {
     setIsLogin(!isLogin);
   };
+
+  const toggleModalLogin = () => {
+    setShowModal(!showModal);
+  }
 
   const changeBackground = () => {
     if (window.scrollY >= 90) {
@@ -153,7 +158,7 @@ const HeaderLanding = (props) => {
                 <img src="images/icon/user.svg" alt="icon" />
               </button>
             ) : (
-              <button className="demo-button" onClick={props.toggleModal}>
+              <button className="demo-button" onClick={toggleModalLogin}>
                 <span>Login/Register</span>
                 <img src="images/icon/user.svg" alt="icon" />
               </button>
@@ -230,8 +235,8 @@ const HeaderLanding = (props) => {
       {/* Mobile Menu End */}
 
       <Modal
-        isOpen={props.showModal}
-        onRequestClose={props.toggleModal}
+        isOpen={showModal}
+        onRequestClose={toggleModalLogin}
         contentLabel="My dialog"
         className="custom-modal  modal-contact-popup-one"
         overlayClassName="custom-overlay"
@@ -239,7 +244,7 @@ const HeaderLanding = (props) => {
       >
         <div className="box_inner ">
           <main className="main-body box_inner modal-content clearfix">
-            <button className="close" onClick={props.toggleModal}>
+            <button className="close" onClick={toggleModalLogin}>
               <img src="images/icon/close.svg" alt="close" />
             </button>
             {/* End close icon */}
