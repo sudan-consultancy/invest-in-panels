@@ -1,7 +1,6 @@
 import React from "react";
 import FooterFive from "../components/footer/FooterFive";
 import HeaderLanding from "../components/vr-landing/Header";
-import backgroundVideo from "./";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -130,9 +129,12 @@ const LivaniaIndex = (props) => {
             <div className="img-gallery">
               <video
                 id="background-video"
-                autoplay=""
+                autoPlay=""
                 muted=""
                 loop=""
+                alt="media"
+                data-aos="fade-right"
+                data-aos-duration="1200"
                 style={{ textAlign: "center" }}
               >
                 <source
@@ -185,7 +187,7 @@ const LivaniaIndex = (props) => {
             <VerticalTimelineElement
               className="vertical-timeline-element--work"
               date="Sep 2020"
-              iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
+              iconStyle={{ background: "var(--blue-dark)", color: "#fff" }}
               // icon={<WorkIcon />}
             >
               <h3 className="vertical-timeline-element-title">
@@ -202,7 +204,7 @@ const LivaniaIndex = (props) => {
             <VerticalTimelineElement
               className="vertical-timeline-element--work"
               date="Jan 2021"
-              iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
+              iconStyle={{ background: "var(--blue-dark)", color: "#fff" }}
               // icon={<WorkIcon />}
             >
               <h3 className="vertical-timeline-element-title">
@@ -216,7 +218,7 @@ const LivaniaIndex = (props) => {
             <VerticalTimelineElement
               className="vertical-timeline-element--work"
               date="May 2021"
-              iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
+              iconStyle={{ background: "var(--blue-dark)", color: "#fff" }}
               // icon={<WorkIcon />}
             >
               <h3 className="vertical-timeline-element-title">
@@ -230,7 +232,7 @@ const LivaniaIndex = (props) => {
             <VerticalTimelineElement
               className="vertical-timeline-element--education"
               date="Dec 2021"
-              iconStyle={{ background: "rgb(233, 30, 99)", color: "#fff" }}
+              iconStyle={{ background: "var(--blue-dark)", color: "#fff" }}
               // icon={<SchoolIcon />}
             >
               <h3 className="vertical-timeline-element-title">
@@ -244,7 +246,7 @@ const LivaniaIndex = (props) => {
             <VerticalTimelineElement
               className="vertical-timeline-element--education"
               date="Jun 2022"
-              iconStyle={{ background: "rgb(233, 30, 99)", color: "#fff" }}
+              iconStyle={{ background: "var(--blue-dark)", color: "#fff" }}
               // icon={<SchoolIcon />}
             >
               <h3 className="vertical-timeline-element-title">
@@ -258,7 +260,7 @@ const LivaniaIndex = (props) => {
             <VerticalTimelineElement
               className="vertical-timeline-element--education"
               date="Aug 2022"
-              iconStyle={{ background: "rgb(233, 30, 99)", color: "#fff" }}
+              iconStyle={{ background: "var(--blue-dark)", color: "#fff" }}
               // icon={<SchoolIcon />}
             >
               <h3 className="vertical-timeline-element-title">
@@ -272,7 +274,7 @@ const LivaniaIndex = (props) => {
             <VerticalTimelineElement
               className="vertical-timeline-element--education"
               date="Sep 2022"
-              iconStyle={{ background: "rgb(233, 30, 99)", color: "#fff" }}
+              iconStyle={{ background: "var(--blue-dark)", color: "#fff" }}
               // icon={<SchoolIcon />}
             >
               <h3 className="vertical-timeline-element-title">
@@ -326,7 +328,7 @@ const LivaniaIndex = (props) => {
             target="_blank"
             style={{ fontWeight: "bold" }}
           >
-            Cancellation & Refund Policy
+            Cancellation &amp; Refund Policy
           </Link>
           &nbsp;|&nbsp;
           <Link
@@ -338,11 +340,10 @@ const LivaniaIndex = (props) => {
           </Link>
           <br></br> Copyright @{new Date().getFullYear()}{" "}
           <a href="#" target="_blank" rel="noreferrer">
-            Vefes AI.
+            Vefes Engineering Pvt. Ltd.
           </a>{" "}
-          &nbsp;|&nbsp; CIN No. :U72200MH2021PTC362001
-          {/* &nbsp;|&nbsp; GST
-          No.:27AAHCV6353M1ZP */}
+          &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST
+          No.:27AAHCV6353M1ZP
           {/* <a href="#" target="_blank" rel="noreferrer">
               Vefes Engineering Pvt. Ltd. &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST No.:27AAHCV6353M1ZP
           </a>{" "} */}
