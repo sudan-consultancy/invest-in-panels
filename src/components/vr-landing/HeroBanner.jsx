@@ -1,6 +1,6 @@
 import React from "react";
 
-const HeroBanner = (props) => {
+const HeroBanner = () => {
   return (
     <div className="row">
       <div className="col-lg-6">
@@ -31,7 +31,6 @@ const HeroBanner = (props) => {
             <span className="d-block">
            
               <button
-                onClick={props.toggleModal}
                 className="d-inline theme-btn-nine"
               >
                 Own Now

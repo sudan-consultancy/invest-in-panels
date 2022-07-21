@@ -13,15 +13,9 @@ import FancyFeatureTewentySeven from "../components/features/FancyFeatureTewenty
 import { TableOne, TableTwo } from "../components/table/TableOne";
 
 const AppIndex = (props) => {
-  const [showModal, setShowModal] = useState(false);
-
-  function toggleLoginModal() {
-    setShowModal(!showModal);
-  }
-
   return (
     <div className="main-page-wrapper p0 font-gordita">
-      <HeaderLanding toggleModal={toggleLoginModal} showModal={showModal} />
+      <HeaderLanding />
       {/* End .Header */}
 
       {/* <!-- 
@@ -31,7 +25,7 @@ const AppIndex = (props) => {
 			--> */}
       <div className="hero-banner-fourteen lg-container" id="home">
         <div className="container">
-          <HeroBanner toggleModal={toggleLoginModal} />
+          <HeroBanner />
           <div className="screen-holder">
             <img src="images/banner.png" alt="" className="img-meta" />
             {/* <img
@@ -88,7 +82,7 @@ const AppIndex = (props) => {
               >
                 <div className="title-style-six">
                   <h2>
-                  Why <span>Own</span>?
+                    Why <span>Own</span>?
                   </h2>
                 </div>
                 {/* /.title-style-six */}
@@ -238,50 +232,47 @@ const AppIndex = (props) => {
             Vefes
           </a>{" "}
           AI.  */}
-          &nbsp;&nbsp;<Link
-                to="/terms-conditions"
-                target="_blank"
-                style={{ fontWeight: "bold" }}
-              >
-                Terms &amp; Conditions
-              </Link>
-              &nbsp;|&nbsp;
-              <Link
-                to="/privacy-policy"
-                target="_blank"
-                style={{ fontWeight: "bold" }}
-              >
-                Privacy Policy 
-              </Link>
-              &nbsp;|&nbsp;
-              <Link
-                to="/concelation-policy"
-                target="_blank"
-                style={{ fontWeight: "bold" }}
-              >
-               Cancellation & Refund Policy 
-              </Link>
-              &nbsp;|&nbsp;
-              <Link
-                to="/concelation-policy"
-                target="_blank"
-                style={{ fontWeight: "bold" }}
-              >
-                Shipping Policy 
-              </Link>
-<br></br>
-
-{" "}
-          Copyright @{new Date().getFullYear()}{" "}
+          &nbsp;&nbsp;
+          <Link
+            to="/terms-conditions"
+            target="_blank"
+            style={{ fontWeight: "bold" }}
+          >
+            Terms &amp; Conditions
+          </Link>
+          &nbsp;|&nbsp;
+          <Link
+            to="/privacy-policy"
+            target="_blank"
+            style={{ fontWeight: "bold" }}
+          >
+            Privacy Policy
+          </Link>
+          &nbsp;|&nbsp;
+          <Link
+            to="/concelation-policy"
+            target="_blank"
+            style={{ fontWeight: "bold" }}
+          >
+            Cancellation & Refund Policy
+          </Link>
+          &nbsp;|&nbsp;
+          <Link
+            to="/concelation-policy"
+            target="_blank"
+            style={{ fontWeight: "bold" }}
+          >
+            Shipping Policy
+          </Link>
+          <br></br> Copyright @{new Date().getFullYear()}{" "}
           <a href="#" target="_blank" rel="noreferrer">
-          Vefes Engineering Pvt. Ltd.
+            Vefes Engineering Pvt. Ltd.
           </a>{" "}
-          &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST No.:27AAHCV6353M1ZP
-          
-              {/* <a href="#" target="_blank" rel="noreferrer">
+          &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST
+          No.:27AAHCV6353M1ZP
+          {/* <a href="#" target="_blank" rel="noreferrer">
               Vefes Engineering Pvt. Ltd. &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST No.:27AAHCV6353M1ZP
           </a>{" "} */}
-         
         </p>
         {/* <p className="copyright">
           {" "}
