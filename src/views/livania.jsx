@@ -2,6 +2,11 @@ import React from "react";
 import FooterFive from "../components/footer/FooterFive";
 import HeaderLanding from "../components/vr-landing/Header";
 import backgroundVideo from "./"
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from "react-vertical-timeline-component";
+import "react-vertical-timeline-component/style.min.css";
 
 import { Link } from "react-router-dom";
 
@@ -160,12 +165,117 @@ const LivaniaIndex = (props) => {
             {/* /.img-gallery */}
           </div>
         </div>
+        <div className="mt-200">
+          <div className="col-lg-10 m-auto title-style-two">
+            <h2 className="text-center mb-100">Livania Milestones</h2>
+          </div>
+          <VerticalTimeline>
+          
+             
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              date="Sep 2020"
+              iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
+              // icon={<WorkIcon />}
+            >
+              <h3 className="vertical-timeline-element-title">Secured approvals for Solar Park & Grid Connectivity</h3>
+              {/* <h4 className="vertical-timeline-element-subtitle">
+                San Francisco, CA
+              </h4>
+              <p>
+                Creative Direction, User Experience, Visual Design, SEO, Online
+                Marketing
+              </p> */}
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              date="Jan 2021"
+              iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
+              // icon={<WorkIcon />}
+            >
+              <h3 className="vertical-timeline-element-title">Land Development for Solar Park</h3>
+              {/* <h4 className="vertical-timeline-element-subtitle">
+                Los Angeles, CA
+              </h4>
+              <p>User Experience, Visual Design</p> */}
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              date="May 2021"
+              iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
+              // icon={<WorkIcon />}
+            >
+              <h3 className="vertical-timeline-element-title">Erection of single circuit line</h3>
+              {/* <h4 className="vertical-timeline-element-subtitle">
+                San Francisco, CA
+              </h4>
+              <p>User Experience, Visual Design</p> */}
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--education"
+              date="Dec 2021"
+              iconStyle={{ background: "rgb(233, 30, 99)", color: "#fff" }}
+              // icon={<SchoolIcon />}
+            >
+              <h3 className="vertical-timeline-element-title">
+              Ancilliary infra development started on site
+              </h3>
+              {/* <h4 className="vertical-timeline-element-subtitle">
+                Online Course
+              </h4>
+              <p>Strategy, Social Media</p> */}
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--education"
+              date="Jun 2022"
+              iconStyle={{ background: "rgb(233, 30, 99)", color: "#fff" }}
+              // icon={<SchoolIcon />}
+            >
+              <h3 className="vertical-timeline-element-title">
+              Procurement of Solar Panels
+              </h3>
+              {/* <h4 className="vertical-timeline-element-subtitle">
+                Certification
+              </h4>
+              <p>Creative Direction, User Experience, Visual Design</p> */}
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--education"
+              date="Aug 2022"
+              iconStyle={{ background: "rgb(233, 30, 99)", color: "#fff" }}
+              // icon={<SchoolIcon />}
+            >
+              <h3 className="vertical-timeline-element-title">
+              2000 panels to be ready for production
+              </h3>
+              {/* <h4 className="vertical-timeline-element-subtitle">
+                Bachelor Degree
+              </h4>
+              <p>Creative Direction, Visual Design</p> */}
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--education"
+              date="Sep 2022"
+              iconStyle={{ background: "rgb(233, 30, 99)", color: "#fff" }}
+              // icon={<SchoolIcon />}
+            >
+              <h3 className="vertical-timeline-element-title">
+              2000 more panels to be ready
+              </h3>
+              {/* <h4 className="vertical-timeline-element-subtitle">
+                Bachelor Degree
+              </h4>
+              <p>Creative Direction, Visual Design</p> */}
+            </VerticalTimelineElement>
+            
+          </VerticalTimeline>
+        </div>
       </div>
-      
+
       {/* =====================================================
             Footer Style Seven
         ===================================================== */}
-        <footer className="theme-footer-five mt-130 md-mt-100">
+      <footer className="theme-footer-five mt-130 md-mt-100">
         <div className="inner-container">
           <div className="container">
             <FooterFive />
@@ -179,50 +289,47 @@ const LivaniaIndex = (props) => {
             Vefes
           </a>{" "}
           AI.  */}
-          &nbsp;&nbsp;<Link
-                to="/terms-conditions"
-                target="_blank"
-                style={{ fontWeight: "bold" }}
-              >
-                Terms &amp; Conditions
-              </Link>
-              &nbsp;|&nbsp;
-              <Link
-                to="/privacy-policy"
-                target="_blank"
-                style={{ fontWeight: "bold" }}
-              >
-                Privacy Policy 
-              </Link>
-              &nbsp;|&nbsp;
-              <Link
-                to="/concelation-policy"
-                target="_blank"
-                style={{ fontWeight: "bold" }}
-              >
-               Cancellation & Refund Policy 
-              </Link>
-              &nbsp;|&nbsp;
-              <Link
-                to="/concelation-policy"
-                target="_blank"
-                style={{ fontWeight: "bold" }}
-              >
-                Shipping Policy 
-              </Link>
-<br></br>
-
-{" "}
-          Copyright @{new Date().getFullYear()}{" "}
+          &nbsp;&nbsp;
+          <Link
+            to="/terms-conditions"
+            target="_blank"
+            style={{ fontWeight: "bold" }}
+          >
+            Terms &amp; Conditions
+          </Link>
+          &nbsp;|&nbsp;
+          <Link
+            to="/privacy-policy"
+            target="_blank"
+            style={{ fontWeight: "bold" }}
+          >
+            Privacy Policy
+          </Link>
+          &nbsp;|&nbsp;
+          <Link
+            to="/concelation-policy"
+            target="_blank"
+            style={{ fontWeight: "bold" }}
+          >
+            Cancellation & Refund Policy
+          </Link>
+          &nbsp;|&nbsp;
+          <Link
+            to="/concelation-policy"
+            target="_blank"
+            style={{ fontWeight: "bold" }}
+          >
+            Shipping Policy
+          </Link>
+          <br></br> Copyright @{new Date().getFullYear()}{" "}
           <a href="#" target="_blank" rel="noreferrer">
-          Vefes Engineering Pvt. Ltd.
+            Vefes Engineering Pvt. Ltd.
           </a>{" "}
-          &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST No.:27AAHCV6353M1ZP
-          
-              {/* <a href="#" target="_blank" rel="noreferrer">
+          &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST
+          No.:27AAHCV6353M1ZP
+          {/* <a href="#" target="_blank" rel="noreferrer">
               Vefes Engineering Pvt. Ltd. &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST No.:27AAHCV6353M1ZP
           </a>{" "} */}
-         
         </p>
         {/* <p className="copyright">
           {" "}
