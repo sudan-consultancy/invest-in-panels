@@ -43,7 +43,7 @@ const ContactAddressTwo = () => {
             9987413040
           </p> */}
           <p className="font-rubik">
-            support@vefes.in <br />
+            support@vefes.ai <br />
             9987413040
           </p>
         </div>{" "}
