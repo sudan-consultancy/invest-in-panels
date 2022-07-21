@@ -6,6 +6,7 @@ import AboutTabs from "../components/block-slider/AboutTabs";
 import CounterThree from "../components/counter/CounterThree";
 import TeamFive from "../components/team/TeamFive";
 import { Link } from "react-router-dom";
+import TeamThree from "../components/team/TeamThree";
 
 
 const AboutIndex = (props) => {
@@ -103,7 +104,8 @@ const AboutIndex = (props) => {
 
           <div className="team-wrapper">
             <div className="row">
-              <TeamFive />
+              {/* <TeamFive /> */}
+              <TeamThree/>
             </div>
             <img
               src="images/shape/126.svg"
