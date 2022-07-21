@@ -70,8 +70,8 @@ const TeamFive = () => {
             {/* <h6 className="name">{item.name}</h6>
             <div className="position">{item.designation}</div> */}
           </Link>
-          <h6 className="name">{item.name}</h6>
-            <div className="position">{item.designation}</div>
+          <h6 className="name" style={{fontSize:"24px",textAlign:"center"}}>{item.name}</h6>
+            <div className="position" style={{fontSize:"16px",textAlign:"center",color: "rgba(42, 42, 42, 0.54)"}}>{item.designation}</div>
         </div>
       ))}
     </>
