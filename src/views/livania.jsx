@@ -123,7 +123,7 @@ const LivaniaIndex = (props) => {
           </div>
           <div className="col-lg-6 order-lg-first">
             <div className="img-gallery">
-              <video id="background-video" autoplay="" muted=""  loop="" alt="media" data-aos="fade-right" data-aos-duration="1200" style={{textAlign:"center"}}>
+              <video id="background-video" autoplay="" muted=""  loop=""  style={{textAlign:"center"}}>
                   <source src="images/media/vfes.mp4" type="video/mp4" autostart="true"/>
                   <source src="images/media/vfes.mp4" type="video/ogg" autostart="true"/>
                   Your browser does not support the video tag.
@@ -179,50 +179,48 @@ const LivaniaIndex = (props) => {
             Vefes
           </a>{" "}
           AI.  */}
-          &nbsp;&nbsp;<Link
-                to="/terms-conditions"
-                target="_blank"
-                style={{ fontWeight: "bold" }}
-              >
-                Terms &amp; Conditions
-              </Link>
-              &nbsp;|&nbsp;
-              <Link
-                to="/privacy-policy"
-                target="_blank"
-                style={{ fontWeight: "bold" }}
-              >
-                Privacy Policy 
-              </Link>
-              &nbsp;|&nbsp;
-              <Link
-                to="/concelation-policy"
-                target="_blank"
-                style={{ fontWeight: "bold" }}
-              >
-               Cancellation & Refund Policy 
-              </Link>
-              &nbsp;|&nbsp;
-              <Link
-                to="/concelation-policy"
-                target="_blank"
-                style={{ fontWeight: "bold" }}
-              >
-                Shipping Policy 
-              </Link>
-<br></br>
-
-{" "}
-          Copyright @{new Date().getFullYear()}{" "}
+          &nbsp;&nbsp;
+          <Link
+            to="/terms-conditions"
+            target="_blank"
+            style={{ fontWeight: "bold" }}
+          >
+            Terms &amp; Conditions
+          </Link>
+          &nbsp;|&nbsp;
+          <Link
+            to="/privacy-policy"
+            target="_blank"
+            style={{ fontWeight: "bold" }}
+          >
+            Privacy Policy
+          </Link>
+          &nbsp;|&nbsp;
+          <Link
+            to="/concelation-policy"
+            target="_blank"
+            style={{ fontWeight: "bold" }}
+          >
+            Cancellation & Refund Policy
+          </Link>
+          &nbsp;|&nbsp;
+          <Link
+            to="/concelation-policy"
+            target="_blank"
+            style={{ fontWeight: "bold" }}
+          >
+            Shipping Policy
+          </Link>
+          <br></br> Copyright @{new Date().getFullYear()}{" "}
           <a href="#" target="_blank" rel="noreferrer">
-          Vefes Engineering Pvt. Ltd.
+            Vefes AI.
           </a>{" "}
-          &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST No.:27AAHCV6353M1ZP
-          
-              {/* <a href="#" target="_blank" rel="noreferrer">
+          &nbsp;|&nbsp; CIN No. :U72200MH2021PTC362001 
+          {/* &nbsp;|&nbsp; GST
+          No.:27AAHCV6353M1ZP */}
+          {/* <a href="#" target="_blank" rel="noreferrer">
               Vefes Engineering Pvt. Ltd. &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST No.:27AAHCV6353M1ZP
           </a>{" "} */}
-         
         </p>
         {/* <p className="copyright">
           {" "}

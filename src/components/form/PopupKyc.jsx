@@ -779,8 +779,7 @@ const PopupKyc = (props) => {
       <footer className="theme-footer-five mt-130 md-mt-100">
         <div className="inner-container">
           <div className="container">
-          <FooterFive/>
-            {/* <FooterFive /> */}
+            <FooterFive />
           </div>
         </div>
         {/* /.inner-container */}
@@ -825,10 +824,11 @@ const PopupKyc = (props) => {
           </Link>
           <br></br> Copyright @{new Date().getFullYear()}{" "}
           <a href="#" target="_blank" rel="noreferrer">
-            Vefes Engineering Pvt. Ltd.
+            Vefes AI.
           </a>{" "}
-          &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST
-          No.:27AAHCV6353M1ZP
+          &nbsp;|&nbsp; CIN No. :U72200MH2021PTC362001 
+          {/* &nbsp;|&nbsp; GST
+          No.:27AAHCV6353M1ZP */}
           {/* <a href="#" target="_blank" rel="noreferrer">
               Vefes Engineering Pvt. Ltd. &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST No.:27AAHCV6353M1ZP
           </a>{" "} */}
