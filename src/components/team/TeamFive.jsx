@@ -56,7 +56,7 @@ const TeamFive = () => {
           <Link to="/team-details-v1" className="team-member" style={{
     borderRadius: '50%',
     height: '250px',
-    margin: '70px auto',
+    margin: '35px auto',
     width: '250px',
     textAlign: 'center',
     /* background: #fff; */
