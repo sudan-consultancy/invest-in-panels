@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import poupstyle from "./poup.module.css";
 import "./dash.css";
 import Cookie from "js-cookie";
+import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { api } from "../../api";
 import HeaderLanding from "../vr-landing/Header";
@@ -12,6 +13,7 @@ import { Redirect } from "react-router-dom";
 import axios from "axios";
 import Modal from "react-modal";
 import stylepop from "./otpopup.module.css";
+import FooterFive from "../footer/FooterFive";
 
 const PopupKyc = (props) => {
   // for password show hide
@@ -774,6 +776,72 @@ const PopupKyc = (props) => {
           </div>
         </div>
       </div>
+      <footer className="theme-footer-five mt-130 md-mt-100">
+        <div className="inner-container">
+          <div className="container">
+          <FooterFive/>
+            {/* <FooterFive /> */}
+          </div>
+        </div>
+        {/* /.inner-container */}
+        <p className="copyright">
+          {/* {" "}
+          Copyright @{new Date().getFullYear()}{" "}
+          <a href="#" target="_blank" rel="noreferrer">
+            Vefes
+          </a>{" "}
+          AI.  */}
+          &nbsp;&nbsp;
+          <Link
+            to="/terms-conditions"
+            target="_blank"
+            style={{ fontWeight: "bold" }}
+          >
+            Terms &amp; Conditions
+          </Link>
+          &nbsp;|&nbsp;
+          <Link
+            to="/privacy-policy"
+            target="_blank"
+            style={{ fontWeight: "bold" }}
+          >
+            Privacy Policy
+          </Link>
+          &nbsp;|&nbsp;
+          <Link
+            to="/concelation-policy"
+            target="_blank"
+            style={{ fontWeight: "bold" }}
+          >
+            Cancellation & Refund Policy
+          </Link>
+          &nbsp;|&nbsp;
+          <Link
+            to="/concelation-policy"
+            target="_blank"
+            style={{ fontWeight: "bold" }}
+          >
+            Shipping Policy
+          </Link>
+          <br></br> Copyright @{new Date().getFullYear()}{" "}
+          <a href="#" target="_blank" rel="noreferrer">
+            Vefes Engineering Pvt. Ltd.
+          </a>{" "}
+          &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST
+          No.:27AAHCV6353M1ZP
+          {/* <a href="#" target="_blank" rel="noreferrer">
+              Vefes Engineering Pvt. Ltd. &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST No.:27AAHCV6353M1ZP
+          </a>{" "} */}
+        </p>
+        {/* <p className="copyright">
+          {" "}
+          
+          <a href="#" target="_blank" rel="noreferrer">
+            Vefes Engineering
+          </a>{" "}
+          Pvt. Ltd.
+        </p> */}
+      </footer>
     </>
   );
 };

@@ -17,7 +17,7 @@ const HeroBanner = () => {
           rooftop to generate green income, reduce carbon emission and avail tax
           benefit.
         </p>
-        <del style={{fontSize: "24px",lineHeight: "1.83em",color: "#000",margin: "25px 0 38px" }}>&#x20b9;. 30,000/-</del>
+        <del style={{fontSize: "24px",lineHeight: "1.83em",color: "#000",margin: "25px 0 38px" }}>&#x20b9; 30,000/-</del>
         &nbsp; &nbsp;
         <span style={{ opacity: "1", textDecoration: "underline" ,fontSize: "24px",lineHeight: "1.83em",color: "#000",margin: "25px 0 38px" }}>
                 Early bird 10% Discount
@@ -34,7 +34,7 @@ const HeroBanner = () => {
                 className="d-inline theme-btn-nine"
               >
                 Own Now
-              </button> &nbsp; &nbsp;@  &#x20b9;. 27,000/-
+              </button> &nbsp; &nbsp;@  &#x20b9; 27,000/-
               &nbsp; &nbsp;
               {/* <span style={{ opacity: "1", textDecoration: "underline" }}>
                 Early bird 10% Discount

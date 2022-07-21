@@ -26,16 +26,17 @@ const TeamContent = [
     img: "prabjyot",
     animationDelay: "50",
   },
+  
+   {
+    designation: "Marketing",
+    name: "Ankita Pednekar",
+    img: "ankita",
+    animationDelay: "100",
+  },
   {
     designation: "Operations",
     name: "Advaitaa Shinde",
     img: "advaitaa",
-    animationDelay: "100",
-  },
-   {
-    designation: "Marketing",
-    name: "Ankita Padnekar",
-    img: "ankita",
     animationDelay: "100",
   }
 ];
