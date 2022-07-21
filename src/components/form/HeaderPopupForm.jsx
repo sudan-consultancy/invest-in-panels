@@ -9,6 +9,7 @@ import Modal from "react-modal";
 import stylepop from "./otpopup.module.css";
 import Cookie from "js-cookie";
 import { useHistory } from "react-router-dom";
+import { AnchorLink } from "../vr-landing/Header";
 
 const HeaderPopupForm = (props) => {
   const history = useHistory();
@@ -307,7 +308,7 @@ const HeaderPopupForm = (props) => {
           <div className="col-12">
             <p>
               Already have an Account?&nbsp;
-              <a onClick={props.toggleLogin}>Login</a>
+              <a onClick={props.toggleLogin} style={AnchorLink}>Login</a>
             </p>
           </div>
 

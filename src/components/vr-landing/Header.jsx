@@ -9,6 +9,11 @@ import Cookie from "js-cookie";
 const logo = "images/logo/vefesblacklogo.png";
 // import logo from "images/logo/vefesblacklogo.png";
 
+export const AnchorLink = {
+  cursor: "pointer",
+  textDecoration: "3px underline dotted"
+}
+
 const HeaderLanding = (props) => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);

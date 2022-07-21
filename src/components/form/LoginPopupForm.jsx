@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { api } from "../../api";
 import Cookie from "js-cookie";
 import { useHistory } from "react-router-dom";
+import { AnchorLink } from "../vr-landing/Header";
 
 const LoginPopupForm = (props) => {
   // for password show hide
@@ -95,7 +96,7 @@ const LoginPopupForm = (props) => {
           <div className="col-12">
             <p>
               Don't have an Account? &nbsp;
-              <a onClick={props.toggleLogin}>Register</a>
+              <a onClick={props.toggleLogin} style={AnchorLink}>Register</a>
             </p>
           </div>
           {/* End .col */}
