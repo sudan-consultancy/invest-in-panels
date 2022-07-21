@@ -52,13 +52,26 @@ const TeamFive = () => {
          
           key={i}
         >
-          <Link to="/team-details-v1" className="team-member">
+          <Link to="/team-details-v1" className="team-member" style={{
+    borderradius: '50%',
+    height: '250px',
+    margin: '70px auto',
+    width: '250px',
+    textAlign: 'center',
+    /* background: #fff; */
+    /* border-radius: 10px; */
+    overflow: 'hidden',
+    paddingBottom: "30px",
+    display:" block"
+}}>
             <div className="img-holder">
               <img style = {{maxHeight: "452px", objectFit: "cover"}} src={`images/team/${item.img}.jpeg`} alt="team" />
             </div>
-            <h6 className="name">{item.name}</h6>
-            <div className="position">{item.designation}</div>
+            {/* <h6 className="name">{item.name}</h6>
+            <div className="position">{item.designation}</div> */}
           </Link>
+          <h6 className="name">{item.name}</h6>
+            <div className="position">{item.designation}</div>
         </div>
       ))}
     </>
