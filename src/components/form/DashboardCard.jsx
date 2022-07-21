@@ -4,13 +4,14 @@ import Modal from "react-modal";
 import HeaderLanding from "../vr-landing/Header";
 import Cookie from "js-cookie";
 import dstyle from "./dashboardcard.module.css";
-import { Link } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 import FooterFive from "../footer/FooterFive";
 const Container = {
   backgroundColor: "lightgray",
 };
 
 const DashboardCard = (props) => {
+  const history = useHistory();
   let [count, setCount] = useState(1);
   // let [popupflag, setpopup] = useState(false);
   let [kyc, setkyc] = useState(false);
@@ -27,6 +28,12 @@ const DashboardCard = (props) => {
       })
       .catch((err) => {});
   }, []);
+
+  const goToProducts = () => {
+    history.push(
+      `${process.env.REACT_APP_VEFES_IN_URL}/dashboard/${user?.token}`
+    );
+  };
 
   return (
     <>
@@ -55,14 +62,7 @@ const DashboardCard = (props) => {
               style={{ margin: "auto" }}
             >
               <h5 className="card-title mt-20 ">Panels</h5>
-              <p className="card-text">Unit price: INR 27,000</p>
-              <p className="card-text">Project Capacity: 25MW</p>
-              <p className="card-text">Assets Type: Solar Panel</p>
-              <p className="card-text">Life of Asset:25 Years</p>
-              <p className=" card-text ">
-                Expected Earnings:3.80 Per Unit generated
-              </p>
-              <p className="card-text">Your Cost:{count * 27000}</p>
+              <p className="card-text">Your Cost: INR {count * 27000}</p>
               <div
                 style={{ margin: "auto" }}
                 className={`col-md-3 col-12 align-items-center align-items-md-end`}
@@ -121,13 +121,14 @@ const DashboardCard = (props) => {
                   </div>
                 )}
               </div>
-              <a
+              <button
                 type="button"
-                href={`${process.env.REACT_APP_VEFES_IN_URL}/dashboard/${user?.token}`}
+                onClick={goToProducts}
+                disabled={!(kyc && user?.isOtpVerified)}
                 className="theme-btn-one ml-auto"
               >
                 Buy
-              </a>
+              </button>
             </div>
           </div>
           {/* <Modal
@@ -177,7 +178,7 @@ const DashboardCard = (props) => {
         <div className="inner-container">
           <div className="container">
           <FooterFive/>
-            {/* <FooterFive /> */}
+          
           </div>
         </div>
         {/* /.inner-container */}
