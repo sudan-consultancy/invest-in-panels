@@ -4,7 +4,6 @@
   },
   "name": "deski",
   "version": "1.1.9",
-  "homepage": "https://sudan-consultancy.github.io/invest-in-panels",
   "private": true,
   "dependencies": {
     "@hookform/resolvers": "^2.8.0",
