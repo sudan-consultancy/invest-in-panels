@@ -67,11 +67,11 @@ const TeamFive = () => {
             <div className="img-holder">
               <img style = {{maxHeight: "452px", objectFit: "cover"}} src={`images/team/${item.img}.jpeg`} alt="team" />
             </div>
-            <h6 className="name">{item.name}</h6>
-            <div className="position">{item.designation}</div>
-          </Link>
-          {/* <h6 className="name">{item.name}</h6>
+            {/* <h6 className="name">{item.name}</h6>
             <div className="position">{item.designation}</div> */}
+          </Link>
+          <h6 className="name">{item.name}</h6>
+            <div className="position">{item.designation}</div>
         </div>
       ))}
     </>
