@@ -26,16 +26,17 @@ const TeamContent = [
     img: "prabjyot",
     animationDelay: "50",
   },
+  
+   {
+    designation: "Marketing",
+    name: "Ankita Pednekar",
+    img: "ankita",
+    animationDelay: "100",
+  },
   {
     designation: "Operations",
     name: "Advaitaa Shinde",
     img: "advaitaa",
-    animationDelay: "100",
-  },
-   {
-    designation: "Marketing",
-    name: "Ankita Padnekar",
-    img: "ankita",
     animationDelay: "100",
   }
 ];
@@ -52,13 +53,26 @@ const TeamFive = () => {
          
           key={i}
         >
-          <Link to="/team-details-v1" className="team-member">
+          <Link to="/team-details-v1" className="team-member" style={{
+    borderRadius: '50%',
+    height: '250px',
+    margin: '35px auto',
+    width: '250px',
+    textAlign: 'center',
+    /* background: #fff; */
+    /* border-radius: 10px; */
+    overflow: 'hidden',
+    paddingBottom: "30px",
+    display:" block"
+}}>
             <div className="img-holder">
               <img style = {{maxHeight: "452px", objectFit: "cover"}} src={`images/team/${item.img}.jpeg`} alt="team" />
             </div>
-            <h6 className="name">{item.name}</h6>
-            <div className="position">{item.designation}</div>
+            {/* <h6 className="name">{item.name}</h6>
+            <div className="position">{item.designation}</div> */}
           </Link>
+          <h6 className="name" style={{fontSize:"24px",textAlign:"center"}}>{item.name}</h6>
+            <div className="position" style={{fontSize:"16px",textAlign:"center",color: "rgba(42, 42, 42, 0.54)"}}>{item.designation}</div>
         </div>
       ))}
     </>

@@ -1,7 +1,7 @@
 import React from "react";
 import FooterFive from "../components/footer/FooterFive";
 import HeaderLanding from "../components/vr-landing/Header";
-import backgroundVideo from "./"
+import backgroundVideo from "./";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -128,10 +128,24 @@ const LivaniaIndex = (props) => {
           </div>
           <div className="col-lg-6 order-lg-first">
             <div className="img-gallery">
-              <video id="background-video" autoplay="" muted="" playsinline="" loop="" alt="media" data-aos="fade-right" data-aos-duration="1200" style={{textAlign:"center"}}>
-                  <source src="images/media/vfes.mp4" type="video/mp4"/>
-                  <source src="images/media/vfes.mp4" type="video/ogg"/>
-                  Your browser does not support the video tag.
+              <video
+                id="background-video"
+                autoplay=""
+                muted=""
+                loop=""
+                style={{ textAlign: "center" }}
+              >
+                <source
+                  src="images/media/vfes.mp4"
+                  type="video/mp4"
+                  autostart="true"
+                />
+                <source
+                  src="images/media/vfes.mp4"
+                  type="video/ogg"
+                  autostart="true"
+                />
+                Your browser does not support the video tag.
               </video>
               {/* <img
                 src="images/media/img_38.png"
@@ -147,8 +161,6 @@ const LivaniaIndex = (props) => {
                 data-aos-duration="1200"
                 data-aos-delay="100"
               /> */}
-
-              
 
               {/* <video src="https://drive.google.com/file/d/1rmrlFu_Aq05wNbWR3_zOW0XGRIqxk8Dv/view" autoPlay="true" /> */}
               <img
@@ -170,15 +182,15 @@ const LivaniaIndex = (props) => {
             <h2 className="text-center mb-100">Livania Milestones</h2>
           </div>
           <VerticalTimeline>
-          
-             
             <VerticalTimelineElement
               className="vertical-timeline-element--work"
               date="Sep 2020"
               iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
               // icon={<WorkIcon />}
             >
-              <h3 className="vertical-timeline-element-title">Secured approvals for Solar Park & Grid Connectivity</h3>
+              <h3 className="vertical-timeline-element-title">
+                Secured approvals for Solar Park & Grid Connectivity
+              </h3>
               {/* <h4 className="vertical-timeline-element-subtitle">
                 San Francisco, CA
               </h4>
@@ -193,7 +205,9 @@ const LivaniaIndex = (props) => {
               iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
               // icon={<WorkIcon />}
             >
-              <h3 className="vertical-timeline-element-title">Land Development for Solar Park</h3>
+              <h3 className="vertical-timeline-element-title">
+                Land Development for Solar Park
+              </h3>
               {/* <h4 className="vertical-timeline-element-subtitle">
                 Los Angeles, CA
               </h4>
@@ -205,7 +219,9 @@ const LivaniaIndex = (props) => {
               iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
               // icon={<WorkIcon />}
             >
-              <h3 className="vertical-timeline-element-title">Erection of single circuit line</h3>
+              <h3 className="vertical-timeline-element-title">
+                Erection of single circuit line
+              </h3>
               {/* <h4 className="vertical-timeline-element-subtitle">
                 San Francisco, CA
               </h4>
@@ -218,7 +234,7 @@ const LivaniaIndex = (props) => {
               // icon={<SchoolIcon />}
             >
               <h3 className="vertical-timeline-element-title">
-              Ancilliary infra development started on site
+                Ancilliary infra development started on site
               </h3>
               {/* <h4 className="vertical-timeline-element-subtitle">
                 Online Course
@@ -232,7 +248,7 @@ const LivaniaIndex = (props) => {
               // icon={<SchoolIcon />}
             >
               <h3 className="vertical-timeline-element-title">
-              Procurement of Solar Panels
+                Procurement of Solar Panels
               </h3>
               {/* <h4 className="vertical-timeline-element-subtitle">
                 Certification
@@ -246,7 +262,7 @@ const LivaniaIndex = (props) => {
               // icon={<SchoolIcon />}
             >
               <h3 className="vertical-timeline-element-title">
-              2000 panels to be ready for production
+                2000 panels to be ready for production
               </h3>
               {/* <h4 className="vertical-timeline-element-subtitle">
                 Bachelor Degree
@@ -260,14 +276,13 @@ const LivaniaIndex = (props) => {
               // icon={<SchoolIcon />}
             >
               <h3 className="vertical-timeline-element-title">
-              2000 more panels to be ready
+                2000 more panels to be ready
               </h3>
               {/* <h4 className="vertical-timeline-element-subtitle">
                 Bachelor Degree
               </h4>
               <p>Creative Direction, Visual Design</p> */}
             </VerticalTimelineElement>
-            
           </VerticalTimeline>
         </div>
       </div>
@@ -323,10 +338,11 @@ const LivaniaIndex = (props) => {
           </Link>
           <br></br> Copyright @{new Date().getFullYear()}{" "}
           <a href="#" target="_blank" rel="noreferrer">
-            Vefes Engineering Pvt. Ltd.
+            Vefes AI.
           </a>{" "}
-          &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST
-          No.:27AAHCV6353M1ZP
+          &nbsp;|&nbsp; CIN No. :U72200MH2021PTC362001
+          {/* &nbsp;|&nbsp; GST
+          No.:27AAHCV6353M1ZP */}
           {/* <a href="#" target="_blank" rel="noreferrer">
               Vefes Engineering Pvt. Ltd. &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST No.:27AAHCV6353M1ZP
           </a>{" "} */}

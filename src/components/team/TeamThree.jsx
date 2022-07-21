@@ -76,7 +76,7 @@ const TeamThree = () => {
   return (
     <>
       <Tabs>
-        <TabList className="controls d-flex align-items-center justify-content-center mb-100 md-mb-60">
+        {/* <TabList className="controls d-flex align-items-center justify-content-center mb-100 md-mb-60">
           <Tab>
             <button type="button" className="control">
               All
@@ -102,7 +102,7 @@ const TeamThree = () => {
               Marketing
             </button>
           </Tab>
-        </TabList>
+        </TabList> */}
         {/* End .Tablist */}
         <TabPanel>
           <div className="mixitUp-container">
