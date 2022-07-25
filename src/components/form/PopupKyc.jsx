@@ -585,6 +585,37 @@ const PopupKyc = (props) => {
                         </div>{" "}
                       </div>
                     )}
+
+                    <div className="row">
+                      <div className="col-12">
+                        <div className="input-group-meta mb-25">
+                          <input
+                            placeholder="GST Number"
+                            name="gst"
+                            type="text"
+                            defaultValue={user?.gst}
+                            required
+                            disabled={true}
+                            {...register("gst")}
+                            className={`${errors.gst ? "is-invalid" : ""}`}
+                            style={{
+                              padding: "20px 20px",
+                              marginTop: "8px",
+                              marginBottom: "15px",
+                              border: "1px solid #ccc",
+                              borderRadius: "4px",
+                              boxSizing: " border-box",
+                              fontSize: "0.9em",
+                            }}
+                          />
+                          {errors.name && (
+                            <div className="invalid-feedback">
+                              {errors.name?.message}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
                     <div className="row">
                       <div className="col-12 mt-25 mb-25">
                         <div className="input-group-meta ">
