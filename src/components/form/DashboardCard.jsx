@@ -13,10 +13,16 @@ const DashboardCard = (props) => {
   let [popupflag, setpopup] = useState(false);
   let [kyc, setkyc] = useState(false);
   let user = JSON.parse(Cookie.get("vf_user"));
+  let [discount,setdiscount]=useState(0);
+  let [price,setprice]=useState(27000);
+
   function popup() {
     setpopup(!popupflag);
   }
-
+  function calcdiscount(actual_price,discount_of){
+    if (discount_of==0) return actual_price
+    else return actual_price - (discount_of/100)*actual_price;
+  }
   useEffect(() => {
     api
       .get("auth")
@@ -25,6 +31,21 @@ const DashboardCard = (props) => {
       })
       .catch((err) => {});
   }, []);
+
+  useEffect(()=>{
+    if (count >= 4 && count <= 10 ){
+      setdiscount(1);
+    }
+    else if (count >= 11 && count <= 20 ){
+      setdiscount(3);
+    }
+    else if (count >20 ){
+      setdiscount(5);
+    }
+    else{
+      setdiscount(0);
+    }
+  },[count]);
 
   return (
     <>
@@ -53,12 +74,12 @@ const DashboardCard = (props) => {
              
             >
               <h5 className="card-title mt-20 ">Panels</h5>
-              <p className="card-text">Unit price: INR 27,000</p>
+              <p className="card-text"><span>Unit price: </span><span className={discount >0 ? dstyle.cut: ''}>INR {price}</span>   <span className={discount >0 ? dstyle.showprice: dstyle.hideprice}>INR {calcdiscount(price,discount)}  <strong>  ({discount}% discount)</strong></span></p>
               <p className="card-text">Project Capacity: 25MW</p>
               <p className="card-text">Assets Type: Solar Panel</p>
               <p className="card-text">Life of Asset:25 Years</p>
               <p className=" card-text ">Expected Earnings:3.80 Per Unit generated</p>
-              <p className="card-text">Your Cost:{count * 27000}</p>
+              <p className="card-text">Your Cost:{count * calcdiscount(price,discount)}</p>
               <div
                 style={{ margin: "auto" }}
                 className={`col-md-3 col-12 align-items-center align-items-md-end`}
