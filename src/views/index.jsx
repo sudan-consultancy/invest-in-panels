@@ -148,7 +148,7 @@ const AppIndex = (props) => {
           <div className="title-style-five text-center mb-60 md-mb-30">
             <h6>GET STARTED IN NO TIME</h6>
             <h2>
-              <span>5 simple &amp; easy step to launch.</span>
+              <span>5 simple &amp; easy steps to launch.</span>
             </h2>
           </div>
           {/* End title */}
