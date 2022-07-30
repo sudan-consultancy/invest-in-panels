@@ -61,10 +61,10 @@ const FancyFeatureTen = () => {
             </div>
             <h3>{val.title}</h3>
             <p>{val.desc}</p>
-            <Link to="/solution-management" className="mt-30">
+            {/* <Link to="/solution-management" className="mt-30">
               {" "}
               <img src="images/icon/69.svg" alt="icon" />
-            </Link>
+            </Link> */}
           </div>
           {/* /.block-style-ten */}
         </div>

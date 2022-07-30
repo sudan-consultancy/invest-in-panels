@@ -207,6 +207,11 @@ const HeaderLanding = (props) => {
                       </div> */}
           </li>
           <li className="nav-item">
+            <a href="/livania" className="nav-link">
+             Livania
+            </a>
+          </li>
+          <li className="nav-item">
             <a href="/about" className="nav-link">
               About
             </a>
@@ -273,7 +278,7 @@ const HeaderLanding = (props) => {
             </div>
             {/* /.left-side */}
 
-            <div className="right-side" style={{overflow:"scroll", height:"600px"}}>
+            <div className="right-side" style={{overflow:"scroll", maxHeight:"600px"}}>
               <h2 className="form-title">{isLogin ? "Register" : "Login"}</h2>
               {isLogin ? (
                 <HeaderPopupForm toggleLogin={toggleLogin} />

@@ -32,10 +32,6 @@ const PopupKyc = (props) => {
   // let [email, setemail] = useState(null);
   // let [phonenumber, setphonenumber] = useState(null);
   let [kycpass, setkycpass] = useState(null);
-  let [credential, setcredential] = useState({ op: "", np: "", cp: "" });
-  let [adharfront, setadharfront] = useState(null);
-  let [adharback, setadharback] = useState(null);
-  let [pan, setpan] = useState(null);
   const [otpval, setotpval] = useState({});
   let [newpwerror, setnewpwerror] = useState(null);
   let [checkpw, setcheckpw] = useState({});
@@ -63,7 +59,6 @@ const PopupKyc = (props) => {
   });
   useEffect(() => {
     try {
-      
       let user = JSON.parse(Cookie.get("vf_user"));
       setUser(user);
       if (user?.hasCompletedProfile) {
@@ -101,10 +96,15 @@ const PopupKyc = (props) => {
           console.log(res);
           setotploading(false);
           setotperror(null);
-          let changeotpflag= JSON.parse(Cookie.get('vf_user'));
-          Cookie.set('vf_user',JSON.stringify({...changeotpflag,isOtpVerified:true}));
-          console.log(JSON.stringify({...changeotpflag,isOtpVerified:true}));
-          setUser({...changeotpflag,isOtpVerified:true});
+          let changeotpflag = JSON.parse(Cookie.get("vf_user"));
+          Cookie.set(
+            "vf_user",
+            JSON.stringify({ ...changeotpflag, isOtpVerified: true })
+          );
+          console.log(
+            JSON.stringify({ ...changeotpflag, isOtpVerified: true })
+          );
+          setUser({ ...changeotpflag, isOtpVerified: true });
           setotp(false);
         })
         .catch((err) => {
@@ -160,7 +160,7 @@ const PopupKyc = (props) => {
         .then((res) => {
           console.log(res);
           setnewpwerror(null);
-          setcheckpw({np:'',op:'',cp:''});
+          setcheckpw({ np: "", op: "", cp: "" });
         })
         .catch((err) => {
           console.log(err);
@@ -171,7 +171,10 @@ const PopupKyc = (props) => {
   };
   function sendotp(e) {
     e.preventDefault();
-    api.get('auth/resend-otp',null,{headers:{Authorization:user?.token}}).then(res=>console.log(res)).catch(err=>console.log(err));
+    api
+      .get("auth/resend-otp", null, { headers: { Authorization: user?.token } })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
     setotp(true);
   }
   const [updating, setUpdating] = useState(false);
@@ -207,17 +210,59 @@ const PopupKyc = (props) => {
     setKycLoading(true);
     axios
       .post(
-        "https://sandbox.leegality.com/api/v3.0/sign/request",
+        "https://app1.leegality.com/api/v3.0/sign/request",
         {
-          profileId: "zXkouzU",
+          profileId: "v3QVgS7",
           file: {
             name: "",
             fields: [
               {
-                id: "1657531829765",
-                name: "name",
+                id: "1658487040289",
+                name: "Owner Name",
                 type: "text",
                 value: user?.name,
+                required: false,
+              },
+              {
+                id: "1658487230301",
+                name: "Owner Email",
+                type: "text",
+                value: user?.email,
+                required: false,
+              },
+              {
+                id: "1658487069274",
+                name: "Owner Phone No.",
+                type: "number",
+                value: user?.phone_number,
+                required: false,
+              },
+              {
+                id: "1658487259696",
+                name: "Owner PAN No.",
+                type: "text",
+                value: "",
+                required: false,
+              },
+              {
+                id: "1658487172849",
+                name: "Billing Address",
+                type: "",
+                value: "",
+                required: false,
+              },
+              {
+                id: "1658490159550",
+                name: "Signature Date of Owner",
+                type: "text",
+                value: new Date(),
+                required: false,
+              },
+              {
+                id: "1658490414639",
+                name: "Signature Date of Authorised signatory",
+                type: "text",
+                value: new Date(),
                 required: false,
               },
             ],
@@ -261,7 +306,7 @@ const PopupKyc = (props) => {
   const checkLeegalityStatus = () => {
     axios
       .get(
-        `https://sandbox.leegality.com/api/v3.0/sign/request?documentId=${user?.document_id}`,
+        `https://app1.leegality.com/api/v3.0/sign/request?documentId=${user?.document_id}`,
         { headers: { "X-Auth-Token": process.env.REACT_APP_LEEGALITY_API } }
       )
       .then((res) => {
@@ -348,7 +393,6 @@ const PopupKyc = (props) => {
               Verify
             </a>
           </div>
-         
         </main>
       </Modal>
       {kycpass && <Redirect to="/dashboard" />}
@@ -585,6 +629,38 @@ const PopupKyc = (props) => {
                         </div>{" "}
                       </div>
                     )}
+
+                    <div className="row">
+                      <div className="col-12">
+                        <div className="input-group-meta">
+                          <input
+                            placeholder="GST Number"
+                            name="gst"
+                            type="text"
+                            required
+                            disabled={true}
+                            defaultValue={user?.gst}
+                            {...register("gst")}
+                            className={`${errors.gst ? "is-invalid" : ""}`}
+                            style={{
+                              padding: "20px 20px",
+                              marginTop: "22px",
+                              marginBottom: "15px",
+                              border: "1px solid #ccc",
+                              borderRadius: "4px",
+                              boxSizing: " border-box",
+                              fontSize: "0.9em",
+                            }}
+                          />
+                          {errors.gst && (
+                            <div className="invalid-feedback">
+                              {errors.gst?.message}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
                     <div className="row">
                       <div className="col-12 mt-25 mb-25">
                         <div className="input-group-meta ">
@@ -609,6 +685,7 @@ const PopupKyc = (props) => {
                               border: "solid 1px #d6d6d6",
                               resize: "none",
                               padding: "20px",
+                              marginTop: "20px",
                             }}
                           />
 
@@ -623,11 +700,96 @@ const PopupKyc = (props) => {
 
                     <div className="row">
                       <div className="col-12">
+                        <div className="input-group-meta mb-25">
+                          <input
+                            placeholder="State"
+                            name="state"
+                            type="text"
+                            defaultValue={user?.state}
+                            required
+                            disabled={true}
+                            {...register("state")}
+                            className={`${errors.state ? "is-invalid" : ""}`}
+                            style={{
+                              padding: "20px 20px",
+                              marginTop: "50px",
+                              marginBottom: "15px",
+                              border: "1px solid #ccc",
+                              borderRadius: "4px",
+                              boxSizing: " border-box",
+                              fontSize: "0.9em",
+                            }}
+                          />
+                          {errors.state && (
+                            <div className="invalid-feedback">
+                              {errors.state?.message}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="row">
+                      <div className="col-12">
+                        <div className="input-group-meta mb-25">
+                          <label htmlFor="referral_code" className="mt-5">
+                            Referral code
+                          </label>
+                          <input
+                            placeholder="Referral Code"
+                            id="referral_code"
+                            name="referral_code"
+                            type="text"
+                            defaultValue={user?.referral_code}
+                            required
+                            disabled={true}
+                            {...register("referral_code")}
+                            className={`${
+                              errors.referral_code ? "is-invalid" : ""
+                            }`}
+                            style={{
+                              padding: "20px 20px",
+                              marginTop: "50px",
+                              marginBottom: "50px",
+                              border: "1px solid #ccc",
+                              borderRadius: "4px",
+                              boxSizing: " border-box",
+                              fontSize: "0.9em",
+                            }}
+                          />
+
+                          <i
+                            class="fa fa-clone fa-lg"
+                            style={{
+                              position: "absolute",
+                              right: "20px",
+                              top: "62px",
+                              cursor: "pointer",
+                            }}
+                            onClick={() =>
+                              navigator.clipboard.writeText(
+                                `${user?.referral_code}`
+                              )
+                            }
+                          ></i>
+
+                          {errors.name && (
+                            <div className="invalid-feedback">
+                              {errors.referral_code?.message}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="row">
+                      <div className="col-12">
                         <button
                           className="theme-btn-one mt-50 mb-50"
                           type="submit"
                           style={{
                             backgroundColor: "var(--blue-dark)",
+                            marginTop: "50px",
                             color: "white",
                             webkitAppearance: " none",
                             opacity: " 1",
@@ -667,7 +829,6 @@ const PopupKyc = (props) => {
                             }}
                             className={``}
                             value={checkpw?.op}
-
                             style={{
                               padding: "20px 20px",
                               marginTop: "8px",
@@ -736,7 +897,6 @@ const PopupKyc = (props) => {
                             }
                             type="password"
                             value={checkpw?.cp}
-
                             required
                             onChange={(e) => {
                               setcheckpw({ ...checkpw, cp: e.target.value });
@@ -780,6 +940,7 @@ const PopupKyc = (props) => {
         <div className="inner-container">
           <div className="container">
             <FooterFive />
+            {/* <FooterFive /> */}
           </div>
         </div>
         {/* /.inner-container */}
@@ -826,9 +987,7 @@ const PopupKyc = (props) => {
           <a href="#" target="_blank" rel="noreferrer">
             Vefes AI.
           </a>{" "}
-          &nbsp;|&nbsp; CIN No. :U72200MH2021PTC362001 
-          {/* &nbsp;|&nbsp; GST
-          No.:27AAHCV6353M1ZP */}
+          &nbsp;|&nbsp; CID No. :U72200MH2021PTC362001
           {/* <a href="#" target="_blank" rel="noreferrer">
               Vefes Engineering Pvt. Ltd. &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST No.:27AAHCV6353M1ZP
           </a>{" "} */}

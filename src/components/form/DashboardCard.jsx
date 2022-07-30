@@ -4,7 +4,9 @@ import Modal from "react-modal";
 import HeaderLanding from "../vr-landing/Header";
 import Cookie from "js-cookie";
 import dstyle from "./dashboardcard.module.css";
-import { Link,useHistory } from "react-router-dom";
+import { useCallback } from "react";
+
+import { Link, useHistory } from "react-router-dom";
 import FooterFive from "../footer/FooterFive";
 const Container = {
   backgroundColor: "lightgray",
@@ -13,27 +15,50 @@ const Container = {
 const DashboardCard = (props) => {
   const history = useHistory();
   let [count, setCount] = useState(1);
-  // let [popupflag, setpopup] = useState(false);
+  let [popupflag, setpopup] = useState(false);
   let [kyc, setkyc] = useState(false);
-  let user = JSON.parse(Cookie.get("vf_user"));
+  let [user, setUser] = useState({});
+  let [discount, setdiscount] = useState(0);
+  let [price, setprice] = useState(27000);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+  function calcdiscount(actual_price, discount_of) {
+    if (discount_of == 0) return actual_price;
+    else return actual_price - (discount_of / 100) * actual_price;
+  }
+
   // function popup() {
-  //   setpopup(!popupflag);
+  //   if (kyc && user?.isOtpVerified) {
+  //     setpopup(!popupflag);
+  //   }
   // }
-
   useEffect(() => {
-    api
-      .get("auth")
-      .then((res) => {
-        setkyc(res.data?.data?.hasCompletedProfile);
-      })
-      .catch((err) => {});
-  }, []);
+    if (count >= 4 && count <= 10) {
+      setdiscount(1);
+    } else if (count >= 11 && count <= 20) {
+      setdiscount(3);
+    } else if (count > 20) {
+      setdiscount(5);
+    } else {
+      setdiscount(0);
+    }
+  }, [count]);
 
-  const goToProducts = () => {
+  const closeSuccessModal = () => setShowSuccessModal(false);
+
+  const handlePayment = useCallback(async () => {
     history.push(
       `${process.env.REACT_APP_VEFES_IN_URL}/dashboard/${user?.token}`
     );
-  };
+  }, []);
+
+  useEffect(() => {
+    try {
+      let user = JSON.parse(Cookie.get("vf_user"));
+      setUser(user);
+      setkyc(user?.hasCompletedProfile || false);
+    } catch {}
+  }, [user?.id, user?.credit_points]);
 
   return (
     <>
@@ -62,7 +87,28 @@ const DashboardCard = (props) => {
               style={{ margin: "auto" }}
             >
               <h5 className="card-title mt-20 ">Panels</h5>
-              <p className="card-text">Your Cost: INR {count * 27000}</p>
+              <p className="card-text">
+                <span>Unit price: </span>
+                <span className={discount > 0 ? dstyle.cut : ""}>
+                  INR {price}
+                </span>{" "}
+                <span
+                  className={discount > 0 ? dstyle.showprice : dstyle.hideprice}
+                >
+                  INR {calcdiscount(price, discount)}{" "}
+                  <strong> ({discount}% discount)</strong>
+                </span>
+              </p>
+
+              <p className="card-text">Project Capacity: 25MW</p>
+              <p className="card-text">Assets Type: Solar Panel</p>
+              <p className="card-text">Life of Asset:25 Years</p>
+              <p className="card-text">
+                Expected Earnings: 3.80 Per Unit generated
+              </p>
+              <p className="card-text">
+                Your Cost: INR {count * calcdiscount(price, discount)}
+              </p>
               <div
                 style={{ margin: "auto" }}
                 className={`col-md-3 col-12 align-items-center align-items-md-end`}
@@ -121,55 +167,51 @@ const DashboardCard = (props) => {
                   </div>
                 )}
               </div>
-              <button
-                type="button"
-                onClick={goToProducts}
-                disabled={!(kyc && user?.isOtpVerified)}
-                className="theme-btn-one ml-auto"
-              >
-                Buy
-              </button>
+              {user?.id ? (
+                <a
+                  href={`${process.env.REACT_APP_VEFES_IN_URL}/dashboard/${user?.token}`}
+                  target="_blank"
+                  className="ml-auto"
+                >
+                  <button
+                    id="rzp-button1"
+                    // onClick={popup}
+                    disabled={!(kyc && user?.isOtpVerified)}
+                    className="theme-btn-one"
+                  >
+                    Buy
+                  </button>
+                </a>
+              ) : (
+                <span className="text-danger">
+                  You're not logged in.
+                  <a
+                    href={`${process.env.REACT_APP_VEFES_AI_URL}`}
+                    className="text-info"
+                  >
+                    Click here
+                  </a>{" "}
+                  to login
+                </span>
+              )}
             </div>
           </div>
           {/* <Modal
-            isOpen={popupflag}
-            onRequestClose={popup}
-            contentLabel="Bank details"
+            isOpen={showSuccessModal}
+            onRequestClose={closeSuccessModal}
             className="custom-modal modal-contact-popup-one"
             overlayClassName="custom-overlay"
             closeTimeoutMS={500}
           >
-            <main className="main-body box_inner modal-content clearfix">
-              <button className="close" onClick={popup}>
+            <main className="main-body box_inner modal-content clearfix p-5">
+              <button className="close" onClick={closeSuccessModal}>
                 <img src="images/icon/close.svg" alt="close" />
               </button>
-              <table className="table table-responsive mt-5">
-                <tbody>
-                  <tr>
-                    <th>Count:</th>
-                    <td>{count}</td>
-                  </tr>
-                  <tr>
-                    <th>Cost:</th>
-                    <td>{count * 27000}</td>
-                  </tr>
-                  <tr>
-                    <th colSpan={2}>Bank Details</th>
-                  </tr>
-                  <tr>
-                    <th>Account name:</th>
-                    <td>Vefes AI Pvt. Ltd.</td>
-                  </tr>
-                  <tr>
-                    <th>Account number:</th>
-                    <td>50200052684060</td>
-                  </tr>
-                  <tr>
-                    <th>IFSC code:</th>
-                    <td>HDFC0000998</td>
-                  </tr>
-                </tbody>
-              </table>
+              <p>
+                Congrates you've successfully purchased our panels. <br />
+                An advanced receipt will be sent to you on your registered email
+                ID.
+              </p>
             </main>
           </Modal> */}
         </div>
@@ -210,7 +252,7 @@ const DashboardCard = (props) => {
             target="_blank"
             style={{ fontWeight: "bold" }}
           >
-            Cancellation & Refund Policy
+            Cancellation &amp; Refund Policy
           </Link>
           &nbsp;|&nbsp;
           <Link
@@ -224,9 +266,8 @@ const DashboardCard = (props) => {
           <a href="#" target="_blank" rel="noreferrer">
             Vefes AI.
           </a>{" "}
-          &nbsp;|&nbsp; CIN No. :U72200MH2021PTC362001 
-          {/* &nbsp;|&nbsp; GST
-          No.:27AAHCV6353M1ZP */}
+          &nbsp;|&nbsp; CID No. :U72200MH2021PTC362001 &nbsp;|&nbsp; GST
+          No.:27AAHCV6353M1ZP
           {/* <a href="#" target="_blank" rel="noreferrer">
               Vefes Engineering Pvt. Ltd. &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST No.:27AAHCV6353M1ZP
           </a>{" "} */}

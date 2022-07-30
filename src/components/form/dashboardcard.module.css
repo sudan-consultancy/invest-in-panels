@@ -21,6 +21,16 @@
   border: 0.1rem solid rgba(86, 86, 86, 0.656);
   border-radius: 1rem;
 }
+.cut{
+  text-decoration: line-through;
+
+}
+.showprice{
+  visibility: visible;
+}
+.hideprice{
+  visibility: hidden;
+}
 .infocard{
   
   margin: auto;

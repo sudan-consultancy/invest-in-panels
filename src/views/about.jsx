@@ -7,7 +7,6 @@ import CounterThree from "../components/counter/CounterThree";
 import TeamFive from "../components/team/TeamFive";
 import { Link } from "react-router-dom";
 
-
 const AboutIndex = (props) => {
   return (
     <div className="main-page-wrapper p0 font-gordita">
@@ -19,11 +18,8 @@ const AboutIndex = (props) => {
 				Theme Hero Banner
 			============================================== 
 			--> */}
-    
 
-      
-
-       <div className="fancy-text-block-twenty">
+      <div className="fancy-text-block-twenty">
         <img
           src="images/shape/124.svg"
           alt="shape"
@@ -116,15 +112,10 @@ const AboutIndex = (props) => {
       </div>
       {/* /.team-section-four */}
 
-    
-
-  
-
-
       {/* =====================================================
             Footer Style Seven
         ===================================================== */}
-        <footer className="theme-footer-five mt-130 md-mt-100">
+      <footer className="theme-footer-five mt-130 md-mt-100">
         <div className="inner-container">
           <div className="container">
             <FooterFive />
@@ -160,7 +151,7 @@ const AboutIndex = (props) => {
             target="_blank"
             style={{ fontWeight: "bold" }}
           >
-            Cancellation & Refund Policy
+            Cancellation &amp; Refund Policy
           </Link>
           &nbsp;|&nbsp;
           <Link
@@ -174,9 +165,7 @@ const AboutIndex = (props) => {
           <a href="#" target="_blank" rel="noreferrer">
             Vefes AI.
           </a>{" "}
-          &nbsp;|&nbsp; CIN No. :U72200MH2021PTC362001 
-          {/* &nbsp;|&nbsp; GST
-          No.:27AAHCV6353M1ZP */}
+          &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160
           {/* <a href="#" target="_blank" rel="noreferrer">
               Vefes Engineering Pvt. Ltd. &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST No.:27AAHCV6353M1ZP
           </a>{" "} */}

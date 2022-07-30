@@ -18,7 +18,7 @@ const HeaderPopupForm = (props) => {
   const [error, setError] = useState(null);
   const [otp, setotp] = useState(false);
   const [regerror, setregerror] = useState(false);
-  const[regstatus,setregstatus]= useState(false);
+  const [regstatus, setregstatus] = useState(false);
 
   // for validation
   const validationSchema = Yup.object().shape({
@@ -39,26 +39,25 @@ const HeaderPopupForm = (props) => {
   // get functions to build form with useForm() hook
   const { register, handleSubmit, formState } = useForm(formOptions);
   const { errors } = formState;
-  
+
   const [otpval, setotpval] = useState({});
   const [email, setemail] = useState("");
   const [regpassword, setregpassword] = useState("");
   const [userId, setUserId] = useState(null);
-  function onSubmit(data, e) {
+  async function onSubmit(data, e) {
     // display form data on success
-    // console.log("Message submited: ", data);
     setotperror(false);
     setregstatus(true);
     setLoading(true);
     setemail(data.email);
     setregpassword(data.password);
+    let thisdata = { ...data, state_code: parseInt(data.state_code) };
     api
-      .post("auth/register", data)
+      .post("auth/register", thisdata)
       .then((res) => {
         setLoading(false);
         setError(false);
         setUserId(res.data?.data?.id);
-        console.log(res);
         if (res.status > 200 || res.status < 300) {
           setregerror(false);
           setotp(true);
@@ -69,13 +68,11 @@ const HeaderPopupForm = (props) => {
       })
       .catch((err) => {
         setLoading(false);
-          setError(err?.response?.data?.message || "error creating user");
+        setError(err?.response?.data?.message || "error creating user");
       });
     // e.target.reset();
   }
-  function resendotp(){
 
-  }
   function submitotp(e) {
     setLoading(true);
     let sendotp = [otpval[0], otpval[1], otpval[2], otpval[3]]
@@ -86,23 +83,34 @@ const HeaderPopupForm = (props) => {
         .post("auth/verify-otp", { id: userId, otp: parseInt(sendotp) })
         .then((res) => {
           setotperror(null);
-          api
-            .post("auth/login", { email: email, password: regpassword })
-            .then((res) => {
-              setLoading(false);
-              Cookie.set("vf_user", JSON.stringify(res.data.data));
-              history.push("/kyc");
-            })
-            .catch((err) => {
-              setLoading(false);
-              setError(err?.response?.data?.error || "Error logging in");
-            });
+          let changeotpflag = {};
+          try {
+            changeotpflag = JSON.parse(Cookie.get("vf_user"));
+            Cookie.set(
+              "vf_user",
+              JSON.stringify({ ...changeotpflag, isOtpVerified: true })
+            );
+            api
+              .post("auth/login", { email: email, password: regpassword })
+              .then((res) => {
+                setLoading(false);
+                history.push("/kyc");
+              })
+              .catch((err) => {
+                setLoading(false);
+                setError(err?.response?.data?.error || "Error logging in");
+              });
+          } catch {
+            // do nothing
+            setotperror(
+              "Error setting cookies. Close this to login"
+            );
+          }
         })
         .catch((err) => {
           setLoading(false);
-
           setotperror(
-            err?.response?.data?.error || "Error validating otp. Retry"
+            err?.response?.data?.error || "Error validating OTP. Retry"
           );
         });
     } else {
@@ -110,26 +118,31 @@ const HeaderPopupForm = (props) => {
     }
   }
   function updateOtp(e) {
-    setotpval({ ...otpval, [e.target.id]: e.target.value });
-    document.getElementById(`${String(parseInt(e.target.id) + 1)}`).value = "";
-    document.getElementById(`${String(parseInt(e.target.id) + 1)}`).focus();
+    let thisotpval = otpval;
+    thisotpval = { ...thisotpval, [e.target.id]: e.target.value };
+    setotpval(thisotpval);
+    if (e.target.id < 3) {
+      document.getElementById(`${String(parseInt(e.target.id) + 1)}`).value =
+        "";
+      document.getElementById(`${String(parseInt(e.target.id) + 1)}`).focus();
+    }
   }
 
-  const closeOtpModal = () =>{ setotp(null);
+  const closeOtpModal = () => {
+    setotp(null);
     api
-            .post("auth/login", { email: email, password: regpassword })
-            .then((res) => {
-              setLoading(false);
-              Cookie.set("vf_user", JSON.stringify(res.data.data));
-              history.push("/kyc");
-            })
-            .catch((err) => {
-              setLoading(false);
-              setError(err?.response?.data?.error || "Error logging in");
-            });
-  }
+      .post("auth/login", { email: email, password: regpassword })
+      .then((res) => {
+        setLoading(false);
+        Cookie.set("vf_user", JSON.stringify(res.data.data));
+        history.push("/kyc");
+      })
+      .catch((err) => {
+        setLoading(false);
+        setError(err?.response?.data?.error || "Error logging in");
+      });
+  };
   return (
-    
     <>
       <Modal
         isOpen={otp}
@@ -196,7 +209,6 @@ const HeaderPopupForm = (props) => {
               Verify
             </a>
           </div>
-         
         </main>
       </Modal>
       <form id="contact-form" onSubmit={handleSubmit(onSubmit)}>
@@ -269,6 +281,94 @@ const HeaderPopupForm = (props) => {
               )}
             </div>
           </div>
+
+          <div className="col-12">
+            <div className="input-group-meta form-group mb-20">
+              <label>State</label>
+              <select
+                className={`form-control ${
+                  errors.state_code ? "is-invalid" : ""
+                }`}
+                id="state_code"
+                name="state_code"
+                style={{
+                  width: "100%",
+                  height: "60px",
+                  border: "2px solid #000",
+                  borderRadius: " 6px",
+                  padding: "0 20px",
+                  color: "#000",
+                  fontSize: "17px",
+                  background: "transparent",
+                }}
+                {...register("state_code")}
+              >
+                <option disabled>Select State</option>
+                <option value="35">Andaman and Nicobar</option>
+                <option value="37">Andhra Pradesh</option>
+                <option value="12">Arunachal Pradesh</option>
+                <option value="18">Assam</option>
+                <option value="10">Bihar</option>
+                <option value="4">Chandigarh</option>
+                <option value="22">Chhattisgarh</option>
+                <option value="26">Dadar and Nagar Haveli</option>
+                <option value="25">Daman and Diu</option>
+                <option value="7">Delhi</option>
+                <option value="30">Goa</option>
+                <option value="24">Gujarat</option>
+                <option value="6">Haryana</option>
+                <option value="2">Himachal Pradesh</option>
+                <option value="1">Jammu and Kashmir</option>
+                <option value="20">Jharkhand</option>
+                <option value="29">Karnataka</option>
+                <option value="32">Kerala</option>
+                <option value="38">Ladakh</option>
+                <option value="31">Lakshadweep</option>
+                <option value="23">Madhya Pradesh</option>
+                <option value="27">Maharashtra</option>
+                <option value="14">Manipur</option>
+                <option value="17">Meghalaya</option>
+                <option value="15">Mizoram</option>
+                <option value="13">Nagaland</option>
+                <option value="21">Orissa</option>
+                <option value="99">Other Country</option>
+                <option value="97">Other Territory</option>
+                <option value="34">Puducherry</option>
+                <option value="3">Punjab</option>
+                <option value="8">Rajasthan</option>
+                <option value="11">Sikkim</option>
+                <option value="33">Tamil Nadu</option>
+                <option value="36">Telangana</option>
+                <option value="16">Tripura</option>
+                <option value="9">Uttar Pradesh</option>
+                <option value="5">Uttarakhand</option>
+                <option value="19">West Bengal</option>
+              </select>
+              {errors.state_code && (
+                <div className="invalid-feedback">
+                  {errors.state_code?.message}
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="col-12">
+            <div className="input-group-meta form-group mb-20">
+              <label>Referral Code</label>
+              <input
+                placeholder="Referral Code"
+                name="referral_code_from"
+                type="text"
+                {...register("referral_code_from")}
+                className={` ${errors.referral_code_from ? "is-invalid" : ""}`}
+              />
+              {errors.referral_code_from && (
+                <div className="invalid-feedback">
+                  {errors.referral_code_from?.message}
+                </div>
+              )}
+            </div>
+          </div>
+
           {regerror && (
             <div style={{ color: "red" }} className="col-12">
               Account already exists
@@ -308,7 +408,9 @@ const HeaderPopupForm = (props) => {
           <div className="col-12">
             <p>
               Already have an Account?&nbsp;
-              <a onClick={props.toggleLogin} style={AnchorLink}>Login</a>
+              <a onClick={props.toggleLogin} style={AnchorLink}>
+                Login
+              </a>
             </p>
           </div>
 

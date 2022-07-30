@@ -17,11 +17,29 @@ const HeroBanner = () => {
           rooftop to generate green income, reduce carbon emission and avail tax
           benefit.
         </p>
-        <del style={{fontSize: "24px",lineHeight: "1.83em",color: "#000",margin: "25px 0 38px" }}>&#x20b9; 30,000/-</del>
-        &nbsp; &nbsp;
-        <span style={{ opacity: "1", textDecoration: "underline" ,fontSize: "24px",lineHeight: "1.83em",color: "#000",margin: "25px 0 38px" }}>
-                Early bird 10% Discount
-              </span>
+        <del
+          style={{
+            fontSize: "24px",
+            lineHeight: "1.83em",
+            color: "#000",
+            margin: "25px 4px 38px",
+          }}
+        >
+          &#x20b9; 30,000/-
+        </del>
+
+        <span
+          style={{
+            opacity: "1",
+            textDecoration: "underline",
+            fontSize: "24px",
+            lineHeight: "1.83em",
+            color: "#000",
+            margin: "25px 0 38px",
+          }}
+        >
+          Early bird 10% Discount
+        </span>
         <div
           className="d-lg-flex align-items-center justify-content-between pr-xl-5"
           data-aos="fade-right"
@@ -29,13 +47,13 @@ const HeroBanner = () => {
           <div className="info">
             {/* Panels available{" "} */}
             <span className="d-block">
-           
               <button
                 className="d-inline theme-btn-nine"
+                style={{ marginRight: "5px" }}
               >
                 Own Now
-              </button> &nbsp; &nbsp;@  &#x20b9; 27,000/-
-              &nbsp; &nbsp;
+              </button>{" "}
+              @&nbsp;&#x20b9;&nbsp;27,000/-
               {/* <span style={{ opacity: "1", textDecoration: "underline" }}>
                 Early bird 10% Discount
               </span> */}

@@ -27,7 +27,12 @@ const AppIndex = (props) => {
         <div className="container">
           <HeroBanner />
           <div className="screen-holder">
-            <img src="images/banner.png" alt="" className="img-meta" />
+            <img
+              style={{ "margin-top": "9rem" }}
+              src="images/banner.png"
+              alt=""
+              className="img-meta"
+            />
             {/* <img
               src="images/assets/ils-03.png"
               alt="illustration"
@@ -148,7 +153,7 @@ const AppIndex = (props) => {
           <div className="title-style-five text-center mb-60 md-mb-30">
             <h6>GET STARTED IN NO TIME</h6>
             <h2>
-              <span>5 simple &amp; easy step to launch.</span>
+              <span>5 simple &amp; easy steps to launch.</span>
             </h2>
           </div>
           {/* End title */}
@@ -268,9 +273,7 @@ const AppIndex = (props) => {
           <a href="#" target="_blank" rel="noreferrer">
             Vefes AI.
           </a>{" "}
-          &nbsp;|&nbsp; CIN No. :U72200MH2021PTC362001 
-          {/* &nbsp;|&nbsp; GST
-          No.:27AAHCV6353M1ZP */}
+          &nbsp;|&nbsp; CID No. :U72200MH2021PTC362001
           {/* <a href="#" target="_blank" rel="noreferrer">
               Vefes Engineering Pvt. Ltd. &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST No.:27AAHCV6353M1ZP
           </a>{" "} */}

@@ -8,9 +8,7 @@ const CancelationsPolicy = () => {
   return (
     <div className="doc-container main-page-wrapper">
       <Helmet>
-        <title>
-         Privacy Policy || Vefes AI
-        </title>
+        <title>Privacy Policy || Vefes AI</title>
       </Helmet>
       {/* End Page SEO Content */}
 
@@ -28,26 +26,32 @@ const CancelationsPolicy = () => {
               {/* Tab panes */}
               <div className="tab-content">
                 <div id="opt1">
-                  <h2 className="font-gilroy-bold">Vefes Cancellation & Refund Policy</h2>
+                  <h2 className="font-gilroy-bold">
+                    Vefes Cancellation & Refund Policy
+                  </h2>
                   <br />
                   <p>
-                  In case you wish to cancel the order, please send us an email with your order 
-                  number and Invoice Copy to support@vefes.in within 12 hours from the time your
-                 order is placed. Any requests for cancellation beyond 12 hours of order placed will not be processed.
+                    In case you wish to cancel the order, please send us an
+                    email with your order number and Invoice Copy to
+                    support@vefes.in within 12 hours from the time your order is
+                    placed. Any requests for cancellation beyond 12 hours of
+                    order placed will not be processed.
                   </p>
-                  <p>Once your cancellation request is processed, your order amount will be reversed to the source of the payment.</p>
-                  
+                  <p>
+                    Once your cancellation request is processed, your order
+                    amount will be reversed to the source of the payment.
+                  </p>
                 </div>
                 <div id="opt2">
                   <h2 className="font-gilroy-bold">Vefes Shipping Policy</h2>
                   <br />
-                  
-                  <p>Assets once purchased, as per the terms of our contract, will directly be
-                   installed at our Solar Power Park. You will receive a copy of your invoice from us over email.</p>
-                  
-                </div>
 
-             
+                  <p>
+                    Assets once purchased, as per the terms of our contract,
+                    will directly be installed at our Solar Power Park. You will
+                    receive a copy of your invoice from us over email.
+                  </p>
+                </div>
               </div>
               {/*  /.tab-content */}
             </div>
@@ -91,7 +95,7 @@ const CancelationsPolicy = () => {
             target="_blank"
             style={{ fontWeight: "bold" }}
           >
-            Cancellation & Refund Policy
+            Cancellation &amp; Refund Policy
           </Link>
           &nbsp;|&nbsp;
           <Link
@@ -105,9 +109,7 @@ const CancelationsPolicy = () => {
           <a href="#" target="_blank" rel="noreferrer">
             Vefes AI.
           </a>{" "}
-          &nbsp;|&nbsp; CIN No. :U72200MH2021PTC362001 
-          {/* &nbsp;|&nbsp; GST
-          No.:27AAHCV6353M1ZP */}
+          &nbsp;|&nbsp; CID No. :U72200MH2021PTC362001
           {/* <a href="#" target="_blank" rel="noreferrer">
               Vefes Engineering Pvt. Ltd. &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST No.:27AAHCV6353M1ZP
           </a>{" "} */}

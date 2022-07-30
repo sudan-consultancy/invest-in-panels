@@ -89,7 +89,7 @@ const ContactForm = () => {
               placeholder="Your message goes here.."
               name="sendMessage"
               type="text"
-              {...register("message")}
+              {...register("sendMessage")}
               className={`${errors.sendMessage ? "is-invalid" : ""}`}
             ></textarea>
             {errors.sendMessage && (

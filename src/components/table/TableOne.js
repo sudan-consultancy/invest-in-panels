@@ -131,7 +131,7 @@ export const TableOne = () => {
   };
 
   return (
-    <div className="row no-gutters">
+    <div className="row no-gutters table-responsive">
       <input
         defaultValue="1"
         step="0"

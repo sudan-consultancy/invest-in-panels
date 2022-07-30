@@ -17,7 +17,10 @@ const ContactIndex = (props) => {
 			============================================== 
 			--> */}
 
-      <div className="fancy-hero-one lg-container" style = {{marginTop: "100px"}}>
+      <div
+        className="fancy-hero-one lg-container"
+        style={{ marginTop: "100px" }}
+      >
         <div className="container">
           <div className="row">
             <div className="col-xl-9 col-lg-11 m-auto">
@@ -59,7 +62,7 @@ const ContactIndex = (props) => {
       {/* =====================================================
             Footer Style Seven
         ===================================================== */}
-        <footer className="theme-footer-five mt-130 md-mt-100">
+      <footer className="theme-footer-five mt-130 md-mt-100">
         <div className="inner-container">
           <div className="container">
             <FooterFive />
@@ -95,7 +98,7 @@ const ContactIndex = (props) => {
             target="_blank"
             style={{ fontWeight: "bold" }}
           >
-            Cancellation & Refund Policy
+            Cancellation &amp; Refund Policy
           </Link>
           &nbsp;|&nbsp;
           <Link
@@ -109,9 +112,7 @@ const ContactIndex = (props) => {
           <a href="#" target="_blank" rel="noreferrer">
             Vefes AI.
           </a>{" "}
-          &nbsp;|&nbsp; CIN No. :U72200MH2021PTC362001 
-          {/* &nbsp;|&nbsp; GST
-          No.:27AAHCV6353M1ZP */}
+          &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160
           {/* <a href="#" target="_blank" rel="noreferrer">
               Vefes Engineering Pvt. Ltd. &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST No.:27AAHCV6353M1ZP
           </a>{" "} */}

@@ -5,19 +5,19 @@ import AppIndex from "../views";
 import PreviewMain from "../views/PreviewMain";
 
 // All HOME PAGE ROUTES
-import EventOrganizer from "../views/all-home-pages/EventOrganizer";
-import DocLanding from "../views/all-home-pages/DocLanding";
-import DocSignatureLanding from "../views/all-home-pages/DocSignatureLanding";
-import ProjectManagement from "../views/all-home-pages/ProjectManagement";
-import CustomerSupport from "../views/all-home-pages/CustomerSupport";
-import ProductLanding from "../views/all-home-pages/ProductLanding";
-import ProductLandingDark from "../views/all-home-pages/ProductLandingDark";
-import NoteTakingLanding from "../views/all-home-pages/NoteTakingLanding";
-import VideoEditorLanding from "../views/all-home-pages/VideoEditorLanding";
-import AppointmentScheduling from "../views/all-home-pages/AppointmentScheduling";
-import MobileAppLanding from "../views/all-home-pages/MobileAppLanding";
-import WebsiteBuilderLanding from "../views/all-home-pages/WebsiteBuilderLanding";
-import ComingSoon from "../views/all-home-pages/ComingSoon";
+// import EventOrganizer from "../views/all-home-pages/EventOrganizer";
+// import DocLanding from "../views/all-home-pages/DocLanding";
+// import DocSignatureLanding from "../views/all-home-pages/DocSignatureLanding";
+// import ProjectManagement from "../views/all-home-pages/ProjectManagement";
+// import CustomerSupport from "../views/all-home-pages/CustomerSupport";
+// import ProductLanding from "../views/all-home-pages/ProductLanding";
+// import ProductLandingDark from "../views/all-home-pages/ProductLandingDark";
+// import NoteTakingLanding from "../views/all-home-pages/NoteTakingLanding";
+// import VideoEditorLanding from "../views/all-home-pages/VideoEditorLanding";
+// import AppointmentScheduling from "../views/all-home-pages/AppointmentScheduling";
+// import MobileAppLanding from "../views/all-home-pages/MobileAppLanding";
+// import WebsiteBuilderLanding from "../views/all-home-pages/WebsiteBuilderLanding";
+// import ComingSoon from "../views/all-home-pages/ComingSoon";
 import DashboardCard from "../components/form/DashboardCard";
 
 // All INNER PAGES ROUTES START FROM BELLOW
@@ -25,83 +25,83 @@ import DashboardCard from "../components/form/DashboardCard";
 // PAGES DROPDOWN ALL ROUTES
 
 // Team inner pages
-import Team1 from "../views/inner-pages/pages/team/Team1";
-import Team2 from "../views/inner-pages/pages/team/Team2";
-import Team3 from "../views/inner-pages/pages/team/Team3";
-import Team4 from "../views/inner-pages/pages/team/Team4";
-import Team5 from "../views/inner-pages/pages/team/Team5";
-import Team6 from "../views/inner-pages/pages/team/Team6";
-import TeamDetailsV1 from "../views/inner-pages/pages/team/TeamDetailsV1";
-import TeamDetailsV2 from "../views/inner-pages/pages/team/TeamDetailsV2";
-import Faq from "../views/inner-pages/pages/Faq";
-import FaqDetails from "../views/inner-pages/pages/FaqDetails";
+// import Team1 from "../views/inner-pages/pages/team/Team1";
+// import Team2 from "../views/inner-pages/pages/team/Team2";
+// import Team3 from "../views/inner-pages/pages/team/Team3";
+// import Team4 from "../views/inner-pages/pages/team/Team4";
+// import Team5 from "../views/inner-pages/pages/team/Team5";
+// import Team6 from "../views/inner-pages/pages/team/Team6";
+// import TeamDetailsV1 from "../views/inner-pages/pages/team/TeamDetailsV1";
+// import TeamDetailsV2 from "../views/inner-pages/pages/team/TeamDetailsV2";
+// import Faq from "../views/inner-pages/pages/Faq";
+// import FaqDetails from "../views/inner-pages/pages/FaqDetails";
 import PopupKyc from "../components/form/PopupKyc";
 // Contact us inner pages
-import ContactCustomerSupport from "../views/inner-pages/pages/contact/ContactCustomerSupport";
-import ContactEventOrganizer from "../views/inner-pages/pages/contact/ContactEventOrganizer";
-import ContactProjectManagement from "../views/inner-pages/pages/contact/ContactProjectManagement";
-import ContactDocumentation from "../views/inner-pages/pages/contact/ContactDocumentation";
+// import ContactCustomerSupport from "../views/inner-pages/pages/contact/ContactCustomerSupport";
+// import ContactEventOrganizer from "../views/inner-pages/pages/contact/ContactEventOrganizer";
+// import ContactProjectManagement from "../views/inner-pages/pages/contact/ContactProjectManagement";
+// import ContactDocumentation from "../views/inner-pages/pages/contact/ContactDocumentation";
 
-// About us inner pages
-import AboutCustomerSupport from "../views/inner-pages/pages/about/AboutCustomerSupport";
-import AboutEventOrganizer from "../views/inner-pages/pages/about/AboutEventOrganizer";
-import AboutProjectManagement from "../views/inner-pages/pages/about/AboutProjectManagement";
-import AboutDocumentation from "../views/inner-pages/pages/about/AboutDocumentation";
+// // About us inner pages
+// import AboutCustomerSupport from "../views/inner-pages/pages/about/AboutCustomerSupport";
+// import AboutEventOrganizer from "../views/inner-pages/pages/about/AboutEventOrganizer";
+// import AboutProjectManagement from "../views/inner-pages/pages/about/AboutProjectManagement";
+// import AboutDocumentation from "../views/inner-pages/pages/about/AboutDocumentation";
 
-// Pricing inner pages
-import PricingCustomerSupport from "../views/inner-pages/pages/pricing/PricingCustomerSupport";
-import PricingEventOrganizer from "../views/inner-pages/pages/pricing/PricingEventOrganizer";
-import PricingProjectManagement from "../views/inner-pages/pages/pricing/PricingProjectManagement";
+// // Pricing inner pages
+// import PricingCustomerSupport from "../views/inner-pages/pages/pricing/PricingCustomerSupport";
+// import PricingEventOrganizer from "../views/inner-pages/pages/pricing/PricingEventOrganizer";
+// import PricingProjectManagement from "../views/inner-pages/pages/pricing/PricingProjectManagement";
 
 // FEATURES DROPDOWN ALL ROUTES
-import Login from "../views/inner-pages/features/miscellaneous/Login";
-import SignUp from "../views/inner-pages/features/miscellaneous/SignUp";
+// import Login from "../views/inner-pages/features/miscellaneous/Login";
+// import SignUp from "../views/inner-pages/features/miscellaneous/SignUp";
 import TermsConditions from "../views/inner-pages/features/miscellaneous/TermsConditions";
 import PrivacyPolicy from "../views/inner-pages/features/miscellaneous/PrivacyPolicy";
 import CancelationsPolicy from "../views/inner-pages/features/miscellaneous/CancelationsPolicy";
-import SolutionMangement from "../views/inner-pages/features/SolutionMangement";
-import ProductCustomerSupport from "../views/inner-pages/features/ProductCustomerSupport";
-import FeaturesCustomerSupport from "../views/inner-pages/features/FeaturesCustomerSupport";
+// import SolutionMangement from "../views/inner-pages/features/SolutionMangement";
+// import ProductCustomerSupport from "../views/inner-pages/features/ProductCustomerSupport";
+// import FeaturesCustomerSupport from "../views/inner-pages/features/FeaturesCustomerSupport";
 
 // SERVICE PAGES ROUTES
-import ServiceV1 from "../views/inner-pages/service/ServiceV1";
-import ServiceV2 from "../views/inner-pages/service/ServiceV2";
-import ServiceV3 from "../views/inner-pages/service/ServiceV3";
-import ServiceV4 from "../views/inner-pages/service/ServiceV4";
-import ServiceDetails from "../views/inner-pages/service/ServiceDetails";
+// import ServiceV1 from "../views/inner-pages/service/ServiceV1";
+// import ServiceV2 from "../views/inner-pages/service/ServiceV2";
+// import ServiceV3 from "../views/inner-pages/service/ServiceV3";
+// import ServiceV4 from "../views/inner-pages/service/ServiceV4";
+// import ServiceDetails from "../views/inner-pages/service/ServiceDetails";
 
-// DOCS DROPDOWN ALL ROUTES
-import DocFullWidth from "../views/inner-pages/docs/DocFullWidth";
-import DocFullWidthBanner from "../views/inner-pages/docs/DocFullWidthBanner";
-import DocBox from "../views/inner-pages/docs/DocBox";
-import DocBoxWithBanner from "../views/inner-pages/docs/DocBoxWithBanner";
-import Changelog from "../views/inner-pages/docs/Changelog";
+// // DOCS DROPDOWN ALL ROUTES
+// import DocFullWidth from "../views/inner-pages/docs/DocFullWidth";
+// import DocFullWidthBanner from "../views/inner-pages/docs/DocFullWidthBanner";
+// import DocBox from "../views/inner-pages/docs/DocBox";
+// import DocBoxWithBanner from "../views/inner-pages/docs/DocBoxWithBanner";
+// import Changelog from "../views/inner-pages/docs/Changelog";
 
-// PORTFOLIO DROPDOWN ALL ROUTES
-import PortfolioV1 from "../views/inner-pages/portfolio/PortfolioV1";
-import PortfolioV2 from "../views/inner-pages/portfolio/PortfolioV2";
-import PortfolioV3 from "../views/inner-pages/portfolio/PortfolioV3";
-import PortfolioV4 from "../views/inner-pages/portfolio/PortfolioV4";
-import PortfolioV5 from "../views/inner-pages/portfolio/PortfolioV5";
-import PortfolioDetailsV1 from "../views/inner-pages/portfolio/PortfolioDetailsV1";
+// // PORTFOLIO DROPDOWN ALL ROUTES
+// import PortfolioV1 from "../views/inner-pages/portfolio/PortfolioV1";
+// import PortfolioV2 from "../views/inner-pages/portfolio/PortfolioV2";
+// import PortfolioV3 from "../views/inner-pages/portfolio/PortfolioV3";
+// import PortfolioV4 from "../views/inner-pages/portfolio/PortfolioV4";
+// import PortfolioV5 from "../views/inner-pages/portfolio/PortfolioV5";
+// import PortfolioDetailsV1 from "../views/inner-pages/portfolio/PortfolioDetailsV1";
 
-// BLOGS DROPDOWN ALL ROUTES
-import BlogV1 from "../views/inner-pages/blog-pages/BlogV1";
-import BlogV2 from "../views/inner-pages/blog-pages/BlogV2";
-import BlogV3 from "../views/inner-pages/blog-pages/BlogV3";
-import BlogV4 from "../views/inner-pages/blog-pages/BlogV4";
-import BlogV5 from "../views/inner-pages/blog-pages/BlogV5";
-import BlogV6 from "../views/inner-pages/blog-pages/BlogV6";
-import BlogDetails from "../views/inner-pages/blog-pages/BlogDetails";
+// // BLOGS DROPDOWN ALL ROUTES
+// import BlogV1 from "../views/inner-pages/blog-pages/BlogV1";
+// import BlogV2 from "../views/inner-pages/blog-pages/BlogV2";
+// import BlogV3 from "../views/inner-pages/blog-pages/BlogV3";
+// import BlogV4 from "../views/inner-pages/blog-pages/BlogV4";
+// import BlogV5 from "../views/inner-pages/blog-pages/BlogV5";
+// import BlogV6 from "../views/inner-pages/blog-pages/BlogV6";
+// import BlogDetails from "../views/inner-pages/blog-pages/BlogDetails";
 
 // Not Found Page
 import NotFound from "../views/NotFound";
-
+// import ProtectedRoute from "./ProtectedRoute";
 // Route Specific
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ScrollTopBehaviour from "../components/ScrollTopBehaviour";
-import FormSurveyLanding from "../views/all-home-pages/FormSurveyLanding";
-import VrLanding from "../views/all-home-pages/VrLanding";
+// import FormSurveyLanding from "../views/all-home-pages/FormSurveyLanding";
+// import VrLanding from "../views/all-home-pages/VrLanding";
 import ContactIndex from "../views/contact";
 import AboutIndex from "../views/about";
 import LivaniaIndex from "../views/livania";

@@ -8,9 +8,7 @@ const PrivacyPolicy = () => {
   return (
     <div className="doc-container main-page-wrapper">
       <Helmet>
-        <title>
-         Privacy Policy || Vefes AI
-        </title>
+        <title>Privacy Policy || Vefes AI</title>
       </Helmet>
       {/* End Page SEO Content */}
 
@@ -164,7 +162,6 @@ const PrivacyPolicy = () => {
                 </p>
                 <h3>Account Information</h3>
                 <p>
-                
                   <br />
                   If you would at any time like to review or change the
                   information in your account or terminate your account, you
@@ -183,18 +180,18 @@ const PrivacyPolicy = () => {
                 <p>
                   For questions or queries regarding this privacy policy, please
                   contact us here. <br />
-                  <br />*Cookies A cookie is a small amount of data
-                  that is sent from a web server to your browser. It is normally
-                  used to assign a unique identification to your computer and
-                  securely store information such as user IDs, passwords,
-                  preferences, and online profiles. <br />
-                  <br /> It is stored on the hard
-                  drive of your computer. You can choose not to have cookies
-                  delivered by Vefes sites by changing your browser settings.
-                  Different web sites can send their own cookies to your
-                  computer. To protect your privacy, your browser only allows a
-                  web site to access the cookies it has already sent you, not
-                  the cookies sent by other sites.
+                  <br />
+                  *Cookies A cookie is a small amount of data that is sent from
+                  a web server to your browser. It is normally used to assign a
+                  unique identification to your computer and securely store
+                  information such as user IDs, passwords, preferences, and
+                  online profiles. <br />
+                  <br /> It is stored on the hard drive of your computer. You
+                  can choose not to have cookies delivered by Vefes sites by
+                  changing your browser settings. Different web sites can send
+                  their own cookies to your computer. To protect your privacy,
+                  your browser only allows a web site to access the cookies it
+                  has already sent you, not the cookies sent by other sites.
                 </p>
               </div>
               {/*  /.tab-content */}
@@ -239,7 +236,7 @@ const PrivacyPolicy = () => {
             target="_blank"
             style={{ fontWeight: "bold" }}
           >
-            Cancellation & Refund Policy
+            Cancellation &amp; Refund Policy
           </Link>
           &nbsp;|&nbsp;
           <Link
@@ -253,9 +250,7 @@ const PrivacyPolicy = () => {
           <a href="#" target="_blank" rel="noreferrer">
             Vefes AI.
           </a>{" "}
-          &nbsp;|&nbsp; CIN No. :U72200MH2021PTC362001 
-          {/* &nbsp;|&nbsp; GST
-          No.:27AAHCV6353M1ZP */}
+          &nbsp;|&nbsp; CID No. :U72200MH2021PTC362001
           {/* <a href="#" target="_blank" rel="noreferrer">
               Vefes Engineering Pvt. Ltd. &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST No.:27AAHCV6353M1ZP
           </a>{" "} */}
