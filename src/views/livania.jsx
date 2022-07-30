@@ -292,7 +292,7 @@ const LivaniaIndex = (props) => {
       {/* =====================================================
             Footer Style Seven
         ===================================================== */}
-      <footer className="theme-footer-five mt-130 md-mt-100">
+        <footer className="theme-footer-five mt-130 md-mt-100">
         <div className="inner-container">
           <div className="container">
             <FooterFive />
@@ -328,7 +328,7 @@ const LivaniaIndex = (props) => {
             target="_blank"
             style={{ fontWeight: "bold" }}
           >
-            Cancellation &amp; Refund Policy
+            Cancellation & Refund Policy
           </Link>
           &nbsp;|&nbsp;
           <Link
@@ -340,10 +340,11 @@ const LivaniaIndex = (props) => {
           </Link>
           <br></br> Copyright @{new Date().getFullYear()}{" "}
           <a href="#" target="_blank" rel="noreferrer">
-            Vefes Engineering Pvt. Ltd.
+            Vefes AI.
           </a>{" "}
-          &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST
-          No.:27AAHCV6353M1ZP
+          &nbsp;|&nbsp; CIN No. :U72200MH2021PTC362001 
+          {/* &nbsp;|&nbsp; GST
+          No.:27AAHCV6353M1ZP */}
           {/* <a href="#" target="_blank" rel="noreferrer">
               Vefes Engineering Pvt. Ltd. &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST No.:27AAHCV6353M1ZP
           </a>{" "} */}
