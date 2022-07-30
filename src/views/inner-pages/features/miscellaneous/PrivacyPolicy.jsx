@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import FooterFive from "../../../../components/footer/FooterFive";
 import HeaderLanding from "../../../../components/vr-landing/Header";
 import { Link } from "react-router-dom";
+import Footer from "../../../../components/footer/Footer";
 
 const PrivacyPolicy = () => {
   return (
@@ -200,70 +201,7 @@ const PrivacyPolicy = () => {
         </div>
       </div>
 
-      <footer className="theme-footer-five mt-130 md-mt-100">
-        <div className="inner-container">
-          <div className="container">
-            <FooterFive />
-          </div>
-        </div>
-        {/* /.inner-container */}
-        <p className="copyright">
-          {/* {" "}
-          Copyright @{new Date().getFullYear()}{" "}
-          <a href="#" target="_blank" rel="noreferrer">
-            Vefes
-          </a>{" "}
-          AI.  */}
-          &nbsp;&nbsp;
-          <Link
-            to="/terms-conditions"
-            target="_blank"
-            style={{ fontWeight: "bold" }}
-          >
-            Terms &amp; Conditions
-          </Link>
-          &nbsp;|&nbsp;
-          <Link
-            to="/privacy-policy"
-            target="_blank"
-            style={{ fontWeight: "bold" }}
-          >
-            Privacy Policy
-          </Link>
-          &nbsp;|&nbsp;
-          <Link
-            to="/concelation-policy"
-            target="_blank"
-            style={{ fontWeight: "bold" }}
-          >
-            Cancellation &amp; Refund Policy
-          </Link>
-          &nbsp;|&nbsp;
-          <Link
-            to="/concelation-policy"
-            target="_blank"
-            style={{ fontWeight: "bold" }}
-          >
-            Shipping Policy
-          </Link>
-          <br></br> Copyright @{new Date().getFullYear()}{" "}
-          <a href="#" target="_blank" rel="noreferrer">
-            Vefes AI.
-          </a>{" "}
-          &nbsp;|&nbsp; CID No. :U72200MH2021PTC362001
-          {/* <a href="#" target="_blank" rel="noreferrer">
-              Vefes Engineering Pvt. Ltd. &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST No.:27AAHCV6353M1ZP
-          </a>{" "} */}
-        </p>
-        {/* <p className="copyright">
-          {" "}
-          
-          <a href="#" target="_blank" rel="noreferrer">
-            Vefes Engineering
-          </a>{" "}
-          Pvt. Ltd.
-        </p> */}
-      </footer>
+      <Footer />
       {/* /.theme-footer-one */}
     </div>
   );

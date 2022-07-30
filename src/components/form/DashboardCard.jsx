@@ -8,6 +8,7 @@ import { useCallback } from "react";
 
 import { Link, useHistory } from "react-router-dom";
 import FooterFive from "../footer/FooterFive";
+import Footer from "../footer/Footer";
 const Container = {
   backgroundColor: "lightgray",
 };
@@ -216,71 +217,7 @@ const DashboardCard = (props) => {
           </Modal> */}
         </div>
       </div>
-      <footer className="theme-footer-five mt-130 md-mt-100">
-        <div className="inner-container">
-          <div className="container">
-            <FooterFive />
-          </div>
-        </div>
-        {/* /.inner-container */}
-        <p className="copyright">
-          {/* {" "}
-          Copyright @{new Date().getFullYear()}{" "}
-          <a href="#" target="_blank" rel="noreferrer">
-            Vefes
-          </a>{" "}
-          AI.  */}
-          &nbsp;&nbsp;
-          <Link
-            to="/terms-conditions"
-            target="_blank"
-            style={{ fontWeight: "bold" }}
-          >
-            Terms &amp; Conditions
-          </Link>
-          &nbsp;|&nbsp;
-          <Link
-            to="/privacy-policy"
-            target="_blank"
-            style={{ fontWeight: "bold" }}
-          >
-            Privacy Policy
-          </Link>
-          &nbsp;|&nbsp;
-          <Link
-            to="/concelation-policy"
-            target="_blank"
-            style={{ fontWeight: "bold" }}
-          >
-            Cancellation &amp; Refund Policy
-          </Link>
-          &nbsp;|&nbsp;
-          <Link
-            to="/concelation-policy"
-            target="_blank"
-            style={{ fontWeight: "bold" }}
-          >
-            Shipping Policy
-          </Link>
-          <br></br> Copyright @{new Date().getFullYear()}{" "}
-          <a href="#" target="_blank" rel="noreferrer">
-            Vefes AI.
-          </a>{" "}
-          &nbsp;|&nbsp; CID No. :U72200MH2021PTC362001 &nbsp;|&nbsp; GST
-          No.:27AAHCV6353M1ZP
-          {/* <a href="#" target="_blank" rel="noreferrer">
-              Vefes Engineering Pvt. Ltd. &nbsp;|&nbsp; CID No. :U40100MH2020PTC347160 &nbsp;|&nbsp; GST No.:27AAHCV6353M1ZP
-          </a>{" "} */}
-        </p>
-        {/* <p className="copyright">
-          {" "}
-          
-          <a href="#" target="_blank" rel="noreferrer">
-            Vefes Engineering
-          </a>{" "}
-          Pvt. Ltd.
-        </p> */}
-      </footer>
+      <Footer />
     </>
   );
 };
